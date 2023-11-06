@@ -86,7 +86,7 @@ namespace ProdigyProjectFinal.ViewModel
         #endregion
 
 
-        private MainPageViewModel(ProdigyServices service)
+        public MainPageViewModel(ProdigyServices service)
         {
             _service = service;
             UserName = string.Empty;

@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProdigyProjectFinal.View.Login"
              Title="Login">
-    
-    <ContentPage.Resources
-    <Style TargetType="Label" Class="LoginLbl">
+
+    <ContentPage.Resources>
+        <Style TargetType="Label" Class="LoginLbl">
         <Setter Property="TextColor" Value="{StaticResource LightTextCLr}"/>
     </Style>
 

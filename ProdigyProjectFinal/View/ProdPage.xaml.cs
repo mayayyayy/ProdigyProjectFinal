@@ -3,11 +3,11 @@ using ProdigyProjectFinal.ViewModel;
 
 public partial class ProdPage : ContentPage
 {
-	public ProdPage(ProdigyViewModel vm)
-	{
-		this.BindingContext = vm;
-		InitializeComponent();
-	}
+    public ProdPage(ProdigyViewModel vm)
+    {
+        this.BindingContext = vm;
+        InitializeComponent();
+    }
     protected override async void OnAppearing()
     {
         base.OnAppearing();
@@ -17,3 +17,4 @@ public partial class ProdPage : ContentPage
             await AppShell.Current.GoToAsync("MainPage");
         }
     }
+}

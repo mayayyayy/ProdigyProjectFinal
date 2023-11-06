@@ -34,7 +34,7 @@ namespace ProdigyProjectFinal.ViewModel
 
       
         /// <param name="prodService"></param>
-        private ProdigyViewModel(ProdigyServices prodService)
+        public ProdigyViewModel(ProdigyServices prodService)
         {
             _prodService = prodService;
             var u = SecureStorage.Default.GetAsync("LoggedUser").Result;
