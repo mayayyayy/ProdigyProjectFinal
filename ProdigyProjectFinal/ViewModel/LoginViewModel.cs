@@ -55,7 +55,7 @@ namespace ProdigyProjectFinal.ViewModel
             }
         }
 
-        public ICommand LoginCommand { get; protected set; }
+        public ICommand BtnCommand { get; protected set; }
 
         public LoginViewModel()
         {
@@ -64,7 +64,7 @@ namespace ProdigyProjectFinal.ViewModel
             IsLoginError = true;
             ErrorMessage = "Incorrect username or password";
 
-            LoginCommand = new Command(async () =>
+            BtnCommand = new Command(async () =>
             {
                 if (!validateUser(Username, Password))
                     return;

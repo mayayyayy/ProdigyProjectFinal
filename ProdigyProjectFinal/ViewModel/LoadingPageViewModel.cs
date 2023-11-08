@@ -8,5 +8,6 @@ namespace ProdigyProjectFinal.ViewModel
 {
     public class LoadingPageViewModel:ViewModel
     {
+       
     }
 }

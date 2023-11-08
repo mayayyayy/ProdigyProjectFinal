@@ -5,6 +5,8 @@
              x:Class="ProdigyProjectFinal.App">
     <Application.Resources>
         <ResourceDictionary>
+            <Color x:Key="LightTextClr" >#d5859b</Color>
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
