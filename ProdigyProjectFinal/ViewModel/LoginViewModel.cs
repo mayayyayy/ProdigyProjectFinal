@@ -19,7 +19,7 @@ namespace ProdigyProjectFinal.ViewModel
         private string _errorMessage;
         public string Username
         {
-            get => _username;
+            get => _username; //m
             set
             {
                 _username = value;
