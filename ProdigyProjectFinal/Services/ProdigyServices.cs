@@ -57,27 +57,27 @@ namespace ProdigyProjectFinal.Services
                 var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync($"{URL}Login", content);
 
-                switch (response.StatusCode)
-                {
-                    case (HttpStatusCode.OK):
-                        {
-                            jsonContent = await response.Content.ReadAsStringAsync();
-                            User u = JsonSerializer.Deserialize<User>(jsonContent, _serializerOptions);
-                            await Task.Delay(2000);
-                            return new UserDto() { Success = true, Message = string.Empty, User = u };
+            //    switch (response.StatusCode)
+            //    {
+            //        case (HttpStatusCode.OK):
+            //            {
+            //                jsonContent = await response.Content.ReadAsStringAsync();
+            //                User u = JsonSerializer.Deserialize<User>(jsonContent, _serializerOptions);
+            //                await Task.Delay(2000);
+            //                return new UserDto() { Success = true, Message = string.Empty, User = u };
 
-                        }
-                    case (HttpStatusCode.Unauthorized):
-                        {
-                            return new UserDto() { Success = false, User = null, Message = ErrorMsgs.invalidLogin };
+            //            }
+            //        case (HttpStatusCode.Unauthorized):
+            //            {
+            //                return new UserDto() { Success = false, User = null, Message = ErrorMsgs.invalidLogin };
 
-                        }
+            //            }
 
-                }
+            //    }
 
-            }
-            catch (Exception ex) { Console.WriteLine(ex.Message); }
-            return new UserDto() { Success = false, User = null, Message = ErrorMsgs.invalidLogin };
+            //}
+            //catch (Exception ex) { Console.WriteLine(ex.Message); }
+            //return new UserDto() { Success = false, User = null, Message = ErrorMsgs.invalidLogin };
 
         }
         #endregion

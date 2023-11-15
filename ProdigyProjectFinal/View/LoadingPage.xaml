@@ -16,7 +16,7 @@
             ZIndex="-1" />
         <Label
             HorizontalOptions="Center"
-            Text="המתינו..."
+            Text="loading.."
             VerticalOptions="Center" />
     </VerticalStackLayout>
 </ContentPage>

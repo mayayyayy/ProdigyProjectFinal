@@ -17,4 +17,5 @@ public partial class LoadingPage : ContentPage
         this.HeightRequest = 100;
         
     }
+    
 }

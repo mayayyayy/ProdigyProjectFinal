@@ -9,11 +9,11 @@
 
     <ContentPage.Resources>
         <Style TargetType="Label" Class="LoginLbl">
-        <Setter Property="TextColor" Value="{StaticResource LightTextCLr}"/>
+        <Setter Property="TextColor" Value="{StaticResource LightTextClr}"/>
     </Style>
 
     <Style TargetType="Entry" Class="LoginEntry">
-        <Setter Property="BackgroundColor" Value="{StaticResource LightTextCLr}"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource LightTextClr}"/>
         <Setter Property="FontSize" Value="16"/>
     </Style>
     </ContentPage.Resources>
