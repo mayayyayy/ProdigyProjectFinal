@@ -23,7 +23,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<LoginViewModel>();
 		builder.Services.AddTransient<LoadingPageViewModel>();
 		builder.Services.AddSingleton<LoadingPage>();
-        return builder.Build();
+
+		return builder.Build();
     }
 }
 

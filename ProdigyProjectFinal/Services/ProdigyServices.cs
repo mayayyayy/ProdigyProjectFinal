@@ -51,7 +51,7 @@ namespace ProdigyProjectFinal.Services
             try
             {
                 //האובייקט לשליחה
-                User user = new User() { email = userName, password = password };
+                User user = new User() { Email = userName, UserPswd = password };
                 //מבצעת סיריליזציה
                 var jsonContent = JsonSerializer.Serialize(user, _serializerOptions);
                 var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");

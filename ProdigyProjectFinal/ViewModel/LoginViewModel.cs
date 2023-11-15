@@ -83,6 +83,7 @@ namespace ProdigyProjectFinal.ViewModel
 
                         await SecureStorage.SetAsync("CurrentUser", JsonSerializer.Serialize(user));
                         await Shell.Current.DisplayAlert("logged in message", "Logged in!", "OK");
+                        await Shell.Current.GoToAsync("MainPage");
                     }
                 }
                 catch (Exception)

@@ -39,7 +39,7 @@ namespace ProdigyProjectFinal.ViewModel
             _prodService = prodService;
             var u = SecureStorage.Default.GetAsync("LoggedUser").Result;
             var user = JsonSerializer.Deserialize<User>(u);
-            Message = $"Hello {user.username}";
+            Message = $"Hello {user.FirstName}";
             //find email by name
             SearchCommand = new Command<string>(async (x) => FoundEmail = await _prodService.GetUserEmail(x));
 

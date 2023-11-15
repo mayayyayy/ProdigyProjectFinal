@@ -13,7 +13,8 @@ public partial class LoadingPage : ContentPage
     {
         base.OnAppearing();
         this.Opacity = 50;
-        this.Window.MinimumHeight = 100;
-        this.Window.MinimumWidth = 100;
+        this.WidthRequest = 100;
+        this.HeightRequest = 100;
+        
     }
 }

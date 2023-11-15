@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
              x:Class="ProdigyProjectFinal.View.Login"
-             Title="Login">
+             x:DataType="viewmodel:LoginViewModel"
+             Title="Login"
+>
 
     <ContentPage.Resources>
         <Style TargetType="Label" Class="LoginLbl">
@@ -28,7 +31,7 @@
         BackgroundColor="#D9000000"
         WidthRequest="500" >
             <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="10">
-                <Label Text="Username" StyleClass="LoginLbl"/>
+                <Label Text="Email" StyleClass="LoginLbl"/>
                 <Entry Text="{Binding Username}"  StyleClass="LoginEntry"/>
             </VerticalStackLayout>
 
@@ -37,7 +40,7 @@
                 <Entry IsPassword="True" Text="{Binding Password}" StyleClass="LoginEntry"/>
             </VerticalStackLayout>
 
-            <Label Text="Incorrect username or password" StyleClass="ErrorLbl"  IsVisible="{Binding IsLoginError}"/>
+            <Label Text="Incorrect email or password" StyleClass="ErrorLbl"  IsVisible="{Binding IsLoginError}"/>
 
             <Button 
                 Text="Login"
@@ -45,7 +48,7 @@
                 Grid.Row="3"
                 WidthRequest="100"
                 StyleClass="DarkBtn"
-                Command="{Binding BtnCommand}"/>
+                Command="{Binding LoginCommand}"/>
         </VerticalStackLayout>
     </Border>
 </ContentPage>
