@@ -48,7 +48,8 @@
                 Grid.Row="3"
                 WidthRequest="100"
                 StyleClass="DarkBtn"
-                Command="{Binding LoginCommand}"/>
+                Command="{Binding BtnCommand}"
+                />
         </VerticalStackLayout>
     </Border>
 </ContentPage>

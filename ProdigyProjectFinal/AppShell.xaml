@@ -7,16 +7,13 @@
     Shell.FlyoutBehavior="Disabled"
     xmlns:view="clr-namespace:ProdigyProjectFinal.View"
     >
-
+    
     <ShellContent 
     Title="Login"
     ContentTemplate="{DataTemplate view:Login}"
     Route="Login" />
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" 
-        />
+   
+    
     
 
 </Shell>

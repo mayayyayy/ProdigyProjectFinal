@@ -9,7 +9,6 @@
             Text="{Binding Message}"
             VerticalOptions="Center" />
         <Label Text="find email"/>
-        <Entry x:Name="nickName" Placeholder="הכנס כינוי משתמש"/>
         <Button Text="search" Command="{Binding SearchCommand}" CommandParameter="{Binding Source={x:Reference nickName},Path=Text}"/>
         <Label Text="{Binding FoundEmail}"
              />

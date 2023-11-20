@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProdigyProjectFinal.MainPage"
-             BackgroundColor="{StaticResource PrimaryColor}"
+             xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
+             x:DataType="viewmodel:MainPageViewModel"
+             BackgroundColor="{StaticResource Primary}"
              FlowDirection="RightToLeft">
 
     <ScrollView>
@@ -21,16 +23,16 @@
                 <StackLayout Margin="0,80">
                     <Label
                         FontSize="32"
-                        Style="{StaticResource welcome}"
+                        
                         Text="welcome to prodigy" />
                     <Label
                         FontFamily="OpenSansRegular"
-                        FontSize="16"
+                        FontSize="5"
                         Text="login to continue"
-                        TextColor="{StaticResource SecondaryColor}" />
+                        TextColor="{StaticResource Secondary}" />
                     <Label
                         IsVisible="{Binding ShowLoginError}"
-                        Style="{StaticResource error}"
+                     
                         Text="{Binding LoginErrorMessage}" />
                 </StackLayout>
 
@@ -39,17 +41,17 @@
                         FontFamily="OpenSansRegular"
                         FontSize="16"
                         Text="username"
-                        TextColor="{StaticResource SecondaryColor}" />
+                        TextColor="{StaticResource Secondary}" />
                     <Grid Margin="0,5" RowDefinitions="auto,auto">
-                        <Border Style="{StaticResource loginBorder}" />
+                        <Border  />
                         <Entry
                             Placeholder="enter username"
-                            Style="{StaticResource loginEntry}"
+                         
                             Text="{Binding UserName}" />
                         <Label
                             Grid.Row="1"
                             IsVisible="{Binding ShowUserNameError}"
-                            Style="{StaticResource error}"
+                          
                             Text="{Binding UserErrorMessage}" />
                     </Grid>
 
@@ -57,9 +59,9 @@
                         FontFamily="OpenSansRegular"
                         FontSize="16"
                         Text="password"
-                        TextColor="{StaticResource SecondaryColor}" />
+                        TextColor="{StaticResource Secondary}" />
                     <Grid Margin="0,5" RowDefinitions="auto,auto">
-                        <Border Style="{StaticResource loginBorder}" />
+                        <Border />
                         <Entry
                             Margin="5,0"
                             BackgroundColor="Transparent"
@@ -71,7 +73,7 @@
                         <Label
                             Grid.Row="1"
                             IsVisible="{Binding ShowPasswordError}"
-                            Style="{StaticResource error}"
+                            
                             Text="{Binding PasswordErrorMessage}" />
 
                     </Grid>
@@ -79,12 +81,12 @@
 
                 <Button
                     Margin="0,15"
-                    BackgroundColor="{StaticResource SecondaryColor}"
+                    BackgroundColor="{StaticResource Secondary}"
                     Command="{Binding LogInCommand}"
                     FontFamily="OpenSansBold"
                     IsEnabled="{Binding IsButtonEnabled}"
                     Text="כניסה"
-                    TextColor="{StaticResource PrimaryColor}" />
+                    TextColor="{StaticResource Primary}" />
                 <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
 
                     <Label
@@ -92,14 +94,14 @@
                         FontSize="16"
                         HorizontalOptions="StartAndExpand"
                         Text="forgotten password"
-                        TextColor="{StaticResource SecondaryColor}"
+                        TextColor="{StaticResource Secondary}"
                         VerticalOptions="EndAndExpand" />
                     <Label
                         FontFamily="OpenSansRegular"
                         FontSize="16"
                         HorizontalOptions="EndAndExpand"
                         Text="sign up"
-                        TextColor="{StaticResource SecondaryColor}"
+                        TextColor="{StaticResource Secondary}"
                         VerticalOptions="EndAndExpand" />
                 </StackLayout>
             </StackLayout>
