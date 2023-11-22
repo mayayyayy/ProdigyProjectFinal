@@ -49,13 +49,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\The_Juke_Box-FFP.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="View\LoadingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\Login.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\ProdPage.xaml">
+	  <MauiXaml Update="View\Page1.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

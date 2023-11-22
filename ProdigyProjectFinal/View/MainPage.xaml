@@ -1,12 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+
+
+
+<ContentPage  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProdigyProjectFinal.MainPage"
              xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
              x:DataType="viewmodel:MainPageViewModel"
-             BackgroundColor="{StaticResource Primary}"
+             Title="Main Page"
+             BackgroundColor="BlanchedAlmond"
              FlowDirection="RightToLeft">
-
+                 
     <ScrollView>
         <Grid>
 
@@ -22,89 +26,21 @@
 
                 <StackLayout Margin="0,80">
                     <Label
-                        FontSize="32"
-                        
-                        Text="welcome to prodigy" />
-                    <Label
-                        FontFamily="OpenSansRegular"
-                        FontSize="5"
-                        Text="login to continue"
-                        TextColor="{StaticResource Secondary}" />
-                    <Label
-                        IsVisible="{Binding ShowLoginError}"
-                     
-                        Text="{Binding LoginErrorMessage}" />
-                </StackLayout>
-
-                <StackLayout>
-                    <Label
-                        FontFamily="OpenSansRegular"
-                        FontSize="16"
-                        Text="username"
-                        TextColor="{StaticResource Secondary}" />
-                    <Grid Margin="0,5" RowDefinitions="auto,auto">
-                        <Border  />
-                        <Entry
-                            Placeholder="enter username"
-                         
-                            Text="{Binding UserName}" />
-                        <Label
-                            Grid.Row="1"
-                            IsVisible="{Binding ShowUserNameError}"
-                          
-                            Text="{Binding UserErrorMessage}" />
-                    </Grid>
-
-                    <Label
-                        FontFamily="OpenSansRegular"
-                        FontSize="16"
-                        Text="password"
-                        TextColor="{StaticResource Secondary}" />
-                    <Grid Margin="0,5" RowDefinitions="auto,auto">
-                        <Border />
-                        <Entry
-                            Margin="5,0"
-                            BackgroundColor="Transparent"
-                            IsPassword="True"
-                            Placeholder="enter password"
-                            PlaceholderColor="Gray"
-                            Text="{Binding Password}"
-                            TextColor="White" />
-                        <Label
-                            Grid.Row="1"
-                            IsVisible="{Binding ShowPasswordError}"
-                            
-                            Text="{Binding PasswordErrorMessage}" />
-
-                    </Grid>
-                </StackLayout>
-
-                <Button
-                    Margin="0,15"
-                    BackgroundColor="{StaticResource Secondary}"
-                    Command="{Binding LogInCommand}"
-                    FontFamily="OpenSansBold"
-                    IsEnabled="{Binding IsButtonEnabled}"
-                    Text="כניסה"
-                    TextColor="{StaticResource Primary}" />
-                <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
-
-                    <Label
-                        FontFamily="OpenSansRegular"
-                        FontSize="16"
-                        HorizontalOptions="StartAndExpand"
-                        Text="forgotten password"
-                        TextColor="{StaticResource Secondary}"
-                        VerticalOptions="EndAndExpand" />
-                    <Label
-                        FontFamily="OpenSansRegular"
-                        FontSize="16"
-                        HorizontalOptions="EndAndExpand"
-                        Text="sign up"
-                        TextColor="{StaticResource Secondary}"
-                        VerticalOptions="EndAndExpand" />
+                        FontSize="80"
+                        HorizontalOptions="Center"
+                        Text="welcome to prodigy" 
+                        FontAttributes="Italic"
+                        FontFamily="MusicFont"
+                        />
                 </StackLayout>
             </StackLayout>
+
+
+
         </Grid>
+
     </ScrollView>
-</ContentPage>
+    
+             </ContentPage>
+
+

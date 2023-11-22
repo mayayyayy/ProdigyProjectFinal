@@ -16,6 +16,7 @@ namespace ProdigyProjectFinal.Services
         readonly JsonSerializerOptions _serializerOptions;
         const string URL = @"https://2c7rkmj3-7112.euw.devtunnels.ms/api/Values/";
 
+
         public ProdigyServices()
         {
             _httpClient = new HttpClient();
@@ -59,11 +60,9 @@ namespace ProdigyProjectFinal.Services
             try
             {
                 //object for sending
-                User user = new User() { Email = userName, UserPswd = password };
-                //serialisation
+                User user = new User() { Email = userName, UserPswd = password, FirstName = "", LastName = "" };
                 var jsonContent = JsonSerializer.Serialize(user, _serializerOptions);
                 var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-                Console.WriteLine(content);
                 var response = await _httpClient.PostAsync($"{URL}Login", content);
 
                 switch (response.StatusCode)
@@ -72,7 +71,6 @@ namespace ProdigyProjectFinal.Services
                         {
                             jsonContent = await response.Content.ReadAsStringAsync();
                             User u = JsonSerializer.Deserialize<User>(jsonContent, _serializerOptions);
-                            await Task.Delay(2000);
                             return new UserDto() { Success = true, Message = string.Empty, User = u };
 
                         }

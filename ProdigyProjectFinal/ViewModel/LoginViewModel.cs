@@ -78,6 +78,8 @@ namespace ProdigyProjectFinal.ViewModel
                 var service = new Services.ProdigyServices();
                 try
                 {
+                    //string message = await service.GetHello();
+
                     UserDto userDto = await service.LogInAsync(Username, Password);
                     if (!userDto.Success)
                     {
@@ -105,7 +107,7 @@ namespace ProdigyProjectFinal.ViewModel
 
         private static bool validateUser(string username, string password)
         {
-            return !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password) && username.Length > 3 && password.Length > 1;
+            return !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password) && username.Length > 0 && password.Length > 1;
         }
     }
 }
