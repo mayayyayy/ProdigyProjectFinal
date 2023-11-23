@@ -93,7 +93,7 @@ namespace ProdigyProjectFinal.ViewModel
 
                         await SecureStorage.SetAsync("CurrentUser", JsonSerializer.Serialize(userDto.User));
                         await Shell.Current.DisplayAlert("logged in message", "Logged in!", "OK");
-                        await Shell.Current.GoToAsync("MainPage");
+                        await Shell.Current.GoToAsync("Home");
                     }
                 }
                 catch (Exception)
@@ -107,7 +107,7 @@ namespace ProdigyProjectFinal.ViewModel
 
         private static bool validateUser(string username, string password)
         {
-            return !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password) && username.Length > 0 && password.Length > 1;
+            return !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password) && username.Length > 0 && password.Length > 0;
         }
     }
 }

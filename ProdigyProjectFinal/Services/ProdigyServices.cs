@@ -55,12 +55,12 @@ namespace ProdigyProjectFinal.Services
 
         #region LogInAsync
 
-        public async Task<UserDto> LogInAsync(string userName, string password)  //  this DOes NOT WORK DUMB BITCH :(
+        public async Task<UserDto> LogInAsync(string userName, string password)  
         {
             try
             {
                 //object for sending
-                User user = new User() { Email = userName, UserPswd = password, FirstName = "", LastName = "" };
+                User user = new User() { Username = userName, UserPswd = password, FirstName = "", LastName = "" };
                 var jsonContent = JsonSerializer.Serialize(user, _serializerOptions);
                 var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync($"{URL}Login", content);
@@ -87,8 +87,17 @@ namespace ProdigyProjectFinal.Services
             return new UserDto() { Success = false, User = null, Message = ErrorMsgs.invalidLogin };
 
         }
-            #endregion
-        }
+        #endregion
+
+        //public async Task<UserDto> SignUpAsync(string userName, string password, string email, string fName, string lName)
+        //{
+        //    User user = new User() { Username = userName, UserPswd = password, FirstName = "", LastName = "" };
+        //}
+
+
+
+
+    }
 
         //private async Task<string> GetUserEmail(string x)
         //{

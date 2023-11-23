@@ -24,14 +24,14 @@
         VerticalOptions="Center"
         StrokeThickness="0">
         <VerticalStackLayout 
-        Spacing="40"
+        Spacing="20"
         Padding="35"
         HorizontalOptions="Center"
         VerticalOptions="Center"
         BackgroundColor="#D9000000"
         WidthRequest="500" >
             <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="10">
-                <Label Text="Email" StyleClass="LoginLbl"/>
+                <Label Text="Username" StyleClass="LoginLbl"/>
                 <Entry Text="{Binding Username}"  StyleClass="LoginEntry"/>
             </VerticalStackLayout>
 
@@ -40,16 +40,24 @@
                 <Entry IsPassword="True" Text="{Binding Password}" StyleClass="LoginEntry"/>
             </VerticalStackLayout>
 
-            <Label Text="Incorrect email or password" StyleClass="ErrorLbl"  IsVisible="{Binding IsLoginError}"/>
-
+            <Label Text="Incorrect username or password" StyleClass="ErrorLbl"  IsVisible="{Binding IsLoginError}"/>
+            <HorizontalStackLayout 
+                Margin="30"
+                HorizontalOptions="Center" 
+                Spacing="20" > 
+                
             <Button 
                 Text="Login"
                 Grid.Column="1"
                 Grid.Row="3"
                 WidthRequest="100"
+                
                 StyleClass="DarkBtn"
                 Command="{Binding BtnCommand}"
                 />
+            
+            </HorizontalStackLayout>
+            
         </VerticalStackLayout>
     </Border>
 </ContentPage>

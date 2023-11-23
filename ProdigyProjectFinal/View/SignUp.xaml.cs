@@ -1,8 +1,8 @@
 namespace ProdigyProjectFinal.View;
 
-public partial class Page1 : ContentPage
+public partial class SignUp : ContentPage
 {
-	public Page1()
+	public SignUp()
 	{
 		InitializeComponent();
 	}

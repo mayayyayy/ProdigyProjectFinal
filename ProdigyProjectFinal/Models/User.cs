@@ -8,8 +8,8 @@ namespace ProdigyProjectFinal.Models
 {
     public class User
     {
-        //login is via email and password 
-        public string Email { get; set; }
+        //login is via username and password 
+        public string Username { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserPswd { get; set; }

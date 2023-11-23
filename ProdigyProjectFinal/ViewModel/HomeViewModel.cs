@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProdigyProjectFinal.ViewModel
 {
-    public class LoadingPageViewModel:ViewModel
+    public class HomeViewModel : ViewModel
     {
-       
+
     }
 }

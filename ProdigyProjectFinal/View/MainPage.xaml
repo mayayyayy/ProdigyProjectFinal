@@ -32,6 +32,25 @@
                         FontAttributes="Italic"
                         FontFamily="MusicFont"
                         />
+
+                    <Button
+                        FontSize="80"
+                        HorizontalOptions="Center"
+                        Text="login" 
+                        FontAttributes="Italic"
+                        FontFamily="MusicFont"
+                        Command="{Binding GoToLoginBtn}"
+                        />
+                    <Button
+                        FontSize="80"
+                        HorizontalOptions="Center"
+                        Text="sign up" 
+                        FontAttributes="Italic"
+                        FontFamily="MusicFont"
+                        Command="{Binding GoToSignUpBtn}"
+                        />      
+
+
                 </StackLayout>
             </StackLayout>
 
