@@ -28,29 +28,26 @@ namespace ProdigyProjectFinal.Services
             };
 
         }
-
-        #region GetHello
-        public async Task<string> GetHello()
+        private async Task<string> GetUserEmail(string x)
         {
             try
             {
-                var response = await _httpClient.GetAsync($"{URL}Hello");
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                var response = await _httpClient.GetAsync($@"{URL}GetUserEmail?nick={x}");
+                switch (response.StatusCode)
                 {
-                    return await response.Content.ReadAsStringAsync();
+                    case HttpStatusCode.OK:
+                        return await response.Content.ReadAsStringAsync();
+                    case HttpStatusCode.NotFound:
+                        return "user does not exist";
+                    default:
+                        return $"error: {response.StatusCode.ToString()}";
                 }
-                return "Something is Wrong";
+
+
             }
-            catch (Exception ex) { Console.WriteLine(ex.Message); }
-            return "ooops";
+            catch (Exception ex) { Console.WriteLine(ex.Message); };
+            return "error";
         }
-        #endregion
-
-
-        
-
-
-
 
 
         #region LogInAsync
@@ -89,34 +86,28 @@ namespace ProdigyProjectFinal.Services
         }
         #endregion
 
-        //public async Task<UserDto> SignUpAsync(string userName, string password, string email, string fName, string lName)
-        //{
-        //    User user = new User() { Username = userName, UserPswd = password, FirstName = "", LastName = "" };
-        //}
 
+        #region RegisterAsync
+
+        public async Task<HttpStatusCode> Register(User user)
+        {
+            var stringContent = new StringContent(JsonSerializer.Serialize(user,_serializerOptions), Encoding.UTF8, "application/json");
+            try
+            {
+                var response = await _httpClient.PostAsync($"{URL}SignUp", stringContent);
+                return response.StatusCode;
+            }
+            catch(Exception)
+            {
+                throw new Exception();
+            }
+        }
+
+        #endregion
 
 
 
     }
 
-        //private async Task<string> GetUserEmail(string x)
-        //{
-        //    try
-        //    {
-        //        var response = await _httpClient.GetAsync($@"{URL}GetUserEmail?nick={x}");
-        //        switch (response.StatusCode)
-        //        {
-        //            case HttpStatusCode.OK:
-        //                return await response.Content.ReadAsStringAsync();
-        //            case HttpStatusCode.NotFound:
-        //                return "user does not exist";
-        //            default:
-        //                return $"error: {response.StatusCode.ToString()}";
-        //        }
 
-
-        //    }
-        //    catch (Exception ex) { Console.WriteLine(ex.Message); };
-        //    return "error";
-        //}
-    } 
+} 

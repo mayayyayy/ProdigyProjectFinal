@@ -7,11 +7,12 @@
              Title="Home"
              BackgroundColor="BlanchedAlmond"
              FlowDirection="RightToLeft">
-
+    
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Prodigy Home"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        
     </VerticalStackLayout>
 </ContentPage>

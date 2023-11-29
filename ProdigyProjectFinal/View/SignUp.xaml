@@ -6,10 +6,63 @@
              x:DataType="viewmodel:SignUpViewModel"
              Title="Sign Up">
     <VerticalStackLayout>
-        
-        
-        
-        
-        
+
+        <Border 
+    StrokeShape="RoundRectangle 20"
+    HorizontalOptions="Center"
+    VerticalOptions="Center"
+    StrokeThickness="0">
+            <VerticalStackLayout 
+    Spacing="20"
+    Padding="35"
+    HorizontalOptions="Center"
+    VerticalOptions="Center"
+    BackgroundColor="BlanchedAlmond"
+    WidthRequest="500" >
+                <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="10">
+                    <Label Text="enter username" StyleClass="LoginLbl"/>
+                    <Entry Text="{Binding Username}"  StyleClass="LoginEntry"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="1" Grid.Row="2" Spacing="10">
+                    <Label Text="enter password" StyleClass="LoginLbl"/>
+                    <Entry IsPassword="True" Text="{Binding Password}" StyleClass="LoginEntry"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="1" Grid.Row="2" Spacing="10">
+                    <Label Text="enter first name" StyleClass="LoginLbl"/>
+                    <Entry  Text="{Binding FirstName}" StyleClass="LoginEntry"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="1" Grid.Row="2" Spacing="10">
+                    <Label Text="enter last name" StyleClass="LoginLbl"/>
+                    <Entry  Text="{Binding LastName}" StyleClass="LoginEntry"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="1" Grid.Row="2" Spacing="10">
+                    <Label Text="enter email" StyleClass="LoginLbl"/>
+                    <Entry  Text="{Binding Email}" StyleClass="LoginEntry"/>
+                </VerticalStackLayout>
+
+
+                <HorizontalStackLayout 
+                    Margin="30"
+                    HorizontalOptions="Center" 
+                    Spacing="20" >  
+
+                    <Button 
+                        Text="Sign Up"
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        WidthRequest="100"
+            
+                        StyleClass="DarkBtn"
+                        Command="{Binding SignUpCommand}"
+                        />  
+
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </Border>
+
+
+
     </VerticalStackLayout>
 </ContentPage>
