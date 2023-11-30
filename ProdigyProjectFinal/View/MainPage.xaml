@@ -17,36 +17,34 @@
             <StackLayout Margin="20">
 
 
-                <Image
-                    Aspect="AspectFill"
-                    HeightRequest="200"
-                    HorizontalOptions="Center"
-                    Source="logo.png"
-                    WidthRequest="200" />
+              
 
                 <StackLayout Margin="0,80">
                     <Label
                         FontSize="80"
                         HorizontalOptions="Center"
+                        CharacterSpacing="2"
+                        
                         Text="welcome to prodigy" 
                         FontAttributes="Italic"
-                        FontFamily="MusicFont"
+                        FontFamily="robotoFont"
                         />
 
                     <Button
-                        FontSize="80"
+                        FontSize="50"
                         HorizontalOptions="Center"
                         Text="login" 
+                        
                         FontAttributes="Italic"
-                        FontFamily="MusicFont"
+                        FontFamily="robotoFont"
                         Command="{Binding GoToLoginBtn}"
                         />
                     <Button
-                        FontSize="80"
+                        FontSize="50"
                         HorizontalOptions="Center"
                         Text="sign up" 
                         FontAttributes="Italic"
-                        FontFamily="MusicFont"
+                        FontFamily="robotoFont"
                         Command="{Binding GoToSignUpBtn}"
                         />      
 

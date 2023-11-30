@@ -8,6 +8,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ProdigyProjectFinal.View;
+using ProdigyProjectFinal.Services;
 
 namespace ProdigyProjectFinal.ViewModel
 {
@@ -17,6 +18,7 @@ namespace ProdigyProjectFinal.ViewModel
         private string _password;
         private bool _isLoginError;
         private string _errorMessage;
+        private ProdigyServices _service;
         public string Username
         {
             get => _username; 
@@ -58,12 +60,13 @@ namespace ProdigyProjectFinal.ViewModel
         public ICommand BtnCommand { get; protected set; }
        
 
-        public LoginViewModel()
+        public LoginViewModel(ProdigyServices service)
         {
             Username = "";
             Password = "";
             IsLoginError = true;
             ErrorMessage = "incorrect email or password";
+            this._service = service;
 
             //login button command
             BtnCommand = new Command(async () =>
@@ -74,11 +77,9 @@ namespace ProdigyProjectFinal.ViewModel
                     return;
                 }
                     
-
-                var service = new Services.ProdigyServices();
                 try
                 {
-                    //string message = await service.GetHello();
+                    
 
                     UserDto userDto = await service.LogInAsync(Username, Password);
                     if (!userDto.Success)

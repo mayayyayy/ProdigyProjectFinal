@@ -57,7 +57,7 @@ namespace ProdigyProjectFinal.Services
             try
             {
                 //object for sending
-                User user = new User() { Username = userName, UserPswd = password, FirstName = "", LastName = "" };
+                User user = new User() { Username = userName, UserPswd = password, FirstName = "", LastName = "", Email = "" };
                 var jsonContent = JsonSerializer.Serialize(user, _serializerOptions);
                 var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync($"{URL}Login", content);

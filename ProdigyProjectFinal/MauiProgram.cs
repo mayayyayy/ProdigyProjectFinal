@@ -16,6 +16,7 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 				fonts.AddFont("The_Juke_Box-FFP.ttf","MusicFont");
+				fonts.AddFont("RobotoMono-VariableFont_wght.ttf", "robotoFont");
 			});
 
 

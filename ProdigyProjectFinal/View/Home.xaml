@@ -13,6 +13,16 @@
             Text="Prodigy Home"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        
+
+        <Button
+             FontSize="50"
+             HorizontalOptions="Center"
+             Text="edit profile" 
+     
+             FontAttributes="Italic"
+             FontFamily="robotoFont"
+             Command="{Binding GoToProfile}"
+     />
+
     </VerticalStackLayout>
 </ContentPage>

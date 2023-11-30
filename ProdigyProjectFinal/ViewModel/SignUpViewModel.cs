@@ -23,6 +23,7 @@ namespace ProdigyProjectFinal.ViewModel
         private string _errorMessage;
         private bool _isErrorMessage;
         private bool _signUpInvalid;
+        private ProdigyServices _services;
 
 
 
@@ -105,7 +106,7 @@ namespace ProdigyProjectFinal.ViewModel
         public ICommand SignUpCommand { get; protected set; }
 
 
-        public SignUpViewModel()
+        public SignUpViewModel(ProdigyServices services)
         {
             Username = "";
             Password = "";
@@ -114,6 +115,7 @@ namespace ProdigyProjectFinal.ViewModel
             LastName = "";
             IsInvalid = true;
             ErrorMessage = "invalid";
+            this._services = services;
 
 
             SignUpCommand = new Command(async () =>
@@ -127,10 +129,10 @@ namespace ProdigyProjectFinal.ViewModel
                 }
 
                 User user = new User() { Username = Username, FirstName = FirstName, LastName = LastName, UserPswd = Password, Email = Email};
-                var service = new Services.ProdigyServices(); 
+
                 try
                 {
-                    HttpStatusCode statusCode = await service.Register(user);
+                    HttpStatusCode statusCode = await _services.Register(user);
                     switch(statusCode)
                     {
                         case HttpStatusCode.OK:

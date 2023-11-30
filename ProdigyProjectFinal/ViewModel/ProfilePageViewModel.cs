@@ -11,12 +11,9 @@ using ProdigyProjectFinal.Services;
 
 namespace ProdigyProjectFinal.ViewModel
 {
-    public class HomeViewModel : ViewModel
+    public class ProfilePageViewModel : ViewModel
     {
-        public ICommand GoToProfile { get; protected set; }
-        public HomeViewModel(ProdigyServices service)
-        {
-            GoToProfile = new Command(async () => await Shell.Current.GoToAsync("//ProfilePage"));
-        }
+        private Listener listener;
+        private string ProfileImageUrl { get; set; }
     }
 }
