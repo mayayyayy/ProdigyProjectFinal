@@ -7,9 +7,9 @@
     Shell.FlyoutBehavior="Disabled"
     xmlns:view="clr-namespace:ProdigyProjectFinal.View"
     >
-    
 
-    
+
+
     <ShellContent 
         Title="MainPage"
         ContentTemplate="{DataTemplate local:MainPage}"
@@ -25,11 +25,11 @@
     ContentTemplate="{DataTemplate view:Login}"
     Route="Login"/>
 
-    <ShellContent > 
-        Title="Home"
+    <ShellContent >
+        <!--Title="Home"
         ContentTemplate="{DataTemplate view:Home}"
-        Route="Home"
-        
+        Route="Home"-->
+
         <!--<TabBar x:Name="TabBar">
             <Tab Title="Home" Icon="home_icon.png" >
                 <ShellContent ContentTemplate="{DataTemplate view:Home}"/>
@@ -42,9 +42,4 @@
         </TabBar>-->
 
     </ShellContent>
-
-    
-
-
-
-
+</Shell> 

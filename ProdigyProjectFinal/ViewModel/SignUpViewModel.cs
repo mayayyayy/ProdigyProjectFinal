@@ -117,7 +117,7 @@ namespace ProdigyProjectFinal.ViewModel
             ErrorMessage = "invalid";
             this._services = services;
 
-
+            //sign up button command
             SignUpCommand = new Command(async () =>
             {
              
