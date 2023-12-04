@@ -79,8 +79,6 @@ namespace ProdigyProjectFinal.ViewModel
                     
                 try
                 {
-                    
-
                     UserDto userDto = await service.LogInAsync(Username, Password);
                     if (!userDto.Success)
                     {

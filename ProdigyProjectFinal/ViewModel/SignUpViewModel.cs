@@ -121,7 +121,7 @@ namespace ProdigyProjectFinal.ViewModel
             SignUpCommand = new Command(async () =>
             {
              
-                if (!SignUpViewModel.validateRegister(Username, Password, Email,FirstName,LastName))
+                if (!validateRegister())
                 {
                     await Shell.Current.DisplayAlert("error", "invalid field", "try again");
                     _isErrorMessage = true;
@@ -159,11 +159,11 @@ namespace ProdigyProjectFinal.ViewModel
             }); 
         }
 
-        private static bool validateRegister(string username, string password, string email, string firstName, string lastName)
+        private bool validateRegister()
         {
-            return !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(email) &&
-                !string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName) && email.Contains('@')
-                && username.Length > 0 && password.Length > 0;
+            return !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(Email) &&
+                !string.IsNullOrEmpty(FirstName) && !string.IsNullOrEmpty(LastName) && Email.Contains('@')
+                && Username.Length > 0 && Password.Length > 0;
         }
     }
 }

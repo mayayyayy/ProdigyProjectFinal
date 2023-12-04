@@ -29,8 +29,10 @@ public static class MauiProgram
         builder.Services.AddSingleton<SignUpViewModel>();
         builder.Services.AddSingleton<Home>();
         builder.Services.AddSingleton<HomeViewModel>();
+        builder.Services.AddSingleton<ProfilePage>();
+        builder.Services.AddSingleton<ProfilePageViewModel>();
 
-		Routing.RegisterRoute("Home", typeof(Home));
+        Routing.RegisterRoute("Home", typeof(Home));
         return builder.Build();
     }
 }
