@@ -15,6 +15,8 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+				fonts.AddFont("The_Juke_Box-FFP.ttf","MusicFont");
+				fonts.AddFont("RobotoMono-VariableFont_wght.ttf", "robotoFont");
 			});
 
 
@@ -22,10 +24,16 @@ public static class MauiProgram
         builder.Services.AddSingleton<MainPageViewModel>();
         builder.Services.AddSingleton<Login>();
         builder.Services.AddSingleton<LoginViewModel>();
-		builder.Services.AddTransient<LoadingPageViewModel>();
-		builder.Services.AddSingleton<LoadingPage>();
+		builder.Services.AddSingleton<ProdigyServices>();
+		builder.Services.AddSingleton<SignUp>();
+        builder.Services.AddSingleton<SignUpViewModel>();
+        builder.Services.AddSingleton<Home>();
+        builder.Services.AddSingleton<HomeViewModel>();
+        builder.Services.AddSingleton<ProfilePage>();
+        builder.Services.AddSingleton<ProfilePageViewModel>();
 
-		return builder.Build();
+        Routing.RegisterRoute("Home", typeof(Home));
+        return builder.Build();
     }
 }
 

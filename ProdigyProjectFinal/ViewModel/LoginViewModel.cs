@@ -8,6 +8,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ProdigyProjectFinal.View;
+using ProdigyProjectFinal.Services;
 
 namespace ProdigyProjectFinal.ViewModel
 {
@@ -17,9 +18,10 @@ namespace ProdigyProjectFinal.ViewModel
         private string _password;
         private bool _isLoginError;
         private string _errorMessage;
+        private ProdigyServices _service;
         public string Username
         {
-            get => _username; //m
+            get => _username; 
             set
             {
                 _username = value;
@@ -56,48 +58,55 @@ namespace ProdigyProjectFinal.ViewModel
         }
 
         public ICommand BtnCommand { get; protected set; }
+       
 
-        public LoginViewModel()
+        public LoginViewModel(ProdigyServices service)
         {
             Username = "";
             Password = "";
             IsLoginError = true;
-            ErrorMessage = "Incorrect username or password";
+            ErrorMessage = "incorrect email or password";
+            this._service = service;
 
+            //login button command
             BtnCommand = new Command(async () =>
             {
-                if (!validateUser(Username, Password))
+                if (!LoginViewModel.validateUser(Username, Password))
+                {
+                    await Shell.Current.DisplayAlert("error", "invalid email or password", "try again");
                     return;
-
-                var service = new Services.ProdigyServices();
+                }
+                    
                 try
                 {
-                    UserDto user = await service.LogInAsync(Username, Password);
-                    if (user is null)
+                    UserDto userDto = await service.LogInAsync(Username, Password);
+                    if (!userDto.Success)
                     {
                         IsLoginError = true;
+                        await Shell.Current.DisplayAlert("error", "no such user", "try again");
+
                     }
                     else
                     {
                         IsLoginError = false;
 
-                        await SecureStorage.SetAsync("CurrentUser", JsonSerializer.Serialize(user));
+                        await SecureStorage.SetAsync("CurrentUser", JsonSerializer.Serialize(userDto.User));
                         await Shell.Current.DisplayAlert("logged in message", "Logged in!", "OK");
-                        await Shell.Current.GoToAsync("MainPage");
+                        await Shell.Current.GoToAsync("Home");
                     }
                 }
                 catch (Exception)
                 {
-                    ErrorMessage = "A server error occurred";
+                    ErrorMessage = "a server error occurred";
                     IsLoginError = true;
                 }
                     
             });
         }
 
-        private bool validateUser(string username, string password)
+        private static bool validateUser(string username, string password)
         {
-            return !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password) && username.Length > 3 && password.Length > 3;
+            return !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password) && username.Length > 0 && password.Length > 0;
         }
     }
 }

@@ -4,6 +4,8 @@ public partial class AppShell : Shell
 {
 	public AppShell()
 	{
-		InitializeComponent();
-	}
+        InitializeComponent();
+        Routing.RegisterRoute("MainPage", typeof(MainPage));
+
+    }
 }

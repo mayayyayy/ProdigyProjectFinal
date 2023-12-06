@@ -49,13 +49,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="View\LoadingPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+	  <None Remove="Resources\Fonts\RobotoMono-VariableFont_wght.ttf" />
+	  <None Remove="Resources\Fonts\The_Juke_Box-FFP.ttf" />
+	  <None Remove="Resources\Images\home_icon.png" />
+	  <None Remove="Resources\Images\profile_icon.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="View\Login.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\ProdPage.xaml">
+	  <MauiXaml Update="View\ProfilePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\SignUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

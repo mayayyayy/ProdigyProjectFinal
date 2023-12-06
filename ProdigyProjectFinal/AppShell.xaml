@@ -8,15 +8,43 @@
     xmlns:view="clr-namespace:ProdigyProjectFinal.View"
     >
 
+
+
+    <ShellContent 
+        Title="MainPage"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage"
+    />
+    <ShellContent 
+    Title="Sign Up"
+    ContentTemplate="{DataTemplate view:SignUp}"
+    Route="SignUp"
+/>
     <ShellContent 
     Title="Login"
     ContentTemplate="{DataTemplate view:Login}"
-    Route="Login" />
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" 
-        />
-    
+    Route="Login"/>
 
-</Shell>
+    <ShellContent 
+        Title="Profile"
+        ContentTemplate="{DataTemplate view:ProfilePage}"
+        Route="ProfilePage"/>
+ 
+    <ShellContent >
+        <!--Title="Home"
+        ContentTemplate="{DataTemplate view:Home}"
+        Route="Home"-->
+
+        <!--<TabBar x:Name="TabBar">
+            <Tab Title="Home" Icon="home_icon.png" >
+                <ShellContent ContentTemplate="{DataTemplate view:Home}"/>
+            </Tab>
+            <Tab Title="Profile" Icon="profile_icon.png" >
+                <ShellContent ContentTemplate="{DataTemplate view:ProfilePage}"/>
+            </Tab>
+
+
+        </TabBar>-->
+
+    </ShellContent>
+</Shell> 

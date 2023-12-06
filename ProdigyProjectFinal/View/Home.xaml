@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
+             x:Class="ProdigyProjectFinal.View.Home"
+             x:DataType="viewmodel:HomeViewModel"
+             Title="Home"
+             BackgroundColor="BlanchedAlmond"
+             FlowDirection="RightToLeft">
+    
+    <VerticalStackLayout>
+        <Label 
+            Text="Prodigy Home"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Button
+             FontSize="50"
+             HorizontalOptions="Center"
+             Text="edit profile" 
+     
+             FontAttributes="Italic"
+             FontFamily="robotoFont"
+             Command="{Binding GoToProfile}"
+     />
+
+    </VerticalStackLayout>
+</ContentPage>
