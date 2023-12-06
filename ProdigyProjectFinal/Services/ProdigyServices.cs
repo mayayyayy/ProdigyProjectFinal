@@ -105,6 +105,37 @@ namespace ProdigyProjectFinal.Services
 
         #endregion
 
+        public async Task<UserDto> ChangeUsername(string newUsername)
+        {
+            User user = JsonSerializer.Deserialize<User>(await SecureStorage.Default.GetAsync("CurrentUser"), _serializerOptions);
+            if (user == null)
+                return null;
+            try
+            {
+                //object for sending
+                var jsonContent = JsonSerializer.Serialize(user, _serializerOptions);
+                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync($"{URL}ChangeUsername?newUsername={newUsername}", content);
+
+                switch (response.StatusCode)
+                {
+                    case (HttpStatusCode.OK):
+                        {
+                            jsonContent = await response.Content.ReadAsStringAsync();
+                            User u = JsonSerializer.Deserialize<User>(jsonContent, _serializerOptions);
+                            return new UserDto() { Success = true, Message = string.Empty, User = u };
+
+                        }
+                    case (HttpStatusCode.Unauthorized):
+                        {
+                            return new UserDto() { Success = false, User = null, Message = ErrorMsgs.invalidUsernameChange };
+
+                        }
+                }    
+            }
+            catch (Exception) { throw new Exception(); }
+            return null;
+        }
 
 
     }
