@@ -91,7 +91,7 @@ namespace ProdigyProjectFinal.ViewModel
                     ErrorMessage = "A server error occurred";
                     IsLoginError = true;
                 }
-
+                    
             });
         }
 
