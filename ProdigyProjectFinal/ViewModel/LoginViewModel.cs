@@ -71,6 +71,7 @@ namespace ProdigyProjectFinal.ViewModel
             //login button command
             BtnCommand = new Command(async () =>
             {
+
                 if (!LoginViewModel.validateUser(Username, Password))
                 {
                     await Shell.Current.DisplayAlert("error", "invalid email or password", "try again");

@@ -4,11 +4,65 @@
              xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
              x:Class="ProdigyProjectFinal.View.ProfilePage"
              x:DataType="viewmodel:ProfilePageViewModel"
-             Title="ProfilePage">
+             Title="Profile Page">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+
+        <Border 
+    StrokeShape="RoundRectangle 20"
+    HorizontalOptions="Center"
+    VerticalOptions="Center"
+    StrokeThickness="0">
+            <VerticalStackLayout 
+    Spacing="20"
+    Padding="35"
+    HorizontalOptions="Center"
+    VerticalOptions="Center"
+    BackgroundColor="BlanchedAlmond"
+    WidthRequest="500" >
+                <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="10">
+                    <Label Text="change username" StyleClass="LoginLbl"/>
+                    <Entry Text="{Binding NewUsername}"  StyleClass="LoginEntry"/>
+                </VerticalStackLayout>
+
+                <!--<VerticalStackLayout Grid.Column="1" Grid.Row="2" Spacing="10">
+                    <Label Text="change password" StyleClass="LoginLbl"/>
+                    <Entry IsPassword="True" Text="{Binding }" StyleClass="LoginEntry"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="1" Grid.Row="2" Spacing="10">
+                    <Label Text="change first name" StyleClass="LoginLbl"/>
+                    <Entry  Text="{Binding }" StyleClass="LoginEntry"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="1" Grid.Row="2" Spacing="10">
+                    <Label Text="change last name" StyleClass="LoginLbl"/>
+                    <Entry  Text="{Binding }" StyleClass="LoginEntry"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="1" Grid.Row="2" Spacing="10">
+                    <Label Text="change email" StyleClass="LoginLbl"/>
+                    <Entry  Text="{Binding }" StyleClass="LoginEntry"/>
+                </VerticalStackLayout>-->
+
+
+                <HorizontalStackLayout 
+                    Margin="30"
+                    HorizontalOptions="Center" 
+                    Spacing="20" >
+
+                    <Button 
+                        Text="Change"
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        WidthRequest="100"
+            
+                        StyleClass="DarkBtn"
+                        Command="{Binding ChangeUsernameBtn}"
+                        />
+
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </Border>
+
+
+
     </VerticalStackLayout>
 </ContentPage>

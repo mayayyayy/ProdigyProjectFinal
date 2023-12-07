@@ -3,48 +3,53 @@
     x:Class="ProdigyProjectFinal.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:ProdigyProjectFinal"
-    Shell.FlyoutBehavior="Disabled"
+    
+    xmlns:sys="clr-namespace:System;assembly=netstandard"
     xmlns:view="clr-namespace:ProdigyProjectFinal.View"
+    xmlns:local="clr-namespace:ProdigyProjectFinal"
+    x:Name="shell"
+    FlyoutBackgroundImage="home_icon.png"
+    FlyoutBackgroundImageAspect="AspectFill"
+    FlyoutHeaderBehavior="CollapseOnScroll"
     >
 
 
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
 
-    <ShellContent 
-        Title="MainPage"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage"
-    />
-    <ShellContent 
-    Title="Sign Up"
-    ContentTemplate="{DataTemplate view:SignUp}"
-    Route="SignUp"
-/>
-    <ShellContent 
-    Title="Login"
-    ContentTemplate="{DataTemplate view:Login}"
-    Route="Login"/>
+        <ShellContent 
+            Title="Main Page"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
 
-    <ShellContent 
-        Title="Profile"
-        ContentTemplate="{DataTemplate view:ProfilePage}"
-        Route="ProfilePage"/>
- 
-    <ShellContent >
-        <!--Title="Home"
-        ContentTemplate="{DataTemplate view:Home}"
-        Route="Home"-->
+        <ShellContent 
+            Title="Sign Up"
+            ContentTemplate="{DataTemplate view:SignUp}"
+            Route="SignUp" 
+            IsVisible="False"
+                      />
 
-        <!--<TabBar x:Name="TabBar">
-            <Tab Title="Home" Icon="home_icon.png" >
-                <ShellContent ContentTemplate="{DataTemplate view:Home}"/>
-            </Tab>
-            <Tab Title="Profile" Icon="profile_icon.png" >
-                <ShellContent ContentTemplate="{DataTemplate view:ProfilePage}"/>
-            </Tab>
+        <ShellContent 
+            Title="Login"
+            ContentTemplate="{DataTemplate view:Login}"  <!--cant reroute to login for some reason check it out--> 
+        Route="Login"
+           IsVisible="False"/> 
+        
+    </FlyoutItem>
 
 
-        </TabBar>-->
+</Shell>
 
-    </ShellContent>
-</Shell> 
+<!--Title="Home"
+    ContentTemplate="{DataTemplate view:Home}"
+    Route="Home"-->
+
+<!--<TabBar x:Name="TabBar">
+        <Tab Title="Home" Icon="home_icon.png" >
+            <ShellContent ContentTemplate="{DataTemplate view:Home}"/>
+        </Tab>
+        <Tab Title="Profile" Icon="profile_icon.png" >
+            <ShellContent ContentTemplate="{DataTemplate view:ProfilePage}"/>
+        </Tab>
+
+
+    </TabBar>-->
