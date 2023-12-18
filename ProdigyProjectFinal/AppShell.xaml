@@ -14,7 +14,7 @@
     >
 
 
-    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+    <!--<FlyoutItem FlyoutDisplayOptions="AsMultipleItems">-->
 
         <ShellContent 
             Title="Main Page"
@@ -25,31 +25,19 @@
             Title="Sign Up"
             ContentTemplate="{DataTemplate view:SignUp}"
             Route="SignUp" 
-            IsVisible="False"
                       />
 
         <ShellContent 
             Title="Login"
-            ContentTemplate="{DataTemplate view:Login}"  <!--cant reroute to login for some reason check it out--> 
-        Route="Login"
-           IsVisible="False"/> 
-        
-    </FlyoutItem>
+            ContentTemplate="{DataTemplate view:Login}"  
+            Route="Login"/>
+    
+        <ShellContent 
+            Title="Profile"
+            ContentTemplate="{DataTemplate view:ProfilePage}"  
+            Route="ProfilePage"/>
+
+    <!--</FlyoutItem>-->
 
 
 </Shell>
-
-<!--Title="Home"
-    ContentTemplate="{DataTemplate view:Home}"
-    Route="Home"-->
-
-<!--<TabBar x:Name="TabBar">
-        <Tab Title="Home" Icon="home_icon.png" >
-            <ShellContent ContentTemplate="{DataTemplate view:Home}"/>
-        </Tab>
-        <Tab Title="Profile" Icon="profile_icon.png" >
-            <ShellContent ContentTemplate="{DataTemplate view:ProfilePage}"/>
-        </Tab>
-
-
-    </TabBar>-->

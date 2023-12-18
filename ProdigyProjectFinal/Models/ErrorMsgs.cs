@@ -12,5 +12,6 @@ namespace ProdigyProjectFinal.Models
         public const string invalidPassword = "invalid password, try again";
         public const string invalidLogin = "invalid login, try again";
         public const string invalidUsernameChange = "invalid username change, try again";
+        public const string invalidPassChange = "invalid username change, try again";
     }
 }

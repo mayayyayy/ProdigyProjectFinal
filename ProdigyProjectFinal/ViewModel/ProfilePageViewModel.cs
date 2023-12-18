@@ -19,15 +19,21 @@ namespace ProdigyProjectFinal.ViewModel
         private string ProfileImageUrl { get; set; }
         private ProdigyServices _services;
         public ICommand ChangeUsernameBtn { get; protected set; }
+        public ICommand ChangePasswordBtn { get; protected set; }
 
-        private string _NEWusername;
+        private string _username;
         private string _password;
         private string _email;
         private string _firstName;
         private string _lastName;
         private string _errorMessage;
         private bool _isErrorMessage;
+
+        private string _NEWusername;
+        private string _NEWpassword;
+        
         private bool _isChangeUserError;
+        private bool _isChangePassError;
 
 
 
@@ -40,6 +46,24 @@ namespace ProdigyProjectFinal.ViewModel
             {
                 _NEWusername = value;
                 OnPropertyChange(nameof(NewUsername));
+            }
+        }
+        public string NewPassword
+        {
+            get => _NEWpassword;
+            set
+            {
+                _NEWpassword = value;
+                OnPropertyChange(nameof(NewPassword));
+            }
+        }
+        public string Username
+        {
+            get => _username;
+            set
+            {
+                _username = value;
+                OnPropertyChange(nameof(Username));
             }
         }
         public string Password
@@ -105,6 +129,15 @@ namespace ProdigyProjectFinal.ViewModel
                 OnPropertyChange(nameof(IsChangeUsernameError));
             }
         }
+        public bool IsChangePasswordError
+        {
+            get => _isChangePassError;
+            set
+            {
+                _isChangePassError = value;
+                OnPropertyChange(nameof(IsChangePasswordError));
+            }
+        }
         #endregion
 
 
@@ -112,12 +145,14 @@ namespace ProdigyProjectFinal.ViewModel
         {
             this._services = services;
 
+            #region change username
+
             ChangeUsernameBtn = new Command(async () =>
             {
                 User user = new User() { Username = NewUsername, FirstName = FirstName, LastName = LastName, UserPswd = Password, Email = Email };
                 if (!validateUsername())
                 {
-                    await Shell.Current.DisplayAlert("error", "invalid entry of username", "try again");
+                    await Shell.Current.DisplayAlert("error", "invalid username, make sure it is longer than 1 character", "try again");
                     _isErrorMessage = true;
                     return;
                 }
@@ -147,12 +182,59 @@ namespace ProdigyProjectFinal.ViewModel
 
 
             });
+            #endregion
+
+            #region change password
+
+             ChangePasswordBtn = new Command(async () =>
+             {
+                User user = new User() { Username = Username, FirstName = FirstName, LastName = LastName, UserPswd = NewPassword, Email = Email };
+                if (!validatePassword())
+                {
+                    await Shell.Current.DisplayAlert("error", "invalid password, make sure it is longer than 1 character", "try again");
+                    _isErrorMessage = true;
+                    return;
+                }
+                try
+                {
+                    UserDto userDto = await _services.ChangePassword(NewPassword);
+                    
+                         
+                    if (!userDto.Success)
+                    {
+                        IsChangePasswordError = true;
+                        await Shell.Current.DisplayAlert("error", "unable to change password", "try again");
+
+                    }
+                    else
+                    {
+                        IsChangePasswordError = false;
+
+                        await SecureStorage.SetAsync("CurrentUser", JsonSerializer.Serialize(userDto.User));
+                        await Shell.Current.DisplayAlert("change message", "successfully changed password", "OK");
+                        await Shell.Current.GoToAsync("Home");
+                    }
+                }
+                catch (Exception)
+                {
+                    ErrorMessage = "a server error occurred";
+                    IsChangePasswordError = true;
+                }
+
+
+            });
+            #endregion
         }
 
         private bool validateUsername()
         {
             return !string.IsNullOrEmpty(NewUsername) && NewUsername.Length > 0;
         }
+        private bool validatePassword()
+        {
+            return !string.IsNullOrEmpty(NewPassword) && NewPassword.Length > 1;
+        }
+
 
     }
 }
