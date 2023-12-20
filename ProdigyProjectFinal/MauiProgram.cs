@@ -2,6 +2,7 @@
 using ProdigyProjectFinal.ViewModel;
 using ProdigyProjectFinal.Services;
 
+
 namespace ProdigyProjectFinal;
 
 public static class MauiProgram
@@ -32,7 +33,11 @@ public static class MauiProgram
         builder.Services.AddSingleton<ProfilePage>();
         builder.Services.AddSingleton<ProfilePageViewModel>();
 
-        Routing.RegisterRoute("Home", typeof(Home));
+        builder.Services.AddTransient<ProdigyServices>();
+        builder.Services.AddTransient<LoadingPage>();
+
+        //Routing.RegisterRoute("Home", typeof(Home));
+
         return builder.Build();
     }
 }

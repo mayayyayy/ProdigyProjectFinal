@@ -49,13 +49,30 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Services\NewFolder\**" />
+	  <Compile Remove="Services\NewFolder\**" />
+	  <EmbeddedResource Remove="Services\NewFolder\**" />
+	  <MauiCss Remove="Services\NewFolder\**" />
+	  <MauiXaml Remove="Services\NewFolder\**" />
+	  <None Remove="Services\NewFolder\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Services\AuthenticationServices.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\Fonts\RobotoMono-VariableFont_wght.ttf" />
 	  <None Remove="Resources\Fonts\The_Juke_Box-FFP.ttf" />
 	  <None Remove="Resources\Images\home_icon.png" />
 	  <None Remove="Resources\Images\profile_icon.png" />
+	  <None Remove="Resources\Images\woman.png" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="View\LoadingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\Login.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

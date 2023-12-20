@@ -5,20 +5,25 @@
              x:Class="ProdigyProjectFinal.View.ProfilePage"
              x:DataType="viewmodel:ProfilePageViewModel"
              Title="Profile Page">
-    <VerticalStackLayout>
+    
+    <StackLayout>
+        
+        <Image Source="woman.png" Aspect="AspectFill" HeightRequest="630" />
+        <Frame HasShadow="False" CornerRadius="40" Margin="0,-50,0,0" VerticalOptions="FillAndExpand" />
 
+        
         <Border 
-    StrokeShape="RoundRectangle 20"
-    HorizontalOptions="Center"
-    VerticalOptions="Center"
-    StrokeThickness="0">
-            <VerticalStackLayout 
-    Spacing="20"
-    Padding="35"
-    HorizontalOptions="Center"
-    VerticalOptions="Center"
-    BackgroundColor="BlanchedAlmond"
-    WidthRequest="500" >
+                StrokeShape="RoundRectangle 20"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                StrokeThickness="0">
+                        <VerticalStackLayout 
+                Spacing="20"
+                Padding="35"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                BackgroundColor="BlanchedAlmond"
+                WidthRequest="500" >
                 <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="10">
                     <Label Text="change username" StyleClass="LoginLbl"/>
                     <Entry Text="{Binding NewUsername}"  StyleClass="LoginEntry"/>
@@ -48,12 +53,16 @@
                         StyleClass="DarkBtn"
                         Command="{Binding ChangePasswordBtn}"
                         />
+
+                <Button Text="Logout"
+                        Clicked="ButtonClicked"
                     
+                    />
 
             </VerticalStackLayout>
         </Border>
 
 
 
-    </VerticalStackLayout>
+    </StackLayout>
 </ContentPage>

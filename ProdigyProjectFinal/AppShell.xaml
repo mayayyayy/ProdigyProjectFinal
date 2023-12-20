@@ -7,21 +7,23 @@
     xmlns:sys="clr-namespace:System;assembly=netstandard"
     xmlns:view="clr-namespace:ProdigyProjectFinal.View"
     xmlns:local="clr-namespace:ProdigyProjectFinal"
-    x:Name="shell"
-    FlyoutBackgroundImage="home_icon.png"
-    FlyoutBackgroundImageAspect="AspectFill"
-    FlyoutHeaderBehavior="CollapseOnScroll"
+    Shell.FlyoutBehavior="Flyout"
     >
 
 
-    <!--<FlyoutItem FlyoutDisplayOptions="AsMultipleItems">-->
-
+    <TabBar FlyoutDisplayOptions="AsMultipleItems"> 
         <ShellContent 
+            Title="Loading"
+            ContentTemplate="{DataTemplate view:LoadingPage}"
+            Route="Loading" 
+            Shell.FlyoutItemIsVisible="False"/>
+
+    <ShellContent 
             Title="Main Page"
             ContentTemplate="{DataTemplate local:MainPage}"
             Route="MainPage" />
 
-        <ShellContent 
+    <ShellContent 
             Title="Sign Up"
             ContentTemplate="{DataTemplate view:SignUp}"
             Route="SignUp" 
@@ -30,14 +32,15 @@
         <ShellContent 
             Title="Login"
             ContentTemplate="{DataTemplate view:Login}"  
-            Route="Login"/>
+            Route="Login"
+            Shell.FlyoutBehavior="Disabled"
+            Shell.FlyoutItemIsVisible="False"/>
     
         <ShellContent 
             Title="Profile"
             ContentTemplate="{DataTemplate view:ProfilePage}"  
             Route="ProfilePage"/>
-
-    <!--</FlyoutItem>-->
+    </TabBar>
 
 
 </Shell>
