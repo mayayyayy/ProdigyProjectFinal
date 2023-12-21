@@ -20,20 +20,8 @@
         <ShellContent 
             IsVisible="{Binding AntiVisible}"
             Title="Main Page"
-            ContentTemplate="{DataTemplate local:MainPage}"
+            ContentTemplate="{DataTemplate view:MainPage}"
             Route="MainPage" />
-        
-        <!--<ShellContent 
-            IsVisible="{Binding AntiVisible}"
-            Title="Sign Up"
-            ContentTemplate="{DataTemplate view:SignUp}"
-            Route="SignUp" />
-
-        <ShellContent
-            IsVisible="{Binding AntiVisible}"
-            Title="Login"
-            ContentTemplate="{DataTemplate view:Login}"  
-            Route="Login" />-->
 
         <ShellContent 
             IsVisible="{Binding Visible}"
