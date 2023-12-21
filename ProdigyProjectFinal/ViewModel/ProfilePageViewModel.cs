@@ -145,6 +145,8 @@ namespace ProdigyProjectFinal.ViewModel
         {
             this._services = services;
 
+            #region change X
+
             #region change username
 
             ChangeUsernameBtn = new Command(async () =>
@@ -171,7 +173,7 @@ namespace ProdigyProjectFinal.ViewModel
 
                         await SecureStorage.SetAsync("CurrentUser", JsonSerializer.Serialize(userDto.User));
                         await Shell.Current.DisplayAlert("change message", "successfully changed username", "OK");
-                        await Shell.Current.GoToAsync("Home");
+                        await Shell.Current.GoToAsync("//Home");
                     }
                 }
                 catch (Exception)
@@ -212,7 +214,7 @@ namespace ProdigyProjectFinal.ViewModel
 
                         await SecureStorage.SetAsync("CurrentUser", JsonSerializer.Serialize(userDto.User));
                         await Shell.Current.DisplayAlert("change message", "successfully changed password", "OK");
-                        await Shell.Current.GoToAsync("Home");
+                        await Shell.Current.GoToAsync("//Home");
                     }
                 }
                 catch (Exception)
@@ -223,6 +225,8 @@ namespace ProdigyProjectFinal.ViewModel
 
 
             });
+            #endregion
+
             #endregion
         }
 

@@ -18,8 +18,8 @@ namespace ProdigyProjectFinal.ViewModel
 
         public MainPageViewModel() 
         {
-            GoToLoginBtn = new Command(async () => await Shell.Current.GoToAsync("//Login"));
-            GoToSignUpBtn = new Command(async () => await Shell.Current.GoToAsync("//SignUp"));
+            GoToLoginBtn = new Command(async () => await Shell.Current.GoToAsync("Login"));
+            GoToSignUpBtn = new Command(async () => await Shell.Current.GoToAsync("SignUp"));
 
 
         }

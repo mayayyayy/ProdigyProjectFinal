@@ -54,10 +54,9 @@
                         Command="{Binding ChangePasswordBtn}"
                         />
 
-                <Button Text="Logout"
-                        Clicked="ButtonClicked"
+               
                     
-                    />
+                   
 
             </VerticalStackLayout>
         </Border>

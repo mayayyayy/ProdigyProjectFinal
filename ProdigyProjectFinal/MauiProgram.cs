@@ -20,7 +20,7 @@ public static class MauiProgram
 				fonts.AddFont("RobotoMono-VariableFont_wght.ttf", "robotoFont");
 			});
 
-
+        builder.Services.AddSingleton<AppShellViewModel>();
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<MainPageViewModel>();
         builder.Services.AddSingleton<Login>();
@@ -33,10 +33,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<ProfilePage>();
         builder.Services.AddSingleton<ProfilePageViewModel>();
 
-        builder.Services.AddTransient<ProdigyServices>();
-        builder.Services.AddTransient<LoadingPage>();
 
-        //Routing.RegisterRoute("Home", typeof(Home));
 
         return builder.Build();
     }

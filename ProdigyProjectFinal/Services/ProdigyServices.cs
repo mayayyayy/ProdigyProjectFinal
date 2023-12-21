@@ -52,7 +52,7 @@ namespace ProdigyProjectFinal.Services
 
         #region LogInAsync
 
-        public async Task<UserDto> LogInAsync(string userName, string password)  
+        public async Task<UserDto> LogInAsync(string userName, string password)
         {
             try
             {
@@ -91,13 +91,13 @@ namespace ProdigyProjectFinal.Services
 
         public async Task<HttpStatusCode> Register(User user)
         {
-            var stringContent = new StringContent(JsonSerializer.Serialize(user,_serializerOptions), Encoding.UTF8, "application/json");
+            var stringContent = new StringContent(JsonSerializer.Serialize(user, _serializerOptions), Encoding.UTF8, "application/json");
             try
             {
                 var response = await _httpClient.PostAsync($"{URL}SignUp", stringContent);
                 return response.StatusCode;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw new Exception();
             }
@@ -134,7 +134,7 @@ namespace ProdigyProjectFinal.Services
                             return new UserDto() { Success = false, User = null, Message = ErrorMsgs.invalidUsernameChange };
 
                         }
-                }    
+                }
             }
             catch (Exception) { throw new Exception(); }
             return null;
@@ -179,26 +179,8 @@ namespace ProdigyProjectFinal.Services
         #endregion
 
 
-        #region Authentication 
-        private const string AuthStateKey = "AuthState";
-        public async Task<bool> IsAuthenticatedAsync()
-        {
-            await Task.Delay(2000);
 
-            var authState = Preferences.Default.Get<bool>(AuthStateKey, false);
-            return authState;
-        }
 
-        public void Login()
-        {
-            Preferences.Default.Set<bool>("AuthState", true);
-        }
-        public void Logout()
-        {
-            Preferences.Default.Remove("AuthState");
-        }
-        #endregion
+
     }
-
-
 } 

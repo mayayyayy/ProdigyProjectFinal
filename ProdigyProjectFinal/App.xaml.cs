@@ -1,14 +1,23 @@
 ﻿using ProdigyProjectFinal.View;
+using ProdigyProjectFinal.ViewModel;
 
 namespace ProdigyProjectFinal;
 
 public partial class App : Application
 {
-	public App()
-	{
-        InitializeComponent();
+	private bool showFlyout;
 
-		MainPage = new AppShell();
+    private AppShellViewModel shellVM;
+	public bool ShowFlyouts { get => shellVM.Visible; set { shellVM.Visible = value; } }
+    public bool ShowFlyouts2 { get { if (showFlyout) return false; return true; } set { shellVM.AntiVisible = value; } }
+
+    public App(AppShellViewModel vm)
+	{
+
+		
+        InitializeComponent();
+		shellVM = vm;
+		MainPage = new AppShell(vm);
 		
 	}
 }

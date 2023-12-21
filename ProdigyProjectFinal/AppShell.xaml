@@ -3,44 +3,51 @@
     x:Class="ProdigyProjectFinal.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    
     xmlns:sys="clr-namespace:System;assembly=netstandard"
-    xmlns:view="clr-namespace:ProdigyProjectFinal.View"
+    
     xmlns:local="clr-namespace:ProdigyProjectFinal"
-    Shell.FlyoutBehavior="Flyout"
-    >
+    
+    xmlns:view="clr-namespace:ProdigyProjectFinal.View"
+    xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
+    x:DataType="viewmodel:AppShellViewModel"
+    Shell.FlyoutBehavior="Flyout" >
 
 
-    <TabBar FlyoutDisplayOptions="AsMultipleItems"> 
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+
+
         <ShellContent 
-            Title="Loading"
-            ContentTemplate="{DataTemplate view:LoadingPage}"
-            Route="Loading" 
-            Shell.FlyoutItemIsVisible="False"/>
-
-    <ShellContent 
+            IsVisible="{Binding AntiVisible}"
             Title="Main Page"
             ContentTemplate="{DataTemplate local:MainPage}"
             Route="MainPage" />
-
-    <ShellContent 
+        
+        <!--<ShellContent 
+            IsVisible="{Binding AntiVisible}"
             Title="Sign Up"
             ContentTemplate="{DataTemplate view:SignUp}"
-            Route="SignUp" 
-                      />
+            Route="SignUp" />
 
-        <ShellContent 
+        <ShellContent
+            IsVisible="{Binding AntiVisible}"
             Title="Login"
             ContentTemplate="{DataTemplate view:Login}"  
-            Route="Login"
-            Shell.FlyoutBehavior="Disabled"
-            Shell.FlyoutItemIsVisible="False"/>
-    
+            Route="Login" />-->
+
         <ShellContent 
+            IsVisible="{Binding Visible}"
             Title="Profile"
             ContentTemplate="{DataTemplate view:ProfilePage}"  
-            Route="ProfilePage"/>
-    </TabBar>
+            Route="ProfilePage" />
 
+        <ShellContent 
+            IsVisible="{Binding Visible}"
+            Title="Home"
+            ContentTemplate="{DataTemplate view:Home}"  
+            Route="Home"/>
+
+        
+    </FlyoutItem>
 
 </Shell>

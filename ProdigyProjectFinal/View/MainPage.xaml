@@ -9,7 +9,8 @@
              x:DataType="viewmodel:MainPageViewModel"
              Title="Main Page"
              BackgroundColor="BlanchedAlmond"
-             FlowDirection="RightToLeft">
+             FlowDirection="RightToLeft"
+              Shell.NavBarIsVisible="False">
                  
     <ScrollView>
         <Grid>
