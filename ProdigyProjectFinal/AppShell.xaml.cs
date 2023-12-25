@@ -5,13 +5,13 @@ namespace ProdigyProjectFinal;
 
 public partial class AppShell : Shell
 {
-	public AppShell(AppShellViewModel vm)
+	public AppShell()//AppShellViewModel vm)
 	{
-        this.BindingContext = vm;
+        //this.BindingContext = vm;
         InitializeComponent();
 
-        Routing.RegisterRoute("Login", typeof(Login));
-        Routing.RegisterRoute("Signup", typeof(SignUp));
+        Routing.RegisterRoute("MainPage/Login", typeof(Login));
+        Routing.RegisterRoute("MainPage/Signup", typeof(SignUp));
 
 
     }

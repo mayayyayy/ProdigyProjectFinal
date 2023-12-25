@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
              x:Class="ProdigyProjectFinal.View.ProfilePage"
-             x:DataType="viewmodel:ProfilePageViewModel"
+             x:DataType="viewmodel:ProfilePageViewModel" Shell.TabBarIsVisible="True"
              Title="Profile Page">
     
     <StackLayout>

@@ -23,8 +23,8 @@ namespace ProdigyProjectFinal.ViewModel
         public MainPageViewModel() 
         {
             PageIsVisible = true;
-            GoToLoginBtn = new Command(async () => { await Shell.Current.GoToAsync("Login"); });
-            GoToSignUpBtn = new Command(async () => {await Shell.Current.GoToAsync("SignUp"); } );
+            GoToLoginBtn = new Command(async () => { await Shell.Current.GoToAsync("/Login"); PageIsVisible = false; });
+            GoToSignUpBtn = new Command(async () => {await Shell.Current.GoToAsync("/SignUp"); } );
 
 
         }

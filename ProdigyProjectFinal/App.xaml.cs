@@ -11,13 +11,14 @@ public partial class App : Application
 	public bool ShowFlyouts { get => shellVM.Visible; set { shellVM.Visible = value; } }
     public bool ShowFlyouts2 { get { if (showFlyout) return false; return true; } set { shellVM.AntiVisible = value; } }
 
-    public App(AppShellViewModel vm)
+    public App()
 	{
 
 		
         InitializeComponent();
-		shellVM = vm;
-		MainPage = new AppShell(vm);
+		//	shellVM = vm;
+		MainPage = new AppShell();//vm);
+	
 		
 	}
 }

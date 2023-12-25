@@ -4,7 +4,7 @@
              xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
              x:Class="ProdigyProjectFinal.View.Login"
              x:DataType="viewmodel:LoginViewModel"
-             Title="Login" Shell.TabBarIsVisible="True"
+             Title="Login" Shell.TabBarIsVisible="false"
 >
 
     <ContentPage.Resources>

@@ -23,7 +23,8 @@
             ContentTemplate="{DataTemplate local:MainPage}"
             Route="MainPage" />
 
-        <Tab>
+    
+        
             <ShellContent 
             
             Title="Home"
@@ -35,7 +36,7 @@
        Title="Profile"
        ContentTemplate="{DataTemplate view:ProfilePage}"  
        Route="ProfilePage"/>
-        </Tab>
+    
 
 
 
