@@ -6,6 +6,7 @@
              x:DataType="viewmodel:HomeViewModel"
              Title="Home"
              BackgroundColor="BlanchedAlmond"
+             Shell.TabBarIsVisible="True"
              FlowDirection="RightToLeft">
     
     <VerticalStackLayout>

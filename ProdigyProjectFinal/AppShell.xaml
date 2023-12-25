@@ -14,28 +14,31 @@
 
 
 
-    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
-
+    <FlyoutItem  FlyoutDisplayOptions="AsMultipleItems">
 
         <ShellContent 
-            IsVisible="{Binding AntiVisible}"
+                
+            
             Title="Main Page"
-            ContentTemplate="{DataTemplate view:MainPage}"
+            ContentTemplate="{DataTemplate local:MainPage}"
             Route="MainPage" />
 
-        <ShellContent 
-            IsVisible="{Binding Visible}"
-            Title="Profile"
-            ContentTemplate="{DataTemplate view:ProfilePage}"  
-            Route="ProfilePage" />
-
-        <ShellContent 
-            IsVisible="{Binding Visible}"
+        <Tab>
+            <ShellContent 
+            
             Title="Home"
             ContentTemplate="{DataTemplate view:Home}"  
             Route="Home"/>
 
-        
+            <ShellContent 
+       
+       Title="Profile"
+       ContentTemplate="{DataTemplate view:ProfilePage}"  
+       Route="ProfilePage"/>
+        </Tab>
+
+
+
     </FlyoutItem>
 
 </Shell>

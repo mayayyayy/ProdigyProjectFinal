@@ -10,7 +10,8 @@
              Title="Main Page"
              BackgroundColor="BlanchedAlmond"
              FlowDirection="RightToLeft"
-              Shell.NavBarIsVisible="False">
+              Shell.NavBarIsVisible="False" Shell.TabBarIsVisible="False"
+              IsVisible="{Binding PageIsVisible}">
                  
     <ScrollView>
         <Grid>
