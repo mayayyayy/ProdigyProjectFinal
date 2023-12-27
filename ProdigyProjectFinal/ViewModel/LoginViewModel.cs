@@ -95,8 +95,6 @@ namespace ProdigyProjectFinal.ViewModel
 
                         await SecureStorage.SetAsync("CurrentUser", JsonSerializer.Serialize(userDto.User));
                         await Shell.Current.DisplayAlert("logged in message", "Logged in!", "OK");
-                        //((App)(Application.Current)).ShowFlyouts = true; //visible
-                        //((App)(Application.Current)).ShowFlyouts2 = false; //antivis
                         await Shell.Current.GoToAsync("//Home");
                     }
                 }

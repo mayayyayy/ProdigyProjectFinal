@@ -14,32 +14,32 @@
 
 
 
-    <FlyoutItem  FlyoutDisplayOptions="AsMultipleItems">
-
+    <FlyoutItem Title="Mine Page">
         <ShellContent 
-                
             
             Title="Main Page"
             ContentTemplate="{DataTemplate local:MainPage}"
             Route="MainPage" />
-
-    
         
-            <ShellContent 
+    </FlyoutItem>
+
+    <FlyoutItem Title="Home" FlyoutDisplayOptions="AsMultipleItems" FlyoutItemIsVisible="False" >
+
+        <ShellContent 
+       
+           Title="Profile"
+           ContentTemplate="{DataTemplate view:ProfilePage}"  
+           Route="ProfilePage" />
+        
+        <ShellContent 
             
             Title="Home"
             ContentTemplate="{DataTemplate view:Home}"  
-            Route="Home"/>
+            Route="Home" />
 
-            <ShellContent 
-       
-       Title="Profile"
-       ContentTemplate="{DataTemplate view:ProfilePage}"  
-       Route="ProfilePage"/>
-    
-
-
+        
 
     </FlyoutItem>
+
 
 </Shell>

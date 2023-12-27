@@ -8,10 +8,10 @@
              xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
              x:DataType="viewmodel:MainPageViewModel"
              Title="Main Page"
-             BackgroundColor="BlanchedAlmond"
+             BackgroundColor="Cornsilk"
              FlowDirection="RightToLeft"
               Shell.NavBarIsVisible="False" Shell.TabBarIsVisible="False"
-              IsVisible="{Binding PageIsVisible}">
+              >
                  
     <ScrollView>
         <Grid>
@@ -22,34 +22,46 @@
               
 
                 <StackLayout Margin="0,80">
+
                     <Label
                         FontSize="80"
                         HorizontalOptions="Center"
                         CharacterSpacing="2"
-                        
+                        VerticalOptions="Center"
                         Text="welcome to prodigy" 
                         FontAttributes="Italic"
-                        FontFamily="robotoFont"
-                        />
+                        FontFamily="robotoFont" />
+                        <Image Source="music.png" HorizontalOptions="Center" HeightRequest="120" />
 
-                    <Button
+                    <VerticalStackLayout Spacing="30"> 
+                        <Button
+                        BackgroundColor="#d6cad7"
                         FontSize="50"
-                        HorizontalOptions="Center"
+                        HorizontalOptions="End"
                         Text="login" 
-                        
+                        HeightRequest="90"
                         FontAttributes="Italic"
                         FontFamily="robotoFont"
+                        Padding="10"
                         Command="{Binding GoToLoginBtn}"
+                        
                         />
-                    <Button
+                    </VerticalStackLayout>
+                    <VerticalStackLayout   > 
+                    <Button 
+                        BackgroundColor="#d6cad7"
                         FontSize="50"
-                        HorizontalOptions="Center"
+                        HorizontalOptions="Start"
                         Text="sign up" 
+                        HeightRequest="90"
                         FontAttributes="Italic"
                         FontFamily="robotoFont"
+                        Padding="10"
                         Command="{Binding GoToSignUpBtn}"
-                        />      
-
+                        
+                        />
+                    </VerticalStackLayout>
+                    
 
                 </StackLayout>
             </StackLayout>

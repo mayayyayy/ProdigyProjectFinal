@@ -7,29 +7,23 @@
              Title="Profile Page">
     
     <StackLayout>
-        
-        <Image Source="woman.png" Aspect="AspectFill" HeightRequest="630" />
-        <Frame HasShadow="False" CornerRadius="40" Margin="0,-50,0,0" VerticalOptions="FillAndExpand" />
 
-        
-        <Border 
-                StrokeShape="RoundRectangle 20"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                StrokeThickness="0">
-                        <VerticalStackLayout 
+
+        <VerticalStackLayout 
                 Spacing="20"
                 Padding="35"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 BackgroundColor="BlanchedAlmond"
                 WidthRequest="500" >
-                <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="10">
+            
+            <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="10">
                     <Label Text="change username" StyleClass="LoginLbl"/>
                     <Entry Text="{Binding NewUsername}"  StyleClass="LoginEntry"/>
                 </VerticalStackLayout>
-                
-                <Button 
+
+
+            <Button 
                     Text="change"
                     Grid.Column="1"
                     Grid.Row="3"
@@ -39,29 +33,26 @@
                     Command="{Binding ChangeUsernameBtn}"
                     />
 
-                <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="10">
-                    <Label Text="change password" StyleClass="LoginLbl"/>
-                    <Entry Text="{Binding NewPassword}"  StyleClass="LoginEntry"/>
-                </VerticalStackLayout>
-                
-                <Button 
-                        Text="change"
-                        Grid.Column="1"
-                        Grid.Row="3"
-                        WidthRequest="100"
-            
-                        StyleClass="DarkBtn"
-                        Command="{Binding ChangePasswordBtn}"
-                        />
-
-               
-                    
-                   
-
+            <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="10">
+                <Label Text="change password" StyleClass="LoginLbl"/>
+                <Entry Text="{Binding NewPassword}"  StyleClass="LoginEntry"/>
             </VerticalStackLayout>
-        </Border>
+
+            <Button 
+                 Text="change"
+                 Grid.Column="1"
+                 Grid.Row="3"
+                 WidthRequest="100"
+ 
+                 StyleClass="DarkBtn"
+                 Command="{Binding ChangePasswordBtn}"
+                 />
 
 
 
-    </StackLayout>
+
+
+        </VerticalStackLayout>
+              
+      </StackLayout>
 </ContentPage>
