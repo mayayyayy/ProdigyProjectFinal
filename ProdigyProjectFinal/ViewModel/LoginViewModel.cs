@@ -58,8 +58,8 @@ namespace ProdigyProjectFinal.ViewModel
         }
 
         public ICommand BtnCommand { get; protected set; }
-       
 
+        public ICommand BackBtn;  
         public LoginViewModel(ProdigyServices service)
         {
             Username = "";

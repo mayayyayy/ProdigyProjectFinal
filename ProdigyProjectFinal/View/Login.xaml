@@ -4,16 +4,18 @@
              xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
              x:Class="ProdigyProjectFinal.View.Login"
              x:DataType="viewmodel:LoginViewModel"
-             Title="Login" Shell.TabBarIsVisible="false"
+             Title="Login" 
+             BackgroundColor="#c8dac7"
+             Shell.TabBarIsVisible="false"
 >
 
     <ContentPage.Resources>
         <Style TargetType="Label" Class="LoginLbl">
-        <Setter Property="TextColor" Value="{StaticResource LightTextClr}"/>
+        <Setter Property="TextColor" Value="#ccc2cb"/>
     </Style>
 
     <Style TargetType="Entry" Class="LoginEntry">
-        <Setter Property="BackgroundColor" Value="{StaticResource LightTextClr}"/>
+            <Setter Property="BackgroundColor" Value="#ccc2cb"/>
         <Setter Property="FontSize" Value="16"/>
     </Style>
     </ContentPage.Resources>
@@ -28,15 +30,16 @@
         Padding="35"
         HorizontalOptions="Center"
         VerticalOptions="Center"
-        BackgroundColor="#D9000000"
+        BackgroundColor="#c4c4b4"
         WidthRequest="500" >
+            
             <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="10">
-                <Label Text="Username" StyleClass="LoginLbl"/>
+                <Label Text="Username" StyleClass="LoginLbl" HorizontalOptions="End"/>
                 <Entry Text="{Binding Username}"  StyleClass="LoginEntry"/>
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Column="1" Grid.Row="2" Spacing="10">
-                <Label Text="Password" StyleClass="LoginLbl"/>
+                <Label Text="Password" StyleClass="LoginLbl" HorizontalOptions="End"/>
                 <Entry IsPassword="True" Text="{Binding Password}" StyleClass="LoginEntry"/>
             </VerticalStackLayout>
 

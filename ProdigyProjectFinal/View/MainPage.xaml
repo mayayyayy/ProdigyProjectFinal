@@ -9,19 +9,14 @@
              x:DataType="viewmodel:MainPageViewModel"
              Title="Main Page"
              BackgroundColor="Cornsilk"
-             FlowDirection="RightToLeft"
-              Shell.NavBarIsVisible="False" Shell.TabBarIsVisible="False"
+             Shell.NavBarIsVisible="False" Shell.TabBarIsVisible="False" FlowDirection="LeftToRight"
               >
-                 
+
     <ScrollView>
-        <Grid>
 
-            <StackLayout Margin="20">
+        <StackLayout Margin="10">
 
-
-              
-
-                <StackLayout Margin="0,80">
+            <StackLayout Margin="0,80,0,0">
 
                     <Label
                         FontSize="80"
@@ -31,44 +26,33 @@
                         Text="welcome to prodigy" 
                         FontAttributes="Italic"
                         FontFamily="robotoFont" />
-                        <Image Source="music.png" HorizontalOptions="Center" HeightRequest="120" />
+                <Image Source="music.png" HorizontalOptions="Center" HeightRequest="120" />
 
-                    <VerticalStackLayout Spacing="30"> 
-                        <Button
-                        BackgroundColor="#d6cad7"
-                        FontSize="50"
-                        HorizontalOptions="End"
-                        Text="login" 
-                        HeightRequest="90"
-                        FontAttributes="Italic"
-                        FontFamily="robotoFont"
-                        Padding="10"
-                        Command="{Binding GoToLoginBtn}"
-                        
-                        />
-                    </VerticalStackLayout>
-                    <VerticalStackLayout   > 
-                    <Button 
-                        BackgroundColor="#d6cad7"
-                        FontSize="50"
-                        HorizontalOptions="Start"
-                        Text="sign up" 
-                        HeightRequest="90"
-                        FontAttributes="Italic"
-                        FontFamily="robotoFont"
-                        Padding="10"
-                        Command="{Binding GoToSignUpBtn}"
-                        
-                        />
-                    </VerticalStackLayout>
-                    
-
-                </StackLayout>
             </StackLayout>
-
-
-
-        </Grid>
+                
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="50"  >
+                <Button 
+                    BackgroundColor="#ccc2cb"
+                    FontSize="50"
+                    HorizontalOptions="Start"
+                    Text="login" 
+                    HeightRequest="90"
+                    FontAttributes="Italic"
+                    FontFamily="robotoFont"
+                    Padding="10"
+                    Command="{Binding GoToLoginBtn}" />
+                <Button 
+                     BackgroundColor="#ccc2cb"
+                     FontSize="50"
+                     HorizontalOptions="End"
+                     Text="sign up" 
+                     HeightRequest="90"
+                     FontAttributes="Italic"
+                     FontFamily="robotoFont"
+                    
+                     Command="{Binding GoToSignUpBtn}" />
+            </StackLayout>
+        </StackLayout>
 
     </ScrollView>
     
