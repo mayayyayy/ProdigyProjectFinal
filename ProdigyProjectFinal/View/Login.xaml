@@ -5,17 +5,18 @@
              x:Class="ProdigyProjectFinal.View.Login"
              x:DataType="viewmodel:LoginViewModel"
              Title="Login" 
-             BackgroundColor="#c8dac7"
+             BackgroundColor="Cornsilk"
              Shell.TabBarIsVisible="false"
+             FlowDirection="LeftToRight"
 >
 
     <ContentPage.Resources>
         <Style TargetType="Label" Class="LoginLbl">
-        <Setter Property="TextColor" Value="#ccc2cb"/>
+            <Setter Property="TextColor" Value="Black"/>
     </Style>
 
     <Style TargetType="Entry" Class="LoginEntry">
-            <Setter Property="BackgroundColor" Value="#ccc2cb"/>
+            <Setter Property="BackgroundColor" Value="Cornsilk"/>
         <Setter Property="FontSize" Value="16"/>
     </Style>
     </ContentPage.Resources>
@@ -30,20 +31,20 @@
         Padding="35"
         HorizontalOptions="Center"
         VerticalOptions="Center"
-        BackgroundColor="#c4c4b4"
+        BackgroundColor="#ccc2cb"
         WidthRequest="500" >
             
             <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="10">
-                <Label Text="Username" StyleClass="LoginLbl" HorizontalOptions="End"/>
+                <Label Text="Username" StyleClass="LoginLbl" HorizontalOptions="Start"/>
                 <Entry Text="{Binding Username}"  StyleClass="LoginEntry"/>
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Column="1" Grid.Row="2" Spacing="10">
-                <Label Text="Password" StyleClass="LoginLbl" HorizontalOptions="End"/>
+                <Label Text="Password" StyleClass="LoginLbl" HorizontalOptions="Start"/>
                 <Entry IsPassword="True" Text="{Binding Password}" StyleClass="LoginEntry"/>
             </VerticalStackLayout>
 
-            <Label Text="Incorrect username or password" StyleClass="ErrorLbl"  IsVisible="{Binding IsLoginError}"/>
+           
             <HorizontalStackLayout 
                 Margin="30"
                 HorizontalOptions="Center" 
@@ -54,8 +55,8 @@
                 Grid.Column="1"
                 Grid.Row="3"
                 WidthRequest="100"
-                
-                StyleClass="DarkBtn"
+                BackgroundColor="DarkSeaGreen"
+                TextColor="Black"
                 Command="{Binding BtnCommand}"
                 />
             

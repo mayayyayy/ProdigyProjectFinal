@@ -48,6 +48,16 @@
                  Command="{Binding ChangePasswordBtn}"
                  />
 
+            <Button 
+                 Text="change"
+                 Grid.Column="1"
+                 Grid.Row="3"
+                 WidthRequest="100"
+ 
+                 StyleClass="DarkBtn"
+                 Command="{Binding AddPfp}"
+                 />
+
 
 
 

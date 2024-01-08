@@ -9,6 +9,7 @@ using System.Windows.Input;
 using ProdigyProjectFinal.Models;
 using ProdigyProjectFinal.Services;
 using System.Net;
+
 //using Windows.Networking;
 
 namespace ProdigyProjectFinal.ViewModel
@@ -20,7 +21,11 @@ namespace ProdigyProjectFinal.ViewModel
         private ProdigyServices _services;
         public ICommand ChangeUsernameBtn { get; protected set; }
         public ICommand ChangePasswordBtn { get; protected set; }
+        public ICommand AddPfp { get; protected set; }
+        public string ImageLocation { get => image; set { if (value != image) { image = value; OnPropertyChange(); } } }
 
+        private string image;
+        private string _message;
         private string _username;
         private string _password;
         private string _email;
@@ -34,11 +39,12 @@ namespace ProdigyProjectFinal.ViewModel
         
         private bool _isChangeUserError;
         private bool _isChangePassError;
-
+        public ImageSource PhotoImageSource { get; set; }
 
 
         #region get and set for fields
 
+        public string Message { get => _message; set { _message = value; OnPropertyChange(); } }
         public string NewUsername
         {
             get => _NEWusername;
@@ -144,7 +150,7 @@ namespace ProdigyProjectFinal.ViewModel
         public ProfilePageViewModel(ProdigyServices services) 
         {
             this._services = services;
-
+            
             #region change X
 
             #region change username
@@ -228,8 +234,62 @@ namespace ProdigyProjectFinal.ViewModel
             #endregion
 
             #endregion
+
+            AddPfp = new Command(async () =>
+            {
+                try
+                {
+                    FileResult photo = null;
+                    if(MediaPicker.Default.IsCaptureSupported)
+                    {
+                        MainThread.BeginInvokeOnMainThread(async () =>
+                        {
+                            photo = await MediaPicker.Default.CapturePhotoAsync();
+                            await LoadPhoto(photo);
+                        });
+                        
+                        
+                    }
+                }
+                catch (Exception) { }   
+            
+            });
+
         }
 
+        private async Task LoadPhoto(FileResult photo)
+        {
+            try
+            {
+
+                var stream = await photo.OpenReadAsync();
+                PhotoImageSource = ImageSource.FromStream(() => stream);
+                OnPropertyChange(nameof(PhotoImageSource));
+                await Upload(photo);
+
+
+            }
+            catch (Exception ex) { }
+        }
+        private async Task Upload(FileResult file)
+        {
+
+            try
+            {
+
+                // bool success = await _gameService.UploadPhoto(file);
+                bool success = await _services.UploadFile(file);
+                if (success)
+                {
+                    var u = JsonSerializer.Deserialize<User>(await SecureStorage.Default.GetAsync("LoggedUser"));
+                    ImageLocation = await _services.GetImage() + $"{u.Id}.jpg";
+                }
+                else
+                    Shell.Current.DisplayAlert("no server connection", "fail, try again ", "OK");
+            }
+            catch (Exception ex) { }
+
+        }
         private bool validateUsername()
         {
             return !string.IsNullOrEmpty(NewUsername) && NewUsername.Length > 0;

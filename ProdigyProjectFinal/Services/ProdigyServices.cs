@@ -15,7 +15,7 @@ namespace ProdigyProjectFinal.Services
         readonly HttpClient _httpClient;
         readonly JsonSerializerOptions _serializerOptions;
         const string URL = @"https://2c7rkmj3-7112.euw.devtunnels.ms/api/Values/";
-
+        const string IMAGE_URL = @"https://zr8z94hw-7004.euw.devtunnels.ms/";
 
         public ProdigyServices()
         {
@@ -178,9 +178,75 @@ namespace ProdigyProjectFinal.Services
 
         #endregion
 
+        public async Task<bool> UploadPhoto(FileResult file)
+        {
+
+            try
+            {
+                byte[] bytes;
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    var stream = await file.OpenReadAsync();
+                    stream.CopyTo(ms);
+                    bytes = ms.ToArray();
+                }
+
+                var multipartFormDataContent = new MultipartFormDataContent();
+
+                var content = new ByteArrayContent(bytes);
+                multipartFormDataContent.Add(content, "file", "robot.jpg");
 
 
+                var response = await _httpClient.PostAsync($@"{URL}UploadImage?Id=1", multipartFormDataContent);
+                if (response.IsSuccessStatusCode) { return true; }
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
 
+        public async Task<string> GetImage() { return $"{IMAGE_URL}images/"; }
 
+        public async Task<bool> UploadFile(FileResult file)
+        {
+
+            try
+            {
+                byte[] bytes;
+
+                #region המרה של הקובץ
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    var stream = await file.OpenReadAsync();
+                    stream.CopyTo(ms);
+                    bytes = ms.ToArray();
+                }
+                #endregion
+
+                var multipartFormDataContent = new MultipartFormDataContent();
+
+                var content = new ByteArrayContent(bytes);
+                multipartFormDataContent.Add(content, "file", "robot.jpg");
+               
+                var userContent = JsonSerializer.Serialize(new User() { Id = 1, Email = "kuku@kuku.com", FirstName = "kuku", LastName = "kiki", UserPswd = "1234" }, _serializerOptions);
+                
+                multipartFormDataContent.Add(new StringContent(userContent, Encoding.UTF8, "application/json"), "user");
+
+                var response = await _httpClient.PostAsync($@"{URL}UploadFile", multipartFormDataContent);
+                if (response.IsSuccessStatusCode) { return true; }
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
     }
-} 
+
+
+
+}
+ 
