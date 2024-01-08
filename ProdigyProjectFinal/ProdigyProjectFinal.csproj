@@ -11,7 +11,7 @@
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 
-		<!-- Display name -->
+		<!-- Display name ... -->
 		<ApplicationTitle>ProdigyProjectFinal</ApplicationTitle>
 
 		<!-- App Identifier -->
