@@ -1,67 +1,73 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
-             x:Class="ProdigyProjectFinal.View.Login"
-             x:DataType="viewmodel:LoginViewModel"
-             Title="Login" 
-             BackgroundColor="Cornsilk"
-             Shell.TabBarIsVisible="false"
-             FlowDirection="LeftToRight"
->
+                    xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
+         x:Class="ProdigyProjectFinal.View.Login"
+         x:DataType="viewmodel:LoginViewModel"
+         FlowDirection="LeftToRight"
+         
+         Title="login" 
+         
+         BackgroundColor="Cornsilk"
+         Shell.TabBarIsVisible="false"
+         Shell.TitleColor="Black"
+         Shell.BackgroundColor="Cornsilk">
 
     <ContentPage.Resources>
-        <Style TargetType="Label" Class="LoginLbl">
-            <Setter Property="TextColor" Value="Black"/>
-    </Style>
+        <ResourceDictionary>
+            <Style TargetType="Label" Class="LoginLbl">
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
 
-    <Style TargetType="Entry" Class="LoginEntry">
-            <Setter Property="BackgroundColor" Value="Cornsilk"/>
-        <Setter Property="FontSize" Value="16"/>
-    </Style>
+            <Style TargetType="Entry" Class="LoginEntry">
+                <Setter Property="BackgroundColor" Value="Cornsilk"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+        </ResourceDictionary>
     </ContentPage.Resources>
 
     <Border 
-        StrokeShape="RoundRectangle 20"
-        HorizontalOptions="Center"
-        VerticalOptions="Center"
-        StrokeThickness="0">
+    StrokeShape="RoundRectangle 20"
+    HorizontalOptions="Center"
+    VerticalOptions="Center"
+    StrokeThickness="0">
         <VerticalStackLayout 
-        Spacing="20"
-        Padding="35"
-        HorizontalOptions="Center"
-        VerticalOptions="Center"
-        BackgroundColor="#ccc2cb"
-        WidthRequest="500" >
-            
+    Spacing="20"
+    Padding="35"
+    HorizontalOptions="Center"
+    VerticalOptions="Center"
+    BackgroundColor="#ccc2cb"
+    WidthRequest="500" >
+
             <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="10">
-                <Label Text="Username" StyleClass="LoginLbl" HorizontalOptions="Start"/>
+                <Label Text="Username" StyleClass="LoginLbl" HorizontalOptions="Start" FontFamily="robotoFont" FontAttributes="Italic"/>
                 <Entry Text="{Binding Username}"  StyleClass="LoginEntry"/>
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Column="1" Grid.Row="2" Spacing="10">
-                <Label Text="Password" StyleClass="LoginLbl" HorizontalOptions="Start"/>
+                <Label Text="Password" StyleClass="LoginLbl" HorizontalOptions="Start" FontFamily="robotoFont" FontAttributes="Italic"/>
                 <Entry IsPassword="True" Text="{Binding Password}" StyleClass="LoginEntry"/>
             </VerticalStackLayout>
 
-           
+
             <HorizontalStackLayout 
-                Margin="30"
-                HorizontalOptions="Center" 
-                Spacing="20" > 
-                
-            <Button 
-                Text="Login"
-                Grid.Column="1"
-                Grid.Row="3"
-                WidthRequest="100"
-                BackgroundColor="DarkSeaGreen"
-                TextColor="Black"
-                Command="{Binding BtnCommand}"
-                />
-            
+            Margin="30"
+            HorizontalOptions="Center" 
+            Spacing="20" >
+
+                <Button 
+            Text="Login"
+            Grid.Column="1"
+            Grid.Row="3"
+            WidthRequest="100"
+            BackgroundColor="DarkSeaGreen"
+            TextColor="Black"
+            FontFamily="robotoFont" FontAttributes="Italic"
+            Command="{Binding BtnCommand}"
+            />
+
             </HorizontalStackLayout>
-            
+
         </VerticalStackLayout>
     </Border>
 </ContentPage>

@@ -1,68 +1,71 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
-             x:Class="ProdigyProjectFinal.View.ProfilePage"
-             x:DataType="viewmodel:ProfilePageViewModel" Shell.TabBarIsVisible="True"
-             Title="Profile Page">
-    
+
+<ContentPage
+        x:Class="ProdigyProjectFinal.View.ProfilePage"
+        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
+        Title="Profile Page"
+        x:DataType="viewmodel:ProfilePageViewModel"
+        Shell.TabBarIsVisible="True">
+
     <StackLayout>
 
 
-        <VerticalStackLayout 
-                Spacing="20"
+        <VerticalStackLayout
                 Padding="35"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
                 BackgroundColor="BlanchedAlmond"
-                WidthRequest="500" >
-            
-            <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="10">
-                    <Label Text="change username" StyleClass="LoginLbl"/>
-                    <Entry Text="{Binding NewUsername}"  StyleClass="LoginEntry"/>
-                </VerticalStackLayout>
+                HorizontalOptions="Center"
+                Spacing="20"
+                VerticalOptions="Center"
+                WidthRequest="500">
 
-
-            <Button 
-                    Text="change"
+            <VerticalStackLayout
+                    Grid.Row="1"
                     Grid.Column="1"
-                    Grid.Row="3"
-                    WidthRequest="100"
-            
-                    StyleClass="DarkBtn"
-                    Command="{Binding ChangeUsernameBtn}"
-                    />
-
-            <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="10">
-                <Label Text="change password" StyleClass="LoginLbl"/>
-                <Entry Text="{Binding NewPassword}"  StyleClass="LoginEntry"/>
+                    Spacing="10">
+                <Label StyleClass="LoginLbl" Text="change username" />
+                <Entry StyleClass="LoginEntry" Text="{Binding NewUsername}" />
             </VerticalStackLayout>
 
-            <Button 
-                 Text="change"
-                 Grid.Column="1"
-                 Grid.Row="3"
-                 WidthRequest="100"
- 
-                 StyleClass="DarkBtn"
-                 Command="{Binding ChangePasswordBtn}"
-                 />
 
-            <Button 
-                 Text="change"
-                 Grid.Column="1"
-                 Grid.Row="3"
-                 WidthRequest="100"
- 
-                 StyleClass="DarkBtn"
-                 Command="{Binding AddPfp}"
-                 />
+            <Button
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Command="{Binding ChangeUsernameBtn}"
+                    StyleClass="DarkBtn"
+                    Text="change"
+                    WidthRequest="100" />
+
+            <VerticalStackLayout
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Spacing="10">
+                <Label StyleClass="LoginLbl" Text="change password" />
+                <Entry StyleClass="LoginEntry" Text="{Binding NewPassword}" />
+            </VerticalStackLayout>
+
+            <Button
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Command="{Binding ChangePasswordBtn}"
+                    StyleClass="DarkBtn"
+                    Text="change"
+                    WidthRequest="100" />
+
+            <Button
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Command="{Binding AddPfp}"
+                    StyleClass="DarkBtn"
+                    Text="change"
+                    WidthRequest="100" />
 
 
 
 
 
         </VerticalStackLayout>
-              
-      </StackLayout>
+
+    </StackLayout>
 </ContentPage>

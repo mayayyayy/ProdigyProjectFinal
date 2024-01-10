@@ -10,11 +10,12 @@
     xmlns:view="clr-namespace:ProdigyProjectFinal.View"
     xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
     x:DataType="viewmodel:AppShellViewModel"
+    FlowDirection="LeftToRight"
     Shell.FlyoutBehavior="Flyout" >
 
 
 
-    <FlyoutItem Title="Mine Page">
+    <FlyoutItem  Title="Mine Page">
         <ShellContent 
             
             Title="Main Page"

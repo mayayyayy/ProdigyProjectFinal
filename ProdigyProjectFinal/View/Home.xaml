@@ -4,26 +4,36 @@
              xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
              x:Class="ProdigyProjectFinal.View.Home"
              x:DataType="viewmodel:HomeViewModel"
-             Title="Home"
-             BackgroundColor="BlanchedAlmond"
-             Shell.TabBarIsVisible="True"
-             FlowDirection="RightToLeft">
-    
+   
+             
+             BackgroundColor="Cornsilk"
+             Shell.TabBarIsVisible="false"
+             Shell.BackgroundColor="DarkSeaGreen"
+             FlowDirection="LeftToRight" Title="Home">
+
     <VerticalStackLayout>
-        <Label 
-            Text="Prodigy Home"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
 
         <Button
-             FontSize="50"
-             HorizontalOptions="Center"
-             Text="edit profile" 
-     
-             FontAttributes="Italic"
-             FontFamily="robotoFont"
-             Command="{Binding GoToProfile}"
-     />
+            FontSize="30"
+            HorizontalOptions="Start"
+            Text="edit profile" 
+            BackgroundColor="#ccc2cb"
+            
+            FontAttributes="Italic"
+            FontFamily="robotoFont"
+            Command="{Binding GoToProfile}" />
+
+        <Button
+            FontSize="30"
+            HorizontalOptions="Start"
+            Text="X" 
+            BackgroundColor="#ccc2cb"
+
+            FontAttributes="Italic"
+            FontFamily="robotoFont" />
+        
+        
+        
 
     </VerticalStackLayout>
 </ContentPage>
