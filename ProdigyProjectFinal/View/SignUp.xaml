@@ -1,68 +1,128 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
-             x:Class="ProdigyProjectFinal.View.SignUp"
-             x:DataType="viewmodel:SignUpViewModel"
-             Title="Sign Up">
+<ContentPage
+        x:Class="ProdigyProjectFinal.View.SignUp"
+        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
+        Title="Sign Up"
+        x:DataType="viewmodel:SignUpViewModel"
+        FlowDirection="LeftToRight"
+        BackgroundColor="Cornsilk"
+        Shell.TabBarIsVisible="false"
+        Shell.TitleColor="Black"
+        Shell.BackgroundColor="Cornsilk">
+
+
     <VerticalStackLayout>
 
-        <Border 
-    StrokeShape="RoundRectangle 20"
-    HorizontalOptions="Center"
-    VerticalOptions="Center"
-    StrokeThickness="0">
-            <VerticalStackLayout 
-    Spacing="20"
-    Padding="35"
-    HorizontalOptions="Center"
-    VerticalOptions="Center"
-    BackgroundColor="BlanchedAlmond"
-    WidthRequest="500" >
-                <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="10">
-                    <Label Text="enter username" StyleClass="LoginLbl"/>
-                    <Entry Text="{Binding Username}"  StyleClass="LoginEntry"/>
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Grid.Column="1" Grid.Row="2" Spacing="10">
-                    <Label Text="enter password" StyleClass="LoginLbl"/>
-                    <Entry IsPassword="True" Text="{Binding Password}" StyleClass="LoginEntry"/>
-                </VerticalStackLayout>
-                <VerticalStackLayout Grid.Column="1" Grid.Row="2" Spacing="10">
-                    <Label Text="enter first name" StyleClass="LoginLbl"/>
-                    <Entry  Text="{Binding FirstName}" StyleClass="LoginEntry"/>
-                </VerticalStackLayout>
-                <VerticalStackLayout Grid.Column="1" Grid.Row="2" Spacing="10">
-                    <Label Text="enter last name" StyleClass="LoginLbl"/>
-                    <Entry  Text="{Binding LastName}" StyleClass="LoginEntry"/>
-                </VerticalStackLayout>
-                <VerticalStackLayout Grid.Column="1" Grid.Row="2" Spacing="10">
-                    <Label Text="enter email" StyleClass="LoginLbl"/>
-                    <Entry  Text="{Binding Email}" StyleClass="LoginEntry"/>
-                </VerticalStackLayout>
+        <Border
+                StrokeShape="RoundRectangle 20"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                StrokeThickness="0">
+            <VerticalStackLayout
+                    Padding="35"
+                    Spacing="20"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    BackgroundColor="#ccc2cb"
+                    WidthRequest="500">
 
 
-                <HorizontalStackLayout 
-                    Margin="30"
-                    HorizontalOptions="Center" 
-                    Spacing="20" >  
-
-                    <Button 
-                        Text="Sign Up"
+                <VerticalStackLayout
+                        Grid.Row="1"
                         Grid.Column="1"
-                        Grid.Row="3"
-                        WidthRequest="100"
-            
-                        StyleClass="DarkBtn"
-                        Command="{Binding SignUpCommand}"
-                        />  
+                        Spacing="10">
+                    <Label
+                            Text="enter username"
+                            StyleClass="LoginLbl"
+                            HorizontalOptions="Start"
+                            FontFamily="robotoFont"
+                            FontAttributes="Italic" />
+                    <Entry Text="{Binding Username}" StyleClass="LoginEntry" />
+                </VerticalStackLayout>
+
+
+                <VerticalStackLayout
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Spacing="10">
+                    <Label
+                            Text="enter password"
+                            StyleClass="LoginLbl"
+                            HorizontalOptions="Start"
+                            FontFamily="robotoFont"
+                            FontAttributes="Italic" />
+                    <Entry
+                            IsPassword="True"
+                            Text="{Binding Password}"
+                            StyleClass="LoginEntry" />
+                </VerticalStackLayout>
+
+
+
+                <VerticalStackLayout
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Spacing="10">
+                    <Label
+                            Text="enter first name"
+                            StyleClass="LoginLbl"
+                            HorizontalOptions="Start"
+                            FontFamily="robotoFont"
+                            FontAttributes="Italic" />
+                    <Entry Text="{Binding FirstName}" StyleClass="LoginEntry" />
+                </VerticalStackLayout>
+
+
+
+                <VerticalStackLayout
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Spacing="10">
+                    <Label
+                            Text="enter last name"
+                            StyleClass="LoginLbl"
+                            HorizontalOptions="Start"
+                            FontFamily="robotoFont"
+                            FontAttributes="Italic" />
+                    <Entry Text="{Binding LastName}" StyleClass="LoginEntry" />
+                </VerticalStackLayout>
+
+
+                <VerticalStackLayout
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Spacing="10">
+                    <Label
+                            Text="enter email"
+                            StyleClass="LoginLbl"
+                            HorizontalOptions="Start"
+                            FontFamily="robotoFont"
+                            FontAttributes="Italic" />
+                    <Entry Text="{Binding Email}" StyleClass="LoginEntry" />
+                </VerticalStackLayout>
+
+                <HorizontalStackLayout
+                        Margin="30"
+                        HorizontalOptions="Center"
+                        Spacing="20">
+
+                    <Button
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Text="sign up"
+                            TextColor="Black"
+                            WidthRequest="100"
+                            StyleClass="DarkBtn"
+                            BackgroundColor="DarkSeaGreen"
+                            Command="{Binding SignUpCommand}" />
 
                 </HorizontalStackLayout>
 
             </VerticalStackLayout>
+
         </Border>
-
-
 
     </VerticalStackLayout>
 </ContentPage>

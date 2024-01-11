@@ -64,6 +64,7 @@
 	<ItemGroup>
 	  <None Remove="Resources\Fonts\RobotoMono-VariableFont_wght.ttf" />
 	  <None Remove="Resources\Fonts\The_Juke_Box-FFP.ttf" />
+	  <None Remove="Resources\Images\defaultPFP.png" />
 	  <None Remove="Resources\Images\home_icon.png" />
 	  <None Remove="Resources\Images\music.png" />
 	  <None Remove="Resources\Images\profile_icon.png" />

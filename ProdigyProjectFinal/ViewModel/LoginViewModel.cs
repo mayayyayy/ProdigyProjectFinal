@@ -59,7 +59,7 @@ namespace ProdigyProjectFinal.ViewModel
 
         public ICommand BtnCommand { get; protected set; }
 
-        public ICommand BackBtn;  
+        public ICommand BackBtn { get; protected set; }
         public LoginViewModel(ProdigyServices service)
         {
             Username = "";
@@ -105,6 +105,15 @@ namespace ProdigyProjectFinal.ViewModel
                 }
                     
             });
+
+
+            BackBtn = new Command(async () =>
+            {
+                await Shell.Current.GoToAsync("..");
+            }
+
+
+            );
         }
 
         private static bool validateUser(string username, string password)

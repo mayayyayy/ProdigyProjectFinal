@@ -23,7 +23,7 @@ namespace ProdigyProjectFinal.ViewModel
         private string _errorMessage;
         private bool _isErrorMessage;
         private bool _signUpInvalid;
-        private ProdigyServices _services;
+        private readonly ProdigyServices _services;
 
 
 
@@ -128,7 +128,7 @@ namespace ProdigyProjectFinal.ViewModel
                     return;
                 }
 
-                User user = new User() { Username = Username, FirstName = FirstName, LastName = LastName, UserPswd = Password, Email = Email};
+                User user = new User() { Username = Username, UserPswd = Password, FirstName = FirstName, LastName = LastName, Email = Email};
 
                 try
                 {
@@ -139,7 +139,7 @@ namespace ProdigyProjectFinal.ViewModel
                             _isErrorMessage = false;
                             await SecureStorage.Default.SetAsync("CurrentUser", JsonSerializer.Serialize(user));
                             await Shell.Current.DisplayAlert("success", "sign up success", "ok");
-                            await Shell.Current.GoToAsync("Home");
+                            await Shell.Current.GoToAsync("//Home");
                             break;
 
                         case HttpStatusCode.Conflict:

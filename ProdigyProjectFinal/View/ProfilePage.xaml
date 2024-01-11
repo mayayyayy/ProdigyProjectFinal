@@ -7,65 +7,109 @@
         xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
         Title="Profile Page"
         x:DataType="viewmodel:ProfilePageViewModel"
-        Shell.TabBarIsVisible="True">
+        BackgroundColor="Cornsilk"
+        FlowDirection="LeftToRight"
+        Shell.BackgroundColor="DarkSeaGreen"
+        Shell.TabBarBackgroundColor="Cornsilk"
+        Shell.TabBarIsVisible="false"
+        Shell.TabBarTitleColor="Black">
+
+
 
     <StackLayout>
 
+        <Grid ColumnDefinitions="*,*">
+            <VerticalStackLayout Grid.Column="0">
 
-        <VerticalStackLayout
-                Padding="35"
-                BackgroundColor="BlanchedAlmond"
-                HorizontalOptions="Center"
-                Spacing="20"
-                VerticalOptions="Center"
-                WidthRequest="500">
+                <Border
+                        Margin="50,30,40,0"
+                        StrokeShape="RoundRectangle 20"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        StrokeThickness="0">
+                    <VerticalStackLayout
+                            Padding="35"
+                            Spacing="20"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            BackgroundColor="#ccc2cb"
+                            WidthRequest="300">
 
-            <VerticalStackLayout
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Spacing="10">
-                <Label StyleClass="LoginLbl" Text="change username" />
-                <Entry StyleClass="LoginEntry" Text="{Binding NewUsername}" />
+                        <VerticalStackLayout
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Spacing="10">
+                            <Label StyleClass="LoginLbl" Text="change username" />
+                            <Entry
+                                    StyleClass="LoginEntry"
+                                    Text="{Binding NewUsername}"
+                                    BackgroundColor="Cornsilk" />
+                        </VerticalStackLayout>
+
+
+                        <Button
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Command="{Binding ChangeUsernameBtn}"
+                                StyleClass="DarkBtn"
+                                Text="change"
+                                TextColor="Black"
+                                WidthRequest="100"
+                                BackgroundColor="DarkSeaGreen" />
+
+                        <VerticalStackLayout
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Spacing="10">
+                            <Label StyleClass="LoginLbl" Text="change password" />
+                            <Entry
+                                    StyleClass="LoginEntry"
+                                    Text="{Binding NewPassword}"
+                                    BackgroundColor="Cornsilk" />
+                        </VerticalStackLayout>
+
+                        <Button
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Command="{Binding ChangePasswordBtn}"
+                                StyleClass="DarkBtn"
+                                Text="change"
+                                TextColor="Black"
+                                WidthRequest="100"
+                                BackgroundColor="DarkSeaGreen" />
+
+
+
+
+                    </VerticalStackLayout>
+                </Border>
+
+
+
+
+
             </VerticalStackLayout>
 
-
-            <Button
-                    Grid.Row="3"
+            <Image
                     Grid.Column="1"
-                    Command="{Binding ChangeUsernameBtn}"
-                    StyleClass="DarkBtn"
-                    Text="change"
-                    WidthRequest="100" />
+                    Source="profile_icon.png"
+                    HeightRequest="415"
+                    WidthRequest="300"
+                    HorizontalOptions="Center" />
 
-            <VerticalStackLayout
-                    Grid.Row="1"
+            <Label
                     Grid.Column="1"
-                    Spacing="10">
-                <Label StyleClass="LoginLbl" Text="change password" />
-                <Entry StyleClass="LoginEntry" Text="{Binding NewPassword}" />
-            </VerticalStackLayout>
+                    Text="{Binding User.FirstName}"
+                    HeightRequest="415"
+                    WidthRequest="300"
+                    HorizontalOptions="Center" />
 
-            <Button
-                    Grid.Row="3"
-                    Grid.Column="1"
-                    Command="{Binding ChangePasswordBtn}"
-                    StyleClass="DarkBtn"
-                    Text="change"
-                    WidthRequest="100" />
+        </Grid>
 
-            <Button
-                    Grid.Row="3"
-                    Grid.Column="1"
-                    Command="{Binding AddPfp}"
-                    StyleClass="DarkBtn"
-                    Text="change"
-                    WidthRequest="100" />
-
-
-
-
-
-        </VerticalStackLayout>
 
     </StackLayout>
+
+
+
+
 </ContentPage>

@@ -49,6 +49,14 @@ namespace ProdigyProjectFinal.Services
             return "error";
         }
 
+        public async Task<User> GetCurrentUser()
+        {
+            string st = await SecureStorage.Default.GetAsync("CurrentUser");
+            if(!string.IsNullOrEmpty(st))
+                return JsonSerializer.Deserialize<User>(st, _serializerOptions);
+            return null;
+        }
+
 
         #region LogInAsync
 
@@ -68,7 +76,9 @@ namespace ProdigyProjectFinal.Services
                         {
                             jsonContent = await response.Content.ReadAsStringAsync();
                             User u = JsonSerializer.Deserialize<User>(jsonContent, _serializerOptions);
+                            await SecureStorage.Default.SetAsync("CurrentUser", jsonContent);
                             return new UserDto() { Success = true, Message = string.Empty, User = u };
+
 
                         }
                     case (HttpStatusCode.Unauthorized):
