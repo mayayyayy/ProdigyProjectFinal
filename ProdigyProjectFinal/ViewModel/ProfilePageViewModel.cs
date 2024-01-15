@@ -191,7 +191,7 @@ namespace ProdigyProjectFinal.ViewModel
                     {
                         IsChangeUsernameError = false;
 
-                        await SecureStorage.SetAsync("CurrentUser", JsonSerializer.Serialize(userDto.User));
+                        await SecureStorage.Default.SetAsync("CurrentUser", JsonSerializer.Serialize(userDto.User));
                         await Shell.Current.DisplayAlert("change message", "successfully changed username", "OK");
                         await Shell.Current.GoToAsync("//Home");
                     }
@@ -232,7 +232,7 @@ namespace ProdigyProjectFinal.ViewModel
                     {
                         IsChangePasswordError = false;
 
-                        await SecureStorage.SetAsync("CurrentUser", JsonSerializer.Serialize(userDto.User));
+                        await SecureStorage.Default.SetAsync("CurrentUser", JsonSerializer.Serialize(userDto.User));
                         await Shell.Current.DisplayAlert("change message", "successfully changed password", "OK");
                         await Shell.Current.GoToAsync("//Home");
                     }

@@ -17,7 +17,10 @@ namespace ProdigyProjectFinal.ViewModel
         public ICommand GoToProfile { get; protected set; }
         public HomeViewModel()
         {
-            GoToProfile = new Command(async () => await Shell.Current.GoToAsync("//ProfilePage"));
+            GoToProfile = new Command(async () => 
+            { 
+                await Shell.Current.GoToAsync("//ProfilePage"); 
+            });
 
         }
 

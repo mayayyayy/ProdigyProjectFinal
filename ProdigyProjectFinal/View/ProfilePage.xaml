@@ -99,7 +99,6 @@
 
             <Label
                     Grid.Column="1"
-                    Text="{Binding User.FirstName}"
                     HeightRequest="415"
                     WidthRequest="300"
                     HorizontalOptions="Center" />

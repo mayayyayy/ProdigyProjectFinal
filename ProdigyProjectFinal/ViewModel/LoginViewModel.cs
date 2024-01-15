@@ -93,7 +93,7 @@ namespace ProdigyProjectFinal.ViewModel
                     {
                         IsLoginError = false;
 
-                        await SecureStorage.SetAsync("CurrentUser", JsonSerializer.Serialize(userDto.User));
+                        await SecureStorage.Default.SetAsync("CurrentUser", JsonSerializer.Serialize(userDto.User));
                         await Shell.Current.DisplayAlert("logged in message", "Logged in!", "OK");
                         await Shell.Current.GoToAsync("//Home");
                     }

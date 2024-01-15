@@ -14,7 +14,7 @@ namespace ProdigyProjectFinal.Services
     {
         readonly HttpClient _httpClient;
         readonly JsonSerializerOptions _serializerOptions;
-        const string URL = @"https://2c7rkmj3-7112.euw.devtunnels.ms/api/Values/";
+        const string URL = @"https://nghpvwqt-7112.uks1.devtunnels.ms/api/Values/";
         const string IMAGE_URL = @"https://zr8z94hw-7004.euw.devtunnels.ms/";
 
         public ProdigyServices()
@@ -51,9 +51,13 @@ namespace ProdigyProjectFinal.Services
 
         public async Task<User> GetCurrentUser()
         {
-            string st = await SecureStorage.Default.GetAsync("CurrentUser");
-            if(!string.IsNullOrEmpty(st))
-                return JsonSerializer.Deserialize<User>(st, _serializerOptions);
+            try
+            {
+                string st = await SecureStorage.Default.GetAsync("CurrentUser");
+                if (!string.IsNullOrEmpty(st))
+                    return JsonSerializer.Deserialize<User>(st, _serializerOptions);
+            }
+            catch (Exception) { }
             return null;
         }
 
