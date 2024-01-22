@@ -186,6 +186,7 @@ namespace ProdigyProjectFinal.ViewModel
                         IsChangeUsernameError = true;
                         await Shell.Current.DisplayAlert("error", "unable to change username", "try again");
 
+
                     }
                     else
                     {
