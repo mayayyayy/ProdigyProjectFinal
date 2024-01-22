@@ -1,39 +1,42 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
-             x:Class="ProdigyProjectFinal.View.Home"
-             x:DataType="viewmodel:HomeViewModel"
-   
-             
-             BackgroundColor="Cornsilk"
-             Shell.TabBarIsVisible="false"
-             Shell.BackgroundColor="DarkSeaGreen"
-             FlowDirection="LeftToRight" Title="Home">
+<ContentPage
+        x:Class="ProdigyProjectFinal.View.Home"
+        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
+        Title="Home"
+        x:DataType="viewmodel:HomeViewModel"
+        BackgroundColor="Cornsilk"
+        FlowDirection="LeftToRight"
+        Shell.BackgroundColor="DarkSeaGreen"
+        Shell.TabBarIsVisible="false">
 
     <VerticalStackLayout>
 
-        <Button
-            FontSize="30"
-            HorizontalOptions="Start"
-            Text="edit profile" 
-            BackgroundColor="#ccc2cb"
-            
-            FontAttributes="Italic"
-            FontFamily="robotoFont"
-            Command="{Binding GoToProfile}" />
+        <Label
+                BindingContext="{Binding WelcomeMessage}"
+                FontSize="Header"
+                TextColor="Black" />
 
         <Button
-            FontSize="30"
-            HorizontalOptions="Start"
-            Text="X" 
-            BackgroundColor="#ccc2cb"
+                BackgroundColor="#ccc2cb"
+                Command="{Binding GoToProfile}"
+                FontAttributes="Italic"
+                FontFamily="robotoFont"
+                FontSize="30"
+                HorizontalOptions="Start"
+                Text="edit profile" />
 
-            FontAttributes="Italic"
-            FontFamily="robotoFont" />
-        
-        
-        
+        <Button
+                BackgroundColor="#ccc2cb"
+                FontAttributes="Italic"
+                FontFamily="robotoFont"
+                FontSize="30"
+                HorizontalOptions="Start"
+                Text="X" />
+
+
+
 
     </VerticalStackLayout>
 </ContentPage>

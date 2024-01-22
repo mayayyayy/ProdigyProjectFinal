@@ -9,6 +9,7 @@ using System.Windows.Input;
 using ProdigyProjectFinal.Models;
 using System.Net;
 
+// POETRY APP! 
 
 namespace ProdigyProjectFinal.ViewModel
 {
@@ -65,7 +66,7 @@ namespace ProdigyProjectFinal.ViewModel
                 OnPropertyChange(nameof(NewPassword));
             }
         }
-
+        public string CurrentUserName { get => User.Username; }
         public User User
         {
             get => _user;
@@ -167,11 +168,10 @@ namespace ProdigyProjectFinal.ViewModel
 
             #region change username
 
-            User = services.GetCurrentUser().Result;
+            User = ((App)Application.Current).user;
 
             ChangeUsernameBtn = new Command(async () =>
             {
-                User user = new User() { Username = NewUsername, FirstName = FirstName, LastName = LastName, UserPswd = Password, Email = Email };
                 if (!validateUsername())
                 {
                     await Shell.Current.DisplayAlert("error", "invalid username, make sure it is longer than 1 character", "try again");
@@ -180,8 +180,8 @@ namespace ProdigyProjectFinal.ViewModel
                 }
                 try
                 {
-                    UserDto userDto = await _services.ChangeUsername(NewUsername);
-                    if (!userDto.Success)
+                   
+                    if (!await services.ChangeUsername(_NEWusername))
                     {
                         IsChangeUsernameError = true;
                         await Shell.Current.DisplayAlert("error", "unable to change username", "try again");
@@ -191,9 +191,10 @@ namespace ProdigyProjectFinal.ViewModel
                     {
                         IsChangeUsernameError = false;
 
-                        await SecureStorage.Default.SetAsync("CurrentUser", JsonSerializer.Serialize(userDto.User));
+                        User.Username = _NEWusername;
+                        await SecureStorage.Default.SetAsync("CurrentUser", JsonSerializer.Serialize(User));
                         await Shell.Current.DisplayAlert("change message", "successfully changed username", "OK");
-                        await Shell.Current.GoToAsync("//Home");
+                        OnPropertyChange(nameof(CurrentUserName));
                     }
                 }
                 catch (Exception)

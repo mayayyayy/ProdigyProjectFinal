@@ -122,11 +122,11 @@ namespace ProdigyProjectFinal.Services
         #region change X
 
         #region username
-        public async Task<UserDto> ChangeUsername(string newUsername)
+        public async Task<bool> ChangeUsername(string newUsername)
         {
             User user = JsonSerializer.Deserialize<User>(await SecureStorage.Default.GetAsync("CurrentUser"), _serializerOptions);
             if (user == null)
-                return null;
+                return false;
             try
             {
                 //object for sending
@@ -138,20 +138,18 @@ namespace ProdigyProjectFinal.Services
                 {
                     case (HttpStatusCode.OK):
                         {
-                            jsonContent = await response.Content.ReadAsStringAsync();
-                            User u = JsonSerializer.Deserialize<User>(jsonContent, _serializerOptions);
-                            return new UserDto() { Success = true, Message = string.Empty, User = u };
+                            return true;
 
                         }
                     case (HttpStatusCode.Unauthorized):
                         {
-                            return new UserDto() { Success = false, User = null, Message = ErrorMsgs.invalidUsernameChange };
+                            return false;
 
                         }
                 }
             }
             catch (Exception) { throw new Exception(); }
-            return null;
+            return false;
         }
         #endregion
 

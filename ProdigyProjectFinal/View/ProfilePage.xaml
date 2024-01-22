@@ -10,8 +10,9 @@
         BackgroundColor="Cornsilk"
         FlowDirection="LeftToRight"
         Shell.BackgroundColor="DarkSeaGreen"
+        Shell.FlyoutItemIsVisible="True"
         Shell.TabBarBackgroundColor="Cornsilk"
-        Shell.TabBarIsVisible="false"
+        Shell.TabBarIsVisible="true"
         Shell.TabBarTitleColor="Black">
 
 
@@ -23,16 +24,16 @@
 
                 <Border
                         Margin="50,30,40,0"
-                        StrokeShape="RoundRectangle 20"
                         HorizontalOptions="Start"
-                        VerticalOptions="Start"
-                        StrokeThickness="0">
+                        StrokeShape="RoundRectangle 20"
+                        StrokeThickness="0"
+                        VerticalOptions="Start">
                     <VerticalStackLayout
                             Padding="35"
-                            Spacing="20"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
                             BackgroundColor="#ccc2cb"
+                            HorizontalOptions="Center"
+                            Spacing="20"
+                            VerticalOptions="Center"
                             WidthRequest="300">
 
                         <VerticalStackLayout
@@ -41,21 +42,21 @@
                                 Spacing="10">
                             <Label StyleClass="LoginLbl" Text="change username" />
                             <Entry
+                                    BackgroundColor="Cornsilk"
                                     StyleClass="LoginEntry"
-                                    Text="{Binding NewUsername}"
-                                    BackgroundColor="Cornsilk" />
+                                    Text="{Binding NewUsername}" />
                         </VerticalStackLayout>
 
 
                         <Button
                                 Grid.Row="3"
                                 Grid.Column="1"
+                                BackgroundColor="DarkSeaGreen"
                                 Command="{Binding ChangeUsernameBtn}"
                                 StyleClass="DarkBtn"
                                 Text="change"
                                 TextColor="Black"
-                                WidthRequest="100"
-                                BackgroundColor="DarkSeaGreen" />
+                                WidthRequest="100" />
 
                         <VerticalStackLayout
                                 Grid.Row="1"
@@ -63,20 +64,20 @@
                                 Spacing="10">
                             <Label StyleClass="LoginLbl" Text="change password" />
                             <Entry
+                                    BackgroundColor="Cornsilk"
                                     StyleClass="LoginEntry"
-                                    Text="{Binding NewPassword}"
-                                    BackgroundColor="Cornsilk" />
+                                    Text="{Binding NewPassword}" />
                         </VerticalStackLayout>
 
                         <Button
                                 Grid.Row="3"
                                 Grid.Column="1"
+                                BackgroundColor="DarkSeaGreen"
                                 Command="{Binding ChangePasswordBtn}"
                                 StyleClass="DarkBtn"
                                 Text="change"
                                 TextColor="Black"
-                                WidthRequest="100"
-                                BackgroundColor="DarkSeaGreen" />
+                                WidthRequest="100" />
 
 
 
@@ -92,16 +93,17 @@
 
             <Image
                     Grid.Column="1"
-                    Source="profile_icon.png"
                     HeightRequest="415"
-                    WidthRequest="300"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="Center"
+                    Source="profile_icon.png"
+                    WidthRequest="300" />
 
             <Label
                     Grid.Column="1"
                     HeightRequest="415"
-                    WidthRequest="300"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="Center"
+                    Text="{Binding CurrentUserName}"
+                    WidthRequest="300" />
 
         </Grid>
 
