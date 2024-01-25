@@ -40,7 +40,11 @@
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 Spacing="10">
-                            <Label StyleClass="LoginLbl" Text="change username" />
+                            <Label
+                                    FontAttributes="Italic"
+                                    FontFamily="robotoFont"
+                                    StyleClass="LoginLbl"
+                                    Text="change username" />
                             <Entry
                                     BackgroundColor="Cornsilk"
                                     StyleClass="LoginEntry"
@@ -53,8 +57,10 @@
                                 Grid.Column="1"
                                 BackgroundColor="DarkSeaGreen"
                                 Command="{Binding ChangeUsernameBtn}"
+                                FontAttributes="Bold"
+                                FontFamily="robotoFont"
                                 StyleClass="DarkBtn"
-                                Text="change"
+                                Text="confirm"
                                 TextColor="Black"
                                 WidthRequest="100" />
 
@@ -62,7 +68,11 @@
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 Spacing="10">
-                            <Label StyleClass="LoginLbl" Text="change password" />
+                            <Label
+                                    FontAttributes="Italic"
+                                    FontFamily="robotoFont"
+                                    StyleClass="LoginLbl"
+                                    Text="change password" />
                             <Entry
                                     BackgroundColor="Cornsilk"
                                     StyleClass="LoginEntry"
@@ -74,8 +84,10 @@
                                 Grid.Column="1"
                                 BackgroundColor="DarkSeaGreen"
                                 Command="{Binding ChangePasswordBtn}"
+                                FontAttributes="Bold"
+                                FontFamily="robotoFont"
                                 StyleClass="DarkBtn"
-                                Text="change"
+                                Text="confirm"
                                 TextColor="Black"
                                 WidthRequest="100" />
 
@@ -85,27 +97,30 @@
                     </VerticalStackLayout>
                 </Border>
 
-
-
-
-
             </VerticalStackLayout>
+
 
             <Image
                     Grid.Column="1"
-                    HeightRequest="415"
+                    HeightRequest="200"
                     HorizontalOptions="Center"
                     Source="profile_icon.png"
                     WidthRequest="300" />
 
             <Label
                     Grid.Column="1"
-                    HeightRequest="415"
-                    HorizontalOptions="Center"
-                    Text="{Binding CurrentUserName}"
-                    WidthRequest="300" />
+                    FontAttributes="Italic"
+                    FontFamily="robotoFont"
+                    FontSize="Large"
+                    HeightRequest="375"
+                    HorizontalOptions="End"
+                    Text="{Binding CurrentUserName, StringFormat='current username: {0}'}"
+                    WidthRequest="500" />
+
+
 
         </Grid>
+
 
 
     </StackLayout>

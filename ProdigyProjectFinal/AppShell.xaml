@@ -1,44 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="ProdigyProjectFinal.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:sys="clr-namespace:System;assembly=netstandard"
-    
-    xmlns:local="clr-namespace:ProdigyProjectFinal"
-    
-    xmlns:view="clr-namespace:ProdigyProjectFinal.View"
-    xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
-    x:DataType="viewmodel:AppShellViewModel"
-    FlowDirection="LeftToRight"
-    Shell.FlyoutBehavior="Flyout" >
+        x:Class="ProdigyProjectFinal.AppShell"
+        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:local="clr-namespace:ProdigyProjectFinal"
+        xmlns:sys="clr-namespace:System;assembly=netstandard"
+        xmlns:view="clr-namespace:ProdigyProjectFinal.View"
+        xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
+        x:DataType="viewmodel:AppShellViewModel"
+        FlowDirection="LeftToRight"
+        Shell.FlyoutBehavior="Flyout" >
 
 
 
-    <FlyoutItem  Title="Mine Page">
-        <ShellContent 
-            
-            Title="Main Page"
-            ContentTemplate="{DataTemplate local:MainPage}"
-            Route="MainPage" />
-        
+    <FlyoutItem Title="Main Page" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+                Title="Main Page"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" />
+
     </FlyoutItem>
 
-    <FlyoutItem Title="Home" FlyoutDisplayOptions="AsMultipleItems" FlyoutItemIsVisible="False" >
-
-        <ShellContent 
-       
-           Title="Profile"
-           ContentTemplate="{DataTemplate view:ProfilePage}"  
-           Route="ProfilePage" />
-        
-        <ShellContent 
-            
+    <FlyoutItem
             Title="Home"
-            ContentTemplate="{DataTemplate view:Home}"  
-            Route="Home" />
+            FlyoutDisplayOptions="AsMultipleItems"
+            FlyoutItemIsVisible="False">
 
-        
+        <ShellContent
+                Title="Profile"
+                ContentTemplate="{DataTemplate view:ProfilePage}"
+                Route="ProfilePage" />
+
+        <ShellContent
+                Title="Home"
+                ContentTemplate="{DataTemplate view:Home}"
+                Route="Home" />
+
+
 
     </FlyoutItem>
 
