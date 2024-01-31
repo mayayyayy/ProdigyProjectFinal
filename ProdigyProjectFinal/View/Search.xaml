@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+        x:Class="ProdigyProjectFinal.View.Search"
+        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
+        Title="Search"
+        x:DataType="viewmodel:ProfilePageViewModel"
+        BackgroundColor="Cornsilk"
+        FlowDirection="LeftToRight"
+        Shell.BackgroundColor="DarkSeaGreen"
+        Shell.FlyoutItemIsVisible="True"
+        Shell.TabBarBackgroundColor="Cornsilk"
+        Shell.TabBarIsVisible="true"
+        Shell.TabBarTitleColor="Black">
+
+
+    <VerticalStackLayout>
+        <Label
+                HorizontalOptions="Center"
+                Text="SEARCH"
+                VerticalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>

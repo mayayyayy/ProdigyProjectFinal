@@ -160,15 +160,15 @@ namespace ProdigyProjectFinal.ViewModel
         #endregion
 
 
-        public ProfilePageViewModel(ProdigyServices services)
+        public ProfilePageViewModel(ProdigyServices services)  
         {
             this._services = services;
 
+            User = ((App)Application.Current).user;
             #region change X
 
             #region change username
 
-            User = ((App)Application.Current).user;
 
             ChangeUsernameBtn = new Command(async () =>
             {
