@@ -9,7 +9,7 @@
         xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
         x:DataType="viewmodel:AppShellViewModel"
         FlowDirection="LeftToRight"
-        Shell.FlyoutBehavior="Flyout" >
+        Shell.FlyoutBehavior="Flyout">
 
 
 
@@ -27,14 +27,20 @@
             FlyoutItemIsVisible="False">
 
         <ShellContent
+                Title="Home"
+                ContentTemplate="{DataTemplate view:Home}"
+                Route="Home" />
+
+        <ShellContent
                 Title="Profile"
                 ContentTemplate="{DataTemplate view:ProfilePage}"
                 Route="ProfilePage" />
 
         <ShellContent
-                Title="Home"
-                ContentTemplate="{DataTemplate view:Home}"
-                Route="Home" />
+                Title="Search"
+                ContentTemplate="{DataTemplate view:Search}"
+                Route="Search" />
+
 
 
 

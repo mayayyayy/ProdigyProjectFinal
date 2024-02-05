@@ -14,118 +14,148 @@
         Shell.TabBarBackgroundColor="Cornsilk"
         Shell.TabBarIsVisible="true"
         Shell.TabBarTitleColor="Black">
+    <VerticalStackLayout>
+
+        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
+
+            <Border
+                    Grid.Column="0"
+                    Margin="70,50,0,0"
+                    HeightRequest="320"
+                    HorizontalOptions="Start"
+                    StrokeShape="RoundRectangle 30"
+                    StrokeThickness="0"
+                    VerticalOptions="Start">
 
 
+                <VerticalStackLayout
+                        Padding="35"
+                        BackgroundColor="#ccc2cb"
+                        HorizontalOptions="Center"
+                        Spacing="20"
+                        VerticalOptions="Center"
+                        WidthRequest="400">
 
-    <StackLayout>
-
-        <Grid ColumnDefinitions="*,*">
-            <VerticalStackLayout Grid.Column="0">
-
-                <Border
-                        Margin="50,30,40,0"
-                        HorizontalOptions="Start"
-                        StrokeShape="RoundRectangle 20"
-                        StrokeThickness="0"
-                        VerticalOptions="Start">
-                    <VerticalStackLayout
-                            Padding="35"
-                            BackgroundColor="#ccc2cb"
-                            HorizontalOptions="Center"
-                            Spacing="20"
-                            VerticalOptions="Center"
-                            WidthRequest="300">
-
-                        <VerticalStackLayout
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Spacing="10">
-                            <Label
-                                    FontAttributes="Italic"
-                                    FontFamily="robotoFont"
-                                    StyleClass="LoginLbl"
-                                    Text="change username" />
-                            <Entry
-                                    BackgroundColor="Cornsilk"
-                                    StyleClass="LoginEntry"
-                                    Text="{Binding NewUsername}" />
-                        </VerticalStackLayout>
-
-
-                        <Button
-                                Grid.Row="3"
-                                Grid.Column="1"
-                                BackgroundColor="DarkSeaGreen"
-                                Command="{Binding ChangeUsernameBtn}"
-                                FontAttributes="Bold"
+                    <VerticalStackLayout Spacing="10">
+                        <Label
+                                FontAttributes="Italic"
                                 FontFamily="robotoFont"
-                                StyleClass="DarkBtn"
-                                Text="confirm"
-                                TextColor="Black"
-                                WidthRequest="100" />
-
-                        <VerticalStackLayout
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Spacing="10">
-                            <Label
-                                    FontAttributes="Italic"
-                                    FontFamily="robotoFont"
-                                    StyleClass="LoginLbl"
-                                    Text="change password" />
-                            <Entry
-                                    BackgroundColor="Cornsilk"
-                                    StyleClass="LoginEntry"
-                                    Text="{Binding NewPassword}" />
-                        </VerticalStackLayout>
-
-                        <Button
-                                Grid.Row="3"
-                                Grid.Column="1"
-                                BackgroundColor="DarkSeaGreen"
-                                Command="{Binding ChangePasswordBtn}"
-                                FontAttributes="Bold"
-                                FontFamily="robotoFont"
-                                StyleClass="DarkBtn"
-                                Text="confirm"
-                                TextColor="Black"
-                                WidthRequest="100" />
-
-
-
-
+                                StyleClass="LoginLbl"
+                                Text="change username" />
+                        <Entry
+                                BackgroundColor="Cornsilk"
+                                StyleClass="LoginEntry"
+                                Text="{Binding NewUsername}" />
                     </VerticalStackLayout>
-                </Border>
-
-            </VerticalStackLayout>
 
 
-            <Image
-                    Grid.Column="1"
-                    HeightRequest="200"
-                    HorizontalOptions="Center"
-                    Source="profile_icon.png"
-                    WidthRequest="300" />
+                    <Button
+                            BackgroundColor="DarkSeaGreen"
+                            Command="{Binding ChangeUsernameBtn}"
+                            FontAttributes="Bold"
+                            FontFamily="robotoFont"
+                            StyleClass="DarkBtn"
+                            Text="confirm"
+                            TextColor="Black"
+                            WidthRequest="100" />
+
+                    <VerticalStackLayout Spacing="10">
+                        <Label
+                                FontAttributes="Italic"
+                                FontFamily="robotoFont"
+                                StyleClass="LoginLbl"
+                                Text="change password" />
+                        <Entry
+                                BackgroundColor="Cornsilk"
+                                StyleClass="LoginEntry"
+                                Text="{Binding NewPassword}" />
+                    </VerticalStackLayout>
+
+                    <Button
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            BackgroundColor="DarkSeaGreen"
+                            Command="{Binding ChangePasswordBtn}"
+                            FontAttributes="Bold"
+                            FontFamily="robotoFont"
+                            StyleClass="DarkBtn"
+                            Text="confirm"
+                            TextColor="Black"
+                            WidthRequest="100" />
+
+                </VerticalStackLayout>
+            </Border>
+
+
+
+
 
             <Label
+                    Grid.Row="1"
                     Grid.Column="1"
                     FontAttributes="Italic"
                     FontFamily="robotoFont"
                     FontSize="Large"
-                    HeightRequest="375"
-                    HorizontalOptions="End"
+                    HeightRequest="620"
+                    HorizontalOptions="Center"
                     Text="{Binding CurrentUserName, StringFormat='current username: {0}'}"
-                    WidthRequest="500" />
+                    WidthRequest="400" />
 
+            <Image
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HeightRequest="330"
+                    HorizontalOptions="Center"
+                    Source="profile_icon.png"
+                    WidthRequest="300" />
+
+            <Border
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Margin="70,130,0,0"
+                    HeightRequest="300"
+                    HorizontalOptions="Start"
+                    StrokeShape="RoundRectangle 30"
+                    StrokeThickness="0"
+                    VerticalOptions="Start">
+                <VerticalStackLayout
+                        Padding="35"
+                        BackgroundColor="DarkSeaGreen"
+                        HorizontalOptions="Fill"
+                        Spacing="20"
+                        VerticalOptions="Center"
+                        WidthRequest="800">
+
+
+                    <Label
+                            FontAttributes="Italic"
+                            FontFamily="robotoFont"
+                            FontSize="Large"
+                            HeightRequest="700"
+                            HorizontalOptions="Start"
+                            Text="{Binding User.FirstName, StringFormat='{0}s favourite books'}" />
+
+
+                    <Button
+                            BackgroundColor="White"
+                            FontAttributes="Italic"
+                            FontFamily="robotoFont"
+                            FontSize="Large"
+                            HeightRequest="500"
+                            Text="add books"
+                            TextColor="Aqua"
+                            VerticalOptions="Start"
+                            WidthRequest="600" />
+
+                </VerticalStackLayout>
+            </Border>
 
 
         </Grid>
 
 
 
-    </StackLayout>
 
-
-
-
+    </VerticalStackLayout>
 </ContentPage>

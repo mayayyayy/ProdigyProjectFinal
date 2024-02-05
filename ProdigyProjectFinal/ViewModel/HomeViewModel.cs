@@ -17,6 +17,7 @@ namespace ProdigyProjectFinal.ViewModel
         private string welcomeM;
         public string WelcomeMessage { get { return welcomeM; } set { welcomeM = value; OnPropertyChange(); }  }
         public ICommand GoToProfile { get; protected set; }
+        public ICommand GoToSearch { get; protected set; }
 
         public EventHandler GetUser { get; protected set; } 
         private User sessionUser;
@@ -30,6 +31,12 @@ namespace ProdigyProjectFinal.ViewModel
                 await Shell.Current.GoToAsync("///ProfilePage"); 
             });
 
+            GoToSearch = new Command(async () =>
+            {
+                await Shell.Current.GoToAsync("///Search");
+            });
+
+            
         }
 
        

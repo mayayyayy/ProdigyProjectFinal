@@ -16,9 +16,12 @@
 
 
     <VerticalStackLayout>
-        <Label
-                HorizontalOptions="Center"
-                Text="SEARCH"
-                VerticalOptions="Center" />
+        <Border >
+            <Label
+                    BackgroundColor="Aqua"
+                    HorizontalOptions="Fill"
+                    Text="search for books"
+                    VerticalOptions="Center" />
+        </Border>
     </VerticalStackLayout>
 </ContentPage>

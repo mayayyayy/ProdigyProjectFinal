@@ -29,11 +29,12 @@
 
         <Button
                 BackgroundColor="#ccc2cb"
+                Command="{Binding GoToSearch}"
                 FontAttributes="Italic"
                 FontFamily="robotoFont"
                 FontSize="30"
                 HorizontalOptions="Start"
-                Text="X" />
+                Text="search" />
 
 
 
