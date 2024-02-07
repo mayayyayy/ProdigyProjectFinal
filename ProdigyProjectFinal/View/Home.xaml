@@ -11,33 +11,42 @@
         Shell.BackgroundColor="DarkSeaGreen"
         Shell.TabBarIsVisible="false">
 
-    <VerticalStackLayout>
+    <Grid
+            Margin="9,20,30,30"
+            ColumnDefinitions="*,*"
+            RowDefinitions="*,*">
+        <VerticalStackLayout>
 
-        <Label
-                BindingContext="{Binding WelcomeMessage}"
-                FontSize="Header"
-                TextColor="Black" />
+            <Label
+                    BindingContext="{Binding WelcomeMessage}"
+                    FontSize="Header"
+                    TextColor="Black" />
 
-        <Button
-                BackgroundColor="#ccc2cb"
-                Command="{Binding GoToProfile}"
-                FontAttributes="Italic"
-                FontFamily="robotoFont"
-                FontSize="30"
-                HorizontalOptions="Start"
-                Text="edit profile" />
+            <Button
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="20,20,200,20"
+                    BackgroundColor="#ccc2cb"
+                    CharacterSpacing="1"
+                    Command="{Binding GoToProfile}"
+                    FontFamily="lamarkieFont"
+                    FontSize="40"
+                    HorizontalOptions="End"
+                    Text="profile" />
 
-        <Button
-                BackgroundColor="#ccc2cb"
-                Command="{Binding GoToSearch}"
-                FontAttributes="Italic"
-                FontFamily="robotoFont"
-                FontSize="30"
-                HorizontalOptions="Start"
-                Text="search" />
+            <Button
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="20,20,200,0"
+                    BackgroundColor="#ccc2cb"
+                    Command="{Binding GoToSearch}"
+                    FontFamily="lamarkieFont"
+                    FontSize="40"
+                    Text="search" />
 
 
 
 
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>

@@ -2,60 +2,71 @@
 
 
 
-<ContentPage  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProdigyProjectFinal.MainPage"
-             xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
-             x:DataType="viewmodel:MainPageViewModel"
-             Title="Main Page"
-             BackgroundColor="Cornsilk"
-             Shell.NavBarIsVisible="False" Shell.TabBarIsVisible="False" FlowDirection="LeftToRight"
-              >
+<ContentPage
+        x:Class="ProdigyProjectFinal.MainPage"
+        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
+        Title="Main Page"
+        x:DataType="viewmodel:MainPageViewModel"
+        BackgroundColor="Cornsilk"
+        FlowDirection="LeftToRight"
+        Shell.NavBarIsVisible="False"
+        Shell.TabBarIsVisible="False">
 
     <ScrollView>
 
-        <StackLayout Margin="10">
+        <StackLayout>
 
-            <StackLayout Margin="0,80,0,0">
+            <StackLayout>
 
-                    <Label
-                        FontSize="80"
-                        HorizontalOptions="Center"
+                <Label
+                        Margin="50,30,0,90"
                         CharacterSpacing="2"
-                        VerticalOptions="Center"
-                        Text="welcome to prodigy" 
-                        FontAttributes="Italic"
-                        FontFamily="robotoFont" />
-                <Image Source="music.png" HorizontalOptions="Center" HeightRequest="120" />
+                        FontFamily="lamarkieFont"
+                        FontSize="70"
+                        HorizontalOptions="Center"
+                        Text="welcome to prodigy"
+                        VerticalOptions="Center" />
+
+                <Label
+                        Margin="245,-65,10,40"
+                        CharacterSpacing="2"
+                        FontFamily="lamarkieFont"
+                        FontSize="25"
+                        Text="for readers, by readers " />
 
             </StackLayout>
-                
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="50"  >
-                <Button 
-                    BackgroundColor="#ccc2cb"
-                    FontSize="50"
-                    HorizontalOptions="Start"
-                    Text="login" 
-                    HeightRequest="90"
-                    FontAttributes="Italic"
-                    FontFamily="robotoFont"
-                    Padding="10"
-                    Command="{Binding GoToLoginBtn}" />
-                <Button 
-                     BackgroundColor="#ccc2cb"
-                     FontSize="50"
-                     HorizontalOptions="End"
-                     Text="sign up" 
-                     HeightRequest="90"
-                     FontAttributes="Italic"
-                     FontFamily="robotoFont"
-                    
-                     Command="{Binding GoToSignUpBtn}" />
+
+            <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal"
+                    Spacing="50">
+                <Button
+                        BackgroundColor="DarkSeaGreen"
+                        CharacterSpacing="2"
+                        Command="{Binding GoToLoginBtn}"
+                        FontFamily="lamarkieFont"
+                        FontSize="42"
+                        HeightRequest="145"
+                        HorizontalOptions="Start"
+                        Text="login"
+                        WidthRequest="250" />
+                <Button
+                        BackgroundColor="DarkSeaGreen"
+                        CharacterSpacing="2"
+                        Command="{Binding GoToSignUpBtn}"
+                        FontFamily="lamarkieFont"
+                        FontSize="42"
+                        HeightRequest="145"
+                        HorizontalOptions="End"
+                        Text="sign up"
+                        WidthRequest="270" />
             </StackLayout>
         </StackLayout>
 
     </ScrollView>
-    
-             </ContentPage>
+
+</ContentPage>
 
 

@@ -12,6 +12,7 @@
         Shell.BackgroundColor="DarkSeaGreen"
         Shell.FlyoutItemIsVisible="True"
         Shell.TabBarBackgroundColor="Cornsilk"
+        Shell.TabBarForegroundColor="Cornsilk"
         Shell.TabBarIsVisible="true"
         Shell.TabBarTitleColor="Black">
     <VerticalStackLayout>
@@ -21,7 +22,7 @@
             <Border
                     Grid.Column="0"
                     Margin="70,50,0,0"
-                    HeightRequest="320"
+                    HeightRequest="440"
                     HorizontalOptions="Start"
                     StrokeShape="RoundRectangle 30"
                     StrokeThickness="0"
@@ -38,8 +39,9 @@
 
                     <VerticalStackLayout Spacing="10">
                         <Label
-                                FontAttributes="Italic"
-                                FontFamily="robotoFont"
+                                CharacterSpacing="1"
+                                FontFamily="lamarkieFont"
+                                FontSize="20"
                                 StyleClass="LoginLbl"
                                 Text="change username" />
                         <Entry
@@ -51,18 +53,19 @@
 
                     <Button
                             BackgroundColor="DarkSeaGreen"
+                            CharacterSpacing="1"
                             Command="{Binding ChangeUsernameBtn}"
-                            FontAttributes="Bold"
-                            FontFamily="robotoFont"
+                            FontFamily="lamarkieFont"
                             StyleClass="DarkBtn"
                             Text="confirm"
                             TextColor="Black"
-                            WidthRequest="100" />
+                            WidthRequest="150" />
 
                     <VerticalStackLayout Spacing="10">
                         <Label
-                                FontAttributes="Italic"
-                                FontFamily="robotoFont"
+                                CharacterSpacing="1"
+                                FontFamily="lamarkieFont"
+                                FontSize="20"
                                 StyleClass="LoginLbl"
                                 Text="change password" />
                         <Entry
@@ -75,13 +78,13 @@
                             Grid.Row="3"
                             Grid.Column="1"
                             BackgroundColor="DarkSeaGreen"
+                            CharacterSpacing="1"
                             Command="{Binding ChangePasswordBtn}"
-                            FontAttributes="Bold"
-                            FontFamily="robotoFont"
+                            FontFamily="lamarkieFont"
                             StyleClass="DarkBtn"
                             Text="confirm"
                             TextColor="Black"
-                            WidthRequest="100" />
+                            WidthRequest="150" />
 
                 </VerticalStackLayout>
             </Border>
@@ -93,27 +96,28 @@
             <Label
                     Grid.Row="1"
                     Grid.Column="1"
-                    FontAttributes="Italic"
-                    FontFamily="robotoFont"
-                    FontSize="Large"
+                    Margin="80,-100,20,0"
+                    CharacterSpacing="1"
+                    FontFamily="lamarkieFont"
+                    FontSize="22"
                     HeightRequest="620"
                     HorizontalOptions="Center"
-                    Text="{Binding CurrentUserName, StringFormat='current username: {0}'}"
+                    Text="{Binding User.Username, StringFormat='current username: {0}'}"
                     WidthRequest="400" />
 
             <Image
                     Grid.Row="0"
                     Grid.Column="1"
-                    HeightRequest="330"
+                    HeightRequest="280"
                     HorizontalOptions="Center"
                     Source="profile_icon.png"
-                    WidthRequest="300" />
+                    WidthRequest="400" />
 
             <Border
                     Grid.Row="1"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Margin="70,130,0,0"
+                    Margin="80,50,0,0"
                     HeightRequest="300"
                     HorizontalOptions="Start"
                     StrokeShape="RoundRectangle 30"
@@ -129,8 +133,9 @@
 
 
                     <Label
-                            FontAttributes="Italic"
-                            FontFamily="robotoFont"
+                            Margin="0,-35,0,0"
+                            CharacterSpacing="1"
+                            FontFamily="lamarkieFont"
                             FontSize="Large"
                             HeightRequest="700"
                             HorizontalOptions="Start"

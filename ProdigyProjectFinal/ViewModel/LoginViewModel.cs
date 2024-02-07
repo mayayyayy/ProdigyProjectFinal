@@ -19,6 +19,9 @@ namespace ProdigyProjectFinal.ViewModel
         private bool _isLoginError;
         private string _errorMessage;
         private ProdigyServices _service;
+        private UserService _userService;
+
+        #region get and set
         public string Username
         {
             get => _username; 
@@ -56,23 +59,22 @@ namespace ProdigyProjectFinal.ViewModel
                 OnPropertyChange(nameof(ErrorMessage));
             }
         }
-
+        #endregion
         public ICommand BtnCommand { get; protected set; }
 
         public ICommand BackBtn { get; protected set; }
-        public LoginViewModel(ProdigyServices service)
+        public LoginViewModel(ProdigyServices service, UserService userService)
         {
             Username = "";
             Password = "";
             IsLoginError = true;
             ErrorMessage = "incorrect email or password";
             this._service = service;
+            this._userService = userService;
 
             //login button command
             BtnCommand = new Command(async () =>
             {
-
-                
                 if (!LoginViewModel.validateUser(Username, Password))
                 {
 
@@ -92,9 +94,7 @@ namespace ProdigyProjectFinal.ViewModel
                     else
                     {
                         IsLoginError = false;
-
-                        await SecureStorage.Default.SetAsync("CurrentUser", JsonSerializer.Serialize(userDto.User));
-                        ((App)Application.Current).user = userDto.User;
+                        _userService.User = userDto.User;
                         await Shell.Current.DisplayAlert("logged in message", "Logged in!", "OK");
                         await Shell.Current.GoToAsync("//Home");
                     }

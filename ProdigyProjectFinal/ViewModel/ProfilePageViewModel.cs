@@ -18,6 +18,7 @@ namespace ProdigyProjectFinal.ViewModel
         private string ProfileImageUrl { get; set; }
 
         private ProdigyServices _services;
+        private readonly UserService _userService;
         public ICommand ChangeUsernameBtn { get; protected set; }
         public ICommand ChangePasswordBtn { get; protected set; }
         public ICommand AddPfp { get; protected set; }
@@ -66,7 +67,7 @@ namespace ProdigyProjectFinal.ViewModel
                 OnPropertyChange(nameof(NewPassword));
             }
         }
-        public string CurrentUserName { get => User.Username; }
+        //public string CurrentUserName { get => User.Username; }
         public User User
         {
             get => _user;
@@ -160,11 +161,12 @@ namespace ProdigyProjectFinal.ViewModel
         #endregion
 
 
-        public ProfilePageViewModel(ProdigyServices services)  
+        public ProfilePageViewModel(ProdigyServices services, UserService userService)  
         {
             this._services = services;
+            this._userService = userService;
 
-            User = ((App)Application.Current).user;
+            User = _userService.User;
             #region change X
 
             #region change username
@@ -185,17 +187,15 @@ namespace ProdigyProjectFinal.ViewModel
                     {
                         IsChangeUsernameError = true;
                         await Shell.Current.DisplayAlert("error", "unable to change username", "try again");
-
-
                     }
                     else
                     {
                         IsChangeUsernameError = false;
 
                         User.Username = _NEWusername;
-                        await SecureStorage.Default.SetAsync("CurrentUser", JsonSerializer.Serialize(User));
+                        _userService.User = User;
+                        OnPropertyChange(nameof(User));
                         await Shell.Current.DisplayAlert("change message", "successfully changed username", "OK");
-                        OnPropertyChange(nameof(CurrentUserName));
                     }
                 }
                 catch (Exception)
@@ -212,7 +212,6 @@ namespace ProdigyProjectFinal.ViewModel
 
             ChangePasswordBtn = new Command(async () =>
             {
-                User user = new User() { Username = Username, FirstName = FirstName, LastName = LastName, UserPswd = NewPassword, Email = Email };
                 if (!validatePassword())
                 {
                     await Shell.Current.DisplayAlert("error", "invalid password, make sure it is longer than 1 character", "try again");
@@ -221,22 +220,20 @@ namespace ProdigyProjectFinal.ViewModel
                 }
                 try
                 {
-                    UserDto userDto = await _services.ChangePassword(NewPassword);
 
-
-                    if (!userDto.Success)
+                    if (!await services.ChangePassword(_NEWpassword))
                     {
-                        IsChangePasswordError = true;
+                        IsChangePasswordError= true;
                         await Shell.Current.DisplayAlert("error", "unable to change password", "try again");
-
                     }
                     else
                     {
                         IsChangePasswordError = false;
 
-                        await SecureStorage.Default.SetAsync("CurrentUser", JsonSerializer.Serialize(userDto.User));
+                        User.UserPswd = _NEWpassword;
+                        _userService.User = User;
+                        OnPropertyChange(nameof(User));
                         await Shell.Current.DisplayAlert("change message", "successfully changed password", "OK");
-                        await Shell.Current.GoToAsync("//Home");
                     }
                 }
                 catch (Exception)
@@ -247,6 +244,9 @@ namespace ProdigyProjectFinal.ViewModel
 
 
             });
+
+
+
             #endregion
 
             #endregion

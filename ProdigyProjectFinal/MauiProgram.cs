@@ -18,6 +18,8 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 				fonts.AddFont("The_Juke_Box-FFP.ttf","MusicFont");
 				fonts.AddFont("RobotoMono-VariableFont_wght.ttf", "robotoFont");
+                fonts.AddFont("Lamarkie.otf", "lamarkieFont");
+                fonts.AddFont("Beckan_Regular.otf", "beckanFont");
 			});
 
         builder.Services.AddSingleton<AppShellViewModel>();
@@ -35,6 +37,8 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<Search>();
         builder.Services.AddSingleton<SearchViewModel>();
+
+        builder.Services.AddSingleton<UserService>();
 
 
 

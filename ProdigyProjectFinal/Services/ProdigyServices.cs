@@ -103,13 +103,23 @@ namespace ProdigyProjectFinal.Services
 
         #region RegisterAsync
 
-        public async Task<HttpStatusCode> Register(User user)
+        public async Task<User> Register(User user)
         {
             var stringContent = new StringContent(JsonSerializer.Serialize(user, _serializerOptions), Encoding.UTF8, "application/json");
             try
             {
                 var response = await _httpClient.PostAsync($"{URL}SignUp", stringContent);
-                return response.StatusCode;
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    user = JsonSerializer.Deserialize<User>(content, _serializerOptions);
+                    return user;
+                }
+                else if (response.StatusCode == HttpStatusCode.Conflict)
+                {
+                    return null;
+                }
+                else throw new Exception();
             }
             catch (Exception)
             {
@@ -154,11 +164,11 @@ namespace ProdigyProjectFinal.Services
         #endregion
 
         #region password
-        public async Task<UserDto> ChangePassword(string newPassword)
+        public async Task<bool> ChangePassword(string newPassword)
         {
             User user = JsonSerializer.Deserialize<User>(await SecureStorage.Default.GetAsync("CurrentUser"), _serializerOptions);
             if (user == null)
-                return null;
+                return false;
             try
             {
                 //object for sending
@@ -170,20 +180,17 @@ namespace ProdigyProjectFinal.Services
                 {
                     case (HttpStatusCode.OK):
                         {
-                            jsonContent = await response.Content.ReadAsStringAsync();
-                            User u = JsonSerializer.Deserialize<User>(jsonContent, _serializerOptions);
-                            return new UserDto() { Success = true, Message = string.Empty, User = u };
+                            return true;
 
                         }
                     case (HttpStatusCode.Unauthorized):
                         {
-                            return new UserDto() { Success = false, User = null, Message = ErrorMsgs.invalidPassChange };
-
+                            return false;
                         }
                 }
             }
             catch (Exception) { throw new Exception(); }
-            return null;
+            return false;
         }
         #endregion
 

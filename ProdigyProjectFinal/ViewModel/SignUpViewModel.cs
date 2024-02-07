@@ -24,6 +24,8 @@ namespace ProdigyProjectFinal.ViewModel
         private bool _isErrorMessage;
         private bool _signUpInvalid;
         private readonly ProdigyServices _services;
+        private readonly UserService _userService;
+
 
 
 
@@ -104,9 +106,9 @@ namespace ProdigyProjectFinal.ViewModel
         #endregion
 
         public ICommand SignUpCommand { get; protected set; }
+        public ICommand BackBtn { get; protected set; }
 
-
-        public SignUpViewModel(ProdigyServices services)
+        public SignUpViewModel(ProdigyServices services, UserService userService)
         {
             Username = "";
             Password = "";
@@ -116,6 +118,7 @@ namespace ProdigyProjectFinal.ViewModel
             IsInvalid = true;
             ErrorMessage = "invalid";
             this._services = services;
+            this._userService = userService;
 
             //sign up button command
             SignUpCommand = new Command(async () =>
@@ -132,31 +135,28 @@ namespace ProdigyProjectFinal.ViewModel
 
                 try
                 {
-                    HttpStatusCode statusCode = await _services.Register(user);
-                    switch(statusCode)
+                    user = await _services.Register(user);
+                    if(user != null)
                     {
-                        case HttpStatusCode.OK:
-                            _isErrorMessage = false;
-                            await SecureStorage.Default.SetAsync("CurrentUser", JsonSerializer.Serialize(user));
-                            await Shell.Current.DisplayAlert("success", "sign up success", "ok");
-                            await Shell.Current.GoToAsync("//Home");
-                            break;
+                        _isErrorMessage = false;
+                        _userService.User = user;
+                        await Shell.Current.DisplayAlert("success", "sign up success", "ok");
+                        await Shell.Current.GoToAsync("//Home");
 
-                        case HttpStatusCode.Conflict:
-                            _isErrorMessage = true;
-                            break;
-
-                        default:
-                            _isErrorMessage = true;
-                            await Shell.Current.DisplayAlert("error", "server error", "try again");
-                            break;
                     }
+                    else _isErrorMessage = true;
                 }
                 catch(Exception)
                 {
                     _isErrorMessage=true;
+                    await Shell.Current.DisplayAlert("error", "server error", "try again");
                 }
-            }); 
+            });
+
+            BackBtn = new Command(async () =>
+            {
+                await Shell.Current.GoToAsync("..");
+            });
         }
 
         private bool validateRegister()

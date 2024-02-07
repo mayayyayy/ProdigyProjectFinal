@@ -6,101 +6,106 @@
         xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
         Title="Sign Up"
         x:DataType="viewmodel:SignUpViewModel"
-        FlowDirection="LeftToRight"
         BackgroundColor="Cornsilk"
+        FlowDirection="LeftToRight"
+        Shell.BackgroundColor="Cornsilk"
         Shell.TabBarIsVisible="false"
-        Shell.TitleColor="Black"
-        Shell.BackgroundColor="Cornsilk">
+        Shell.TitleColor="Black">
 
 
     <VerticalStackLayout>
 
         <Border
-                StrokeShape="RoundRectangle 20"
                 HorizontalOptions="Center"
-                VerticalOptions="Center"
-                StrokeThickness="0">
+                StrokeShape="RoundRectangle 20"
+                StrokeThickness="0"
+                VerticalOptions="Center">
             <VerticalStackLayout
                     Padding="35"
-                    Spacing="20"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
                     BackgroundColor="#ccc2cb"
+                    HorizontalOptions="Center"
+                    Spacing="20"
+                    VerticalOptions="Center"
                     WidthRequest="500">
 
 
-                <VerticalStackLayout
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Spacing="10">
+                <VerticalStackLayout>
                     <Label
-                            Text="enter username"
-                            StyleClass="LoginLbl"
+                            CharacterSpacing="2"
+                            FontFamily="lamarkieFont"
                             HorizontalOptions="Start"
-                            FontFamily="robotoFont"
-                            FontAttributes="Italic" />
-                    <Entry Text="{Binding Username}" StyleClass="LoginEntry" />
-                </VerticalStackLayout>
-
-
-                <VerticalStackLayout
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Spacing="10">
-                    <Label
-                            Text="enter password"
                             StyleClass="LoginLbl"
-                            HorizontalOptions="Start"
-                            FontFamily="robotoFont"
-                            FontAttributes="Italic" />
+                            Text="enter username" />
+
                     <Entry
+                            Margin="0,5,0,0"
+                            BackgroundColor="Cornsilk"
+                            StyleClass="LoginEntry"
+                            Text="{Binding Username}" />
+                </VerticalStackLayout>
+
+
+                <VerticalStackLayout>
+
+                    <Label
+                            CharacterSpacing="2"
+                            FontFamily="lamarkieFont"
+                            HorizontalOptions="Start"
+                            StyleClass="LoginLbl"
+                            Text="enter password" />
+                    <Entry
+                            Margin="0,5,0,0"
+                            BackgroundColor="Cornsilk"
                             IsPassword="True"
-                            Text="{Binding Password}"
-                            StyleClass="LoginEntry" />
+                            StyleClass="LoginEntry"
+                            Text="{Binding Password}" />
                 </VerticalStackLayout>
 
 
 
-                <VerticalStackLayout
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Spacing="10">
+                <VerticalStackLayout>
                     <Label
-                            Text="enter first name"
-                            StyleClass="LoginLbl"
+                            CharacterSpacing="2"
+                            FontFamily="lamarkieFont"
                             HorizontalOptions="Start"
-                            FontFamily="robotoFont"
-                            FontAttributes="Italic" />
-                    <Entry Text="{Binding FirstName}" StyleClass="LoginEntry" />
+                            StyleClass="LoginLbl"
+                            Text="enter first name" />
+                    <Entry
+                            Margin="0,5,0,0"
+                            BackgroundColor="Cornsilk"
+                            StyleClass="LoginEntry"
+                            Text="{Binding FirstName}" />
                 </VerticalStackLayout>
 
 
 
-                <VerticalStackLayout
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Spacing="10">
+                <VerticalStackLayout>
                     <Label
-                            Text="enter last name"
-                            StyleClass="LoginLbl"
+                            CharacterSpacing="2"
+                            FontFamily="lamarkieFont"
                             HorizontalOptions="Start"
-                            FontFamily="robotoFont"
-                            FontAttributes="Italic" />
-                    <Entry Text="{Binding LastName}" StyleClass="LoginEntry" />
+                            StyleClass="LoginLbl"
+                            Text="enter last name" />
+                    <Entry
+                            Margin="0,5,0,0"
+                            BackgroundColor="Cornsilk"
+                            StyleClass="LoginEntry"
+                            Text="{Binding LastName}" />
                 </VerticalStackLayout>
 
 
-                <VerticalStackLayout
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Spacing="10">
+                <VerticalStackLayout>
                     <Label
-                            Text="enter email"
-                            StyleClass="LoginLbl"
+                            CharacterSpacing="2"
+                            FontFamily="lamarkieFont"
                             HorizontalOptions="Start"
-                            FontFamily="robotoFont"
-                            FontAttributes="Italic" />
-                    <Entry Text="{Binding Email}" StyleClass="LoginEntry" />
+                            StyleClass="LoginLbl"
+                            Text="enter email" />
+                    <Entry
+                            Margin="0,5,0,0"
+                            BackgroundColor="Cornsilk"
+                            StyleClass="LoginEntry"
+                            Text="{Binding Email}" />
                 </VerticalStackLayout>
 
                 <HorizontalStackLayout
@@ -109,14 +114,24 @@
                         Spacing="20">
 
                     <Button
-                            Grid.Row="3"
-                            Grid.Column="1"
+                            Margin="-20,0,15,0"
+                            BackgroundColor="DarkSeaGreen"
+                            CharacterSpacing="2"
+                            Command="{Binding SignUpCommand}"
+                            FontFamily="lamarkieFont"
+                            StyleClass="DarkBtn"
                             Text="sign up"
                             TextColor="Black"
-                            WidthRequest="100"
-                            StyleClass="DarkBtn"
+                            WidthRequest="200" />
+                    <Button
+                            Margin="-20,0,15,0"
                             BackgroundColor="DarkSeaGreen"
-                            Command="{Binding SignUpCommand}" />
+                            CharacterSpacing="2"
+                            Command="{Binding BackBtn}"
+                            FontFamily="lamarkieFont"
+                            Text="back"
+                            TextColor="Black"
+                            WidthRequest="200" />
 
                 </HorizontalStackLayout>
 
