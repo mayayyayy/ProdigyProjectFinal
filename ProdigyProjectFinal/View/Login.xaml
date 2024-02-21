@@ -8,7 +8,7 @@
         x:DataType="viewmodel:LoginViewModel"
         BackgroundColor="Cornsilk"
         FlowDirection="LeftToRight"
-        Shell.BackgroundColor="Cornsilk"
+        Shell.BackgroundColor="#F9DDD3"
         Shell.TabBarIsVisible="false"
         Shell.TitleColor="Black">
 
@@ -39,7 +39,7 @@
 
         <VerticalStackLayout
                 Padding="35"
-                BackgroundColor="#ccc2cb"
+                BackgroundColor="#668C8B"
                 HorizontalOptions="Center"
                 Spacing="20"
                 VerticalOptions="Center"
@@ -80,7 +80,7 @@
                     Spacing="15">
 
                 <Button
-                        BackgroundColor="DarkSeaGreen"
+                        BackgroundColor="#a3b899"
                         CharacterSpacing="1"
                         Command="{Binding BtnCommand}"
                         FontFamily="lamarkieFont"
@@ -89,7 +89,7 @@
                         TextColor="Black"
                         WidthRequest="210" />
                 <Button
-                        BackgroundColor="DarkSeaGreen"
+                        BackgroundColor="#a3b899"
                         Command="{Binding BackBtn}"
                         FontFamily="lamarkieFont"
                         FontSize="30"

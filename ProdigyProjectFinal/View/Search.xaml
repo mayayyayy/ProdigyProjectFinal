@@ -3,9 +3,10 @@
         x:Class="ProdigyProjectFinal.View.Search"
         xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:models="clr-namespace:ProdigyProjectFinal.Models"
         xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
         Title="Search"
-        x:DataType="viewmodel:ProfilePageViewModel"
+        x:DataType="viewmodel:SearchViewModel"
         BackgroundColor="Cornsilk"
         FlowDirection="LeftToRight"
         Shell.BackgroundColor="DarkSeaGreen"
@@ -14,64 +15,78 @@
         Shell.TabBarIsVisible="true"
         Shell.TabBarTitleColor="Black">
 
-    
 
-        <VerticalStackLayout>
+
+    <VerticalStackLayout>
 
         <Label
-            Margin="60,20,0,0"
-            Text="search"
-            FontFamily="lamarkieFont"
-            FontSize="35"
-            />
+                Margin="60,0,0,0"
+                FontFamily="lamarkieFont"
+                FontSize="35"
+                Text="search" />
 
 
-
-
-        <SearchBar SearchCommand="{Binding }"
-                Grid.Column="0"
+        <SearchBar
                 Grid.Row="0"
+                Grid.Column="0"
                 Grid.ColumnSpan="1"
-                Margin="30,0,70,0"
-                    BackgroundColor="#ccc2cb"
-                    HorizontalOptions="Fill"
-                    
+                Margin="15,0,80,0"
+                BackgroundColor="#ccc2cb"
                 FontFamily="lamarkieFont"
                 FontSize="30"
-                    VerticalOptions="Fill" />
+                HorizontalOptions="Fill"
+                SearchCommand="{Binding SearchCommand}"
+                Text="{Binding SearchRequest}"
+                VerticalOptions="Fill" />
 
-            <Border
-       
-                
-                Margin="20,20,0,0"
-                HeightRequest="200"
+        <Border
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="60,20,0,0"
+                HeightRequest="550"
                 HorizontalOptions="Start"
                 StrokeShape="RoundRectangle 30"
                 StrokeThickness="0"
                 VerticalOptions="Start">
-                
-                
-                <CollectionView
-                    
-                    
-                    BackgroundColor="#ccc2cb"
+
+            <VerticalStackLayout
+                    Padding="35"
+                    BackgroundColor="DarkSeaGreen"
                     HorizontalOptions="Fill"
-                    
+                    Spacing="20"
                     VerticalOptions="Center"
-                    WidthRequest="400" >
-                    
-                    
+                    WidthRequest="800">
+                <CollectionView
+                        Margin="-50,10,90,-10"
+                        BackgroundColor="DarkSeaGreen"
+                        HeightRequest="500"
+                        HorizontalOptions="Fill"
+                        ItemsSource="{Binding Books}"
+                        VerticalOptions="Center"
+                        WidthRequest="600">
 
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Book">
+                            <VerticalStackLayout Margin="0,0,0,90">
+                                <Label
+                                        Margin="0,0,0,0"
+                                        BackgroundColor="AliceBlue"
+                                        Text="{Binding AuthorName}" />
 
-            
-                   </CollectionView>
-                
-                
+                                <Label Text="{Binding Title}" />
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </VerticalStackLayout>
         </Border>
 
 
 
 
-        </VerticalStackLayout>
-   
+
+    </VerticalStackLayout>
+
 </ContentPage>

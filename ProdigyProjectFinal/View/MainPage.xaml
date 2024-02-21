@@ -9,7 +9,7 @@
         xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
         Title="Main Page"
         x:DataType="viewmodel:MainPageViewModel"
-        BackgroundColor="Cornsilk"
+        BackgroundColor="#F9DDD3"
         FlowDirection="LeftToRight"
         Shell.NavBarIsVisible="False"
         Shell.TabBarIsVisible="False">
@@ -43,7 +43,7 @@
                     Orientation="Horizontal"
                     Spacing="50">
                 <Button
-                        BackgroundColor="DarkSeaGreen"
+                        BackgroundColor="#a3b899"
                         CharacterSpacing="2"
                         Command="{Binding GoToLoginBtn}"
                         FontFamily="lamarkieFont"
@@ -53,7 +53,7 @@
                         Text="login"
                         WidthRequest="250" />
                 <Button
-                        BackgroundColor="DarkSeaGreen"
+                        BackgroundColor="#a3b899"
                         CharacterSpacing="2"
                         Command="{Binding GoToSignUpBtn}"
                         FontFamily="lamarkieFont"

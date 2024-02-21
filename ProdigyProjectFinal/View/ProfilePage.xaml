@@ -142,16 +142,7 @@
                             Text="{Binding User.FirstName, StringFormat='{0}s favourite books'}" />
 
 
-                    <Button
-                            BackgroundColor="White"
-                            FontAttributes="Italic"
-                            FontFamily="robotoFont"
-                            FontSize="Large"
-                            HeightRequest="500"
-                            Text="add books"
-                            TextColor="Aqua"
-                            VerticalOptions="Start"
-                            WidthRequest="600" />
+
 
                 </VerticalStackLayout>
             </Border>

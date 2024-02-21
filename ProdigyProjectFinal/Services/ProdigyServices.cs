@@ -62,6 +62,30 @@ namespace ProdigyProjectFinal.Services
         }
 
 
+        public async Task<List<Book>> SearchAsync(string AuthorName)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"{URL}AuthorBooks?name={AuthorName}");
+                switch (response.StatusCode)
+                {
+                    case HttpStatusCode.OK:
+                        {
+                            string content = await response.Content.ReadAsStringAsync();
+                            return JsonSerializer.Deserialize<List<Book>>(content, _serializerOptions);
+                        }
+
+                        case HttpStatusCode.NotFound:
+                        {
+                            return null;
+                        }
+                }
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
+            return null;
+        }
+        
+
         #region LogInAsync
 
         public async Task<UserDto> LogInAsync(string userName, string password)
@@ -76,7 +100,7 @@ namespace ProdigyProjectFinal.Services
 
                 switch (response.StatusCode)
                 {
-                    case (HttpStatusCode.OK):
+                    case HttpStatusCode.OK:
                         {
                             jsonContent = await response.Content.ReadAsStringAsync();
                             User u = JsonSerializer.Deserialize<User>(jsonContent, _serializerOptions);

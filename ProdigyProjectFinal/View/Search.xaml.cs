@@ -1,9 +1,12 @@
+using ProdigyProjectFinal.ViewModel;
+
 namespace ProdigyProjectFinal.View;
 
 public partial class Search : ContentPage
 {
-	public Search()
+	public Search(SearchViewModel vm)
 	{
 		InitializeComponent();
-	}
+        BindingContext = vm;
+    }
 }
