@@ -9,7 +9,7 @@
         xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
         Title="Main Page"
         x:DataType="viewmodel:MainPageViewModel"
-        BackgroundColor="#F9DDD3"
+        BackgroundColor="Cornsilk"
         FlowDirection="LeftToRight"
         Shell.NavBarIsVisible="False"
         Shell.TabBarIsVisible="False">
@@ -20,6 +20,7 @@
 
             <StackLayout>
 
+                <Image Margin="750,0,80,-70" Source="book.png" />
                 <Label
                         Margin="50,30,0,90"
                         CharacterSpacing="2"
@@ -28,6 +29,8 @@
                         HorizontalOptions="Center"
                         Text="welcome to prodigy"
                         VerticalOptions="Center" />
+
+
 
                 <Label
                         Margin="245,-65,10,40"
@@ -43,7 +46,7 @@
                     Orientation="Horizontal"
                     Spacing="50">
                 <Button
-                        BackgroundColor="#a3b899"
+                        BackgroundColor="#668C8B"
                         CharacterSpacing="2"
                         Command="{Binding GoToLoginBtn}"
                         FontFamily="lamarkieFont"
@@ -53,7 +56,7 @@
                         Text="login"
                         WidthRequest="250" />
                 <Button
-                        BackgroundColor="#a3b899"
+                        BackgroundColor="#668C8B"
                         CharacterSpacing="2"
                         Command="{Binding GoToSignUpBtn}"
                         FontFamily="lamarkieFont"

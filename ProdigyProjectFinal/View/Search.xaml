@@ -20,17 +20,14 @@
     <VerticalStackLayout>
 
         <Label
-                Margin="60,0,0,0"
+                Margin="30,0,0,0"
                 FontFamily="lamarkieFont"
                 FontSize="35"
                 Text="search" />
 
 
         <SearchBar
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="1"
-                Margin="15,0,80,0"
+                Margin="15,0,90,0"
                 BackgroundColor="#ccc2cb"
                 FontFamily="lamarkieFont"
                 FontSize="30"
@@ -39,49 +36,54 @@
                 Text="{Binding SearchRequest}"
                 VerticalOptions="Fill" />
 
-        <Border
-                Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Margin="60,20,0,0"
-                HeightRequest="550"
-                HorizontalOptions="Start"
-                StrokeShape="RoundRectangle 30"
-                StrokeThickness="0"
-                VerticalOptions="Start">
-
-            <VerticalStackLayout
-                    Padding="35"
+        <Grid
+                Margin="40,0,-300,0"
+                ColumnDefinitions="*,*"
+                RowDefinitions="*,*">
+            <Border
+                    Grid.Column="0"
+                    Margin="2,20,90,0"
+                    Padding="10"
                     BackgroundColor="DarkSeaGreen"
-                    HorizontalOptions="Fill"
-                    Spacing="20"
-                    VerticalOptions="Center"
-                    WidthRequest="800">
-                <CollectionView
-                        Margin="-50,10,90,-10"
-                        BackgroundColor="DarkSeaGreen"
-                        HeightRequest="500"
-                        HorizontalOptions="Fill"
-                        ItemsSource="{Binding Books}"
-                        VerticalOptions="Center"
-                        WidthRequest="600">
+                    StrokeShape="RoundRectangle 30"
+                    StrokeThickness="0">
 
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Book">
-                            <VerticalStackLayout Margin="0,0,0,90">
-                                <Label
-                                        Margin="0,0,0,0"
-                                        BackgroundColor="AliceBlue"
-                                        Text="{Binding AuthorName}" />
+                <VerticalStackLayout Padding="10">
+                    <CollectionView
+                            BackgroundColor="DarkSeaGreen"
+                            HeightRequest="400"
+                            HorizontalOptions="Fill"
+                            ItemsSource="{Binding Books}"
+                            VerticalOptions="Center"
+                            WidthRequest="100">
 
-                                <Label Text="{Binding Title}" />
-                            </VerticalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Book">
+                                <VerticalStackLayout>
+                                    <Label
+                                            Margin="0,0,10,-5"
+                                            FontFamily="lamarkieFont"
+                                            FontSize="10"
+                                            Text="{Binding AuthorName}" />
 
-            </VerticalStackLayout>
-        </Border>
+                                    <Label
+                                            Margin="30,0,-10,-90"
+                                            FontFamily="lamarkieFont"
+                                            FontSize="10"
+                                            Text="{Binding Title}" />
+
+                                    <Image Source="{Binding ISBNstring}" />
+
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+        </Grid>
 
 
 

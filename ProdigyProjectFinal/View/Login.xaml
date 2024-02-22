@@ -8,7 +8,7 @@
         x:DataType="viewmodel:LoginViewModel"
         BackgroundColor="Cornsilk"
         FlowDirection="LeftToRight"
-        Shell.BackgroundColor="#F9DDD3"
+        Shell.BackgroundColor="Cornsilk"
         Shell.TabBarIsVisible="false"
         Shell.TitleColor="Black">
 
