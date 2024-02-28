@@ -70,6 +70,7 @@
 	  <None Remove="Resources\Images\defaultPFP.png" />
 	  <None Remove="Resources\Images\home_icon.png" />
 	  <None Remove="Resources\Images\music.png" />
+	  <None Remove="Resources\Images\notFound.jpg" />
 	  <None Remove="Resources\Images\profile_icon.png" />
 	  <None Remove="Resources\Images\woman.png" />
 	</ItemGroup>

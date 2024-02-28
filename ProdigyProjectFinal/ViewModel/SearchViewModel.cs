@@ -15,6 +15,7 @@ namespace ProdigyProjectFinal.ViewModel
         private readonly UserService _userService;
         private string _searchRequest;
         private List<Book> _books;
+        private Book SelectedBook;
         public string SearchRequest
         {
             get => _searchRequest;
@@ -24,7 +25,19 @@ namespace ProdigyProjectFinal.ViewModel
                 OnPropertyChange(nameof(SearchRequest));
             }
         }
+        public Book SelectedB
+        {
+            get => SelectedBook;
+            set
+            {
+                if (SelectedBook != value)
+                {
 
+                }
+                SelectedBook = value;
+                OnPropertyChange(nameof(SelectedB));
+            }
+        }
         public List<Book> Books
         {
             get => _books;
@@ -34,6 +47,8 @@ namespace ProdigyProjectFinal.ViewModel
                 OnPropertyChange(nameof(Books));
             }
         }
+
+        
 
         public ICommand SearchCommand { get; protected set; }
 

@@ -24,7 +24,7 @@ namespace ProdigyProjectFinal.Models
             AuthorName = authorName;
             Title = title;
             ISBN = iSBN;
-            ISBNstring = $"https://covers.openlibrary.org/b/isbn/{ISBN}-S.jpg";
+            ISBNstring = $"https://covers.openlibrary.org/b/isbn/{ISBN}-L.jpg";
         }
     }
 }

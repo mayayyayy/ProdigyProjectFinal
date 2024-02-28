@@ -27,53 +27,70 @@
 
 
         <SearchBar
-                Margin="15,0,90,0"
                 BackgroundColor="#ccc2cb"
                 FontFamily="lamarkieFont"
-                FontSize="30"
-                HorizontalOptions="Fill"
+                FontSize="28"
+                HeightRequest="100"
+                IsTextPredictionEnabled="True"
                 SearchCommand="{Binding SearchCommand}"
                 Text="{Binding SearchRequest}"
-                VerticalOptions="Fill" />
+                WidthRequest="900" />
 
         <Grid
-                Margin="40,0,-300,0"
+                Margin="30,0,-350,0"
                 ColumnDefinitions="*,*"
                 RowDefinitions="*,*">
             <Border
                     Grid.Column="0"
-                    Margin="2,20,90,0"
+                    Margin="0,25,30,0"
                     Padding="10"
                     BackgroundColor="DarkSeaGreen"
                     StrokeShape="RoundRectangle 30"
                     StrokeThickness="0">
 
-                <VerticalStackLayout Padding="10">
+                <VerticalStackLayout Padding="15">
                     <CollectionView
+                            Margin="2,0,80,0"
                             BackgroundColor="DarkSeaGreen"
-                            HeightRequest="400"
+                            HeightRequest="370"
                             HorizontalOptions="Fill"
                             ItemsSource="{Binding Books}"
+                            SelectedItem="{Binding SelectedB}"
                             VerticalOptions="Center"
-                            WidthRequest="100">
+                            WidthRequest="450">
 
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:Book">
                                 <VerticalStackLayout>
-                                    <Label
-                                            Margin="0,0,10,-5"
-                                            FontFamily="lamarkieFont"
-                                            FontSize="10"
-                                            Text="{Binding AuthorName}" />
+                                    <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
 
-                                    <Label
-                                            Margin="30,0,-10,-90"
-                                            FontFamily="lamarkieFont"
-                                            FontSize="10"
-                                            Text="{Binding Title}" />
 
-                                    <Image Source="{Binding ISBNstring}" />
+                                        <Label
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Margin="10,20,0,-25"
+                                                CharacterSpacing="1"
+                                                FontFamily="lamarkieFont"
+                                                FontSize="15"
+                                                Text="{Binding AuthorName}" />
 
+                                        <Label
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                Margin="10,20,0,80"
+                                                CharacterSpacing="1"
+                                                FontFamily="lamarkieFont"
+                                                FontSize="15"
+                                                Text="{Binding Title}" />
+
+                                        <Image
+                                                Grid.Row="0"
+                                                Grid.RowSpan="2"
+                                                Grid.Column="1"
+                                                Margin="20,0,0,50"
+                                                Source="{Binding ISBNstring}"
+                                                WidthRequest="175" />
+                                    </Grid>
                                 </VerticalStackLayout>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
