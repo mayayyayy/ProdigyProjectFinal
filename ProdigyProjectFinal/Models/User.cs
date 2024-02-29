@@ -15,6 +15,7 @@ namespace ProdigyProjectFinal.Models
         public string LastName { get; set; }
         public string UserPswd { get; set; }
         public string Email { get; set; }
+        public List<UsersStarredBook> UsersStarredBooks { get; set; }
         public User()
         {
             Id = 0;
@@ -23,6 +24,7 @@ namespace ProdigyProjectFinal.Models
             LastName = "";
             UserPswd = "";
             Email = "";
+            UsersStarredBooks = new();
         }
     }
 }

@@ -32,10 +32,13 @@ namespace ProdigyProjectFinal.ViewModel
             {
                 if (SelectedBook != value)
                 {
+                    SelectedBook = value;
+                    StarBook(SelectedBook.ISBN);
 
+
+                    OnPropertyChange(nameof(SelectedB));
+                    OnPropertyChange(nameof(Books));
                 }
-                SelectedBook = value;
-                OnPropertyChange(nameof(SelectedB));
             }
         }
         public List<Book> Books
@@ -48,6 +51,8 @@ namespace ProdigyProjectFinal.ViewModel
             }
         }
 
+
+        public bool IsSelectedBookStarred => SelectedB == null? false : _userService.User.UsersStarredBooks.Any(x => x.BookISBN == SelectedB.ISBN);
         
 
         public ICommand SearchCommand { get; protected set; }
@@ -76,6 +81,11 @@ namespace ProdigyProjectFinal.ViewModel
 
 
         }
+        private async void StarBook(string isbn)
+        {
+            await _services.StarBook(SelectedBook.ISBN);
+        }
+
         private bool validateQuery()
         {
             return !string.IsNullOrEmpty(SearchRequest) && SearchRequest.Length > 0;

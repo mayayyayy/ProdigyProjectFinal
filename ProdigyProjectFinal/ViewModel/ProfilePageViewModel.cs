@@ -9,7 +9,7 @@ using System.Windows.Input;
 using ProdigyProjectFinal.Models;
 using System.Net;
 
-// POETRY APP! 
+
 
 namespace ProdigyProjectFinal.ViewModel
 {
