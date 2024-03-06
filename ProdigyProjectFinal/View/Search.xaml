@@ -70,7 +70,7 @@
                                         <Label
                                                 Grid.Row="0"
                                                 Grid.Column="0"
-                                                Margin="10,20,0,-25"
+                                                Margin="0,10,50,-50"
                                                 CharacterSpacing="1"
                                                 FontFamily="lamarkieFont"
                                                 FontSize="15"
@@ -79,7 +79,7 @@
                                         <Label
                                                 Grid.Row="1"
                                                 Grid.Column="0"
-                                                Margin="10,20,0,80"
+                                                Margin="10,5,0,90"
                                                 CharacterSpacing="1"
                                                 FontFamily="lamarkieFont"
                                                 FontSize="15"
@@ -88,9 +88,11 @@
                                         <Image
                                                 Grid.Row="1"
                                                 Grid.Column="0"
-                                                Margin="20,0,0,50"
-                                                Source="star.jpg"
-                                                WidthRequest="100" />
+                                                Margin="0,50,20,20"
+                                                HeightRequest="90"
+                                                HorizontalOptions="Start"
+                                                Source="starempty.png"
+                                                WidthRequest="90" />
 
                                         <Image
                                                 Grid.Row="0"

@@ -2,10 +2,12 @@
 using ProdigyProjectFinal.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+
 
 namespace ProdigyProjectFinal.ViewModel
 {
@@ -41,19 +43,7 @@ namespace ProdigyProjectFinal.ViewModel
                 }
             }
         }
-        public List<Book> Books
-        {
-            get => _books;
-            set
-            {
-                _books = value;
-                OnPropertyChange(nameof(Books));
-            }
-        }
-
-
-        public bool IsSelectedBookStarred => SelectedB == null? false : _userService.User.UsersStarredBooks.Any(x => x.BookISBN == SelectedB.ISBN);
-        
+        public ObservableCollection<Book> Books   { get;set;}
 
         public ICommand SearchCommand { get; protected set; }
 
@@ -61,7 +51,7 @@ namespace ProdigyProjectFinal.ViewModel
         {
             this._services = services;
             this._userService = userService;
-
+            Books = new ObservableCollection<Book>();
             SearchCommand = new Command(async () =>
             {
                 if (!validateQuery())
@@ -72,7 +62,14 @@ namespace ProdigyProjectFinal.ViewModel
 
                 try
                 {
-                  Books =  await services.SearchAsync(SearchRequest); 
+                    Books.Clear();
+                    var bookCollection=await services.SearchAsync(SearchRequest); 
+                    foreach(var book in bookCollection) 
+                    {
+                        if(book.IsStarred) { book.IconImage = "starcoloured.png"; }
+                        Books.Add(book);    
+                    }
+                    
                 }
                 catch { Exception e; }
                

@@ -134,7 +134,7 @@
 
                     <Label
                             Margin="0,-35,0,0"
-                            CharacterSpacing="1"
+                            CharacterSpacing="1.6"
                             FontFamily="lamarkieFont"
                             FontSize="Large"
                             HeightRequest="700"
