@@ -14,13 +14,10 @@ public static class MauiProgram
 			.UseMauiApp<App>()
 			.ConfigureFonts(fonts =>
 			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-				fonts.AddFont("The_Juke_Box-FFP.ttf","MusicFont");
-				fonts.AddFont("RobotoMono-VariableFont_wght.ttf", "robotoFont");
                 fonts.AddFont("Lamarkie.otf", "lamarkieFont");
-                fonts.AddFont("Beckan_Regular.otf", "beckanFont");
-			});
+                fonts.AddFont("boho.otf", "bohoFont");
+                fonts.AddFont("assassins.ttf", "assassinsFont");
+            });
 
         builder.Services.AddSingleton<AppShellViewModel>();
         builder.Services.AddSingleton<MainPage>();

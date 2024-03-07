@@ -4,35 +4,26 @@
         xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
         xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
-        Title="Home"
         x:DataType="viewmodel:HomeViewModel"
         BackgroundColor="Cornsilk"
         FlowDirection="LeftToRight"
         Shell.BackgroundColor="Cornsilk"
         Shell.TabBarIsVisible="false">
 
-    <Grid
-            Margin="9,20,30,30"
-            ColumnDefinitions="*,*"
-            RowDefinitions="*,*">
+    <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
         <VerticalStackLayout>
 
             <Button
-                    Grid.Row="0"
-                    Grid.Column="1"
                     Margin="20,20,200,20"
                     BackgroundColor="#01403E"
                     CharacterSpacing="1"
                     Command="{Binding GoToProfile}"
                     FontFamily="lamarkieFont"
                     FontSize="40"
-                    HorizontalOptions="End"
                     Text="profile"
                     TextColor="#ccd8d8" />
 
             <Button
-                    Grid.Row="1"
-                    Grid.Column="0"
                     Margin="20,20,200,0"
                     BackgroundColor="#01403E"
                     Command="{Binding GoToSearch}"

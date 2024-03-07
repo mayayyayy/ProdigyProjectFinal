@@ -20,37 +20,38 @@
 
             <StackLayout>
 
-                <Image Margin="750,0,80,-70" Source="book.png" />
+
                 <Label
-                        Margin="50,30,0,90"
-                        CharacterSpacing="2"
+                        Padding="50"
+                        CharacterSpacing="1"
                         FontFamily="lamarkieFont"
-                        FontSize="70"
+                        FontSize="65"
                         HorizontalOptions="Center"
-                        Text="welcome to prodigy"
+                        Text="welcome to prodigy ✧˖°.🎧📖"
                         VerticalOptions="Center" />
 
-
-
                 <Label
-                        Margin="245,-65,10,40"
                         CharacterSpacing="2"
-                        FontFamily="lamarkieFont"
-                        FontSize="25"
-                        Text="for readers, by readers " />
+                        FontFamily="assassinsFont"
+                        FontSize="45"
+                        HorizontalOptions="Center"
+                        Text="for readers, by readers "
+                        VerticalOptions="Center" />
 
             </StackLayout>
 
             <StackLayout
+                    Margin="0,90,0,0"
                     HorizontalOptions="Center"
                     Orientation="Horizontal"
-                    Spacing="50">
+                    Spacing="35">
+
                 <Button
                         BackgroundColor="#668C8B"
                         CharacterSpacing="2"
                         Command="{Binding GoToLoginBtn}"
                         FontFamily="lamarkieFont"
-                        FontSize="42"
+                        FontSize="40"
                         HeightRequest="145"
                         HorizontalOptions="Start"
                         Text="login"
@@ -60,7 +61,7 @@
                         CharacterSpacing="2"
                         Command="{Binding GoToSignUpBtn}"
                         FontFamily="lamarkieFont"
-                        FontSize="42"
+                        FontSize="40"
                         HeightRequest="145"
                         HorizontalOptions="End"
                         Text="sign up"

@@ -9,7 +9,7 @@
         x:DataType="viewmodel:ProfilePageViewModel"
         BackgroundColor="Cornsilk"
         FlowDirection="LeftToRight"
-        Shell.BackgroundColor="DarkSeaGreen"
+        Shell.BackgroundColor="#a3b899"
         Shell.FlyoutItemIsVisible="True"
         Shell.TabBarBackgroundColor="Cornsilk"
         Shell.TabBarForegroundColor="Cornsilk"
@@ -22,7 +22,7 @@
             <Border
                     Grid.Column="0"
                     Margin="70,50,0,0"
-                    HeightRequest="440"
+                    HeightRequest="470"
                     HorizontalOptions="Start"
                     StrokeShape="RoundRectangle 30"
                     StrokeThickness="0"
@@ -31,7 +31,7 @@
 
                 <VerticalStackLayout
                         Padding="35"
-                        BackgroundColor="#ccc2cb"
+                        BackgroundColor="#668C8B"
                         HorizontalOptions="Center"
                         Spacing="20"
                         VerticalOptions="Center"
@@ -41,7 +41,7 @@
                         <Label
                                 CharacterSpacing="1"
                                 FontFamily="lamarkieFont"
-                                FontSize="20"
+                                FontSize="23"
                                 StyleClass="LoginLbl"
                                 Text="change username" />
                         <Entry
@@ -52,7 +52,7 @@
 
 
                     <Button
-                            BackgroundColor="DarkSeaGreen"
+                            BackgroundColor="#a3b899"
                             CharacterSpacing="1"
                             Command="{Binding ChangeUsernameBtn}"
                             FontFamily="lamarkieFont"
@@ -65,7 +65,7 @@
                         <Label
                                 CharacterSpacing="1"
                                 FontFamily="lamarkieFont"
-                                FontSize="20"
+                                FontSize="23"
                                 StyleClass="LoginLbl"
                                 Text="change password" />
                         <Entry
@@ -77,7 +77,7 @@
                     <Button
                             Grid.Row="3"
                             Grid.Column="1"
-                            BackgroundColor="DarkSeaGreen"
+                            BackgroundColor="#a3b899"
                             CharacterSpacing="1"
                             Command="{Binding ChangePasswordBtn}"
                             FontFamily="lamarkieFont"
@@ -125,7 +125,7 @@
                     VerticalOptions="Start">
                 <VerticalStackLayout
                         Padding="35"
-                        BackgroundColor="DarkSeaGreen"
+                        BackgroundColor="#a3b899"
                         HorizontalOptions="Fill"
                         Spacing="20"
                         VerticalOptions="Center"

@@ -80,7 +80,19 @@ namespace ProdigyProjectFinal.ViewModel
         }
         private async void StarBook(string isbn)
         {
-            await _services.StarBook(SelectedBook.ISBN);
+            var success= await _services.StarBook(isbn);
+            if (success)
+            {
+                //find from Books selected book, update IsStarred to true, remove fromm Books, and refresh 
+                int i = Books.IndexOf(Books.Where(x => x.ISBN == isbn).FirstOrDefault());
+                Book book = Books[i];
+                book.IsStarred = !book.IsStarred;
+                if (book.IsStarred) { book.IconImage = "starcoloured.png"; }
+                else book.IconImage = "starempty.png";
+                Books.Remove(book);
+                Books.Insert(i, book);  
+            }
+
         }
 
         private bool validateQuery()

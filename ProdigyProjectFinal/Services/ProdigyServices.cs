@@ -61,10 +61,10 @@ namespace ProdigyProjectFinal.Services
             return null;
         }
 
-        public async Task<HttpStatusCode> StarBook(string isbn)
+        public async Task<bool> StarBook(string isbn) 
         {
             var response = await _httpClient.GetAsync($"{URL}StarBook?isbn={isbn}");
-            return response.StatusCode;
+            return response.StatusCode == HttpStatusCode.OK;
         }
 
         public async Task<List<Book>> SearchAsync(string AuthorName)

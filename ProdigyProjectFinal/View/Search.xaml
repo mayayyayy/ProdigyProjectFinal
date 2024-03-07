@@ -24,7 +24,7 @@
                 Margin="30,0,0,0"
                 FontFamily="lamarkieFont"
                 FontSize="35"
-                Text="search" />
+                Text="what are you looking for?" />
 
 
         <SearchBar
@@ -91,21 +91,22 @@
                                                 Margin="0,50,20,20"
                                                 HeightRequest="90"
                                                 HorizontalOptions="Start"
-                                                Source="starempty.png"
-                                                WidthRequest="90" />
+                                                Source="{Binding IconImage}"
+                                                WidthRequest="90">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.StarBook, Source={x:Reference SearchContent}}" CommandParameter="{Binding ISBN}" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
 
                                         <Image
                                                 Grid.Row="0"
                                                 Grid.RowSpan="2"
                                                 Grid.Column="1"
                                                 Margin="20,0,0,50"
-                                                Source="{Binding ISBNstring}"
+                                                Source="{Binding BookImage}"
                                                 WidthRequest="175" />
 
-                                        <Label
-                                                FontSize="9"
-                                                IsVisible="{Binding Source={Reference SearchContent}, Path=BindingContext.IsSelectedBookStarred}"
-                                                Text="Starred" />
+
                                     </Grid>
                                 </VerticalStackLayout>
                             </DataTemplate>

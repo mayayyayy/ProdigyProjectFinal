@@ -62,10 +62,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Fonts\Beckan_Regular.otf" />
+	  <None Remove="Resources\Fonts\assassins.ttf" />
+	  <None Remove="Resources\Fonts\boho.otf" />
 	  <None Remove="Resources\Fonts\Lamarkie.otf" />
-	  <None Remove="Resources\Fonts\RobotoMono-VariableFont_wght.ttf" />
-	  <None Remove="Resources\Fonts\The_Juke_Box-FFP.ttf" />
 	  <None Remove="Resources\Images\book.png" />
 	  <None Remove="Resources\Images\defaultPFP.png" />
 	  <None Remove="Resources\Images\home_icon.png" />
