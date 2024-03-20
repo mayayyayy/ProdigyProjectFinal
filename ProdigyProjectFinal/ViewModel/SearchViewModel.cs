@@ -35,9 +35,11 @@ namespace ProdigyProjectFinal.ViewModel
                 if (SelectedBook != value)
                 {
                     SelectedBook = value;
-                    StarBook(SelectedBook.ISBN);
-
-
+                    if (SelectedBook != null)
+                    {
+                        StarBook(SelectedBook.ISBN);
+                    }
+                    
                     OnPropertyChange(nameof(SelectedB));
                     OnPropertyChange(nameof(Books));
                 }
@@ -89,8 +91,10 @@ namespace ProdigyProjectFinal.ViewModel
                 book.IsStarred = !book.IsStarred;
                 if (book.IsStarred) { book.IconImage = "starcoloured.png"; }
                 else book.IconImage = "starempty.png";
-                Books.Remove(book);
+                
+                Books.RemoveAt(i);
                 Books.Insert(i, book);  
+                
             }
 
         }

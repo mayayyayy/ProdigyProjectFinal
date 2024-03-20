@@ -22,18 +22,19 @@
 
 
                 <Label
-                        Padding="50"
+                        Margin="0,0,0,-90"
+                        Padding="120"
                         CharacterSpacing="1"
-                        FontFamily="lamarkieFont"
+                        FontFamily="oliverFont"
                         FontSize="65"
                         HorizontalOptions="Center"
-                        Text="welcome to prodigy ✧˖°.🎧📖"
+                        Text="welcome to prodigy "
                         VerticalOptions="Center" />
 
                 <Label
                         CharacterSpacing="2"
-                        FontFamily="assassinsFont"
-                        FontSize="45"
+                        FontFamily="lindenFont"
+                        FontSize="30"
                         HorizontalOptions="Center"
                         Text="for readers, by readers "
                         VerticalOptions="Center" />
@@ -50,7 +51,7 @@
                         BackgroundColor="#668C8B"
                         CharacterSpacing="2"
                         Command="{Binding GoToLoginBtn}"
-                        FontFamily="lamarkieFont"
+                        FontFamily="lindenFont"
                         FontSize="40"
                         HeightRequest="145"
                         HorizontalOptions="Start"
@@ -60,7 +61,7 @@
                         BackgroundColor="#668C8B"
                         CharacterSpacing="2"
                         Command="{Binding GoToSignUpBtn}"
-                        FontFamily="lamarkieFont"
+                        FontFamily="lindenFont"
                         FontSize="40"
                         HeightRequest="145"
                         HorizontalOptions="End"

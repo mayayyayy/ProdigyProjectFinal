@@ -64,7 +64,11 @@
 	<ItemGroup>
 	  <None Remove="Resources\Fonts\assassins.ttf" />
 	  <None Remove="Resources\Fonts\boho.otf" />
+	  <None Remove="Resources\Fonts\figtree.ttf" />
 	  <None Remove="Resources\Fonts\Lamarkie.otf" />
+	  <None Remove="Resources\Fonts\linden.ttf" />
+	  <None Remove="Resources\Fonts\mango.ttf" />
+	  <None Remove="Resources\Fonts\oliver.ttf" />
 	  <None Remove="Resources\Images\book.png" />
 	  <None Remove="Resources\Images\defaultPFP.png" />
 	  <None Remove="Resources\Images\home_icon.png" />

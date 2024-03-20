@@ -17,6 +17,10 @@ public static class MauiProgram
                 fonts.AddFont("Lamarkie.otf", "lamarkieFont");
                 fonts.AddFont("boho.otf", "bohoFont");
                 fonts.AddFont("assassins.ttf", "assassinsFont");
+                fonts.AddFont("mango.ttf", "mangoFont");
+                fonts.AddFont("figtree.ttf", "figtreeFont");
+                fonts.AddFont("oliver.ttf", "oliverFont");
+                fonts.AddFont("linden.ttf", "lindenFont");
             });
 
         builder.Services.AddSingleton<AppShellViewModel>();
