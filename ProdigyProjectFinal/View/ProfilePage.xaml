@@ -5,14 +5,11 @@
         xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
         xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
-        Title="Profile Page"
         x:DataType="viewmodel:ProfilePageViewModel"
         BackgroundColor="Cornsilk"
         FlowDirection="LeftToRight"
-        Shell.BackgroundColor="#a3b899"
+        Shell.BackgroundColor="cornsilk"
         Shell.FlyoutItemIsVisible="True"
-        Shell.TabBarBackgroundColor="Cornsilk"
-        Shell.TabBarForegroundColor="Cornsilk"
         Shell.TabBarIsVisible="true"
         Shell.TabBarTitleColor="Black">
     <VerticalStackLayout>
@@ -20,43 +17,41 @@
         <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
 
             <Border
-                    Grid.Column="0"
-                    Margin="70,50,0,0"
-                    HeightRequest="470"
-                    HorizontalOptions="Start"
+                    Margin="30,30,0,0"
                     StrokeShape="RoundRectangle 30"
-                    StrokeThickness="0"
-                    VerticalOptions="Start">
+                    StrokeThickness="0">
 
 
                 <VerticalStackLayout
                         Padding="35"
-                        BackgroundColor="#668C8B"
+                        BackgroundColor="#E8937D"
+                        HeightRequest="400"
                         HorizontalOptions="Center"
-                        Spacing="20"
+                        Spacing="22"
                         VerticalOptions="Center"
-                        WidthRequest="400">
+                        WidthRequest="450">
 
                     <VerticalStackLayout Spacing="10">
                         <Label
                                 CharacterSpacing="1"
-                                FontFamily="lamarkieFont"
-                                FontSize="23"
-                                StyleClass="LoginLbl"
+                                FontFamily="oliverFont"
+                                FontSize="35"
                                 Text="change username" />
                         <Entry
                                 BackgroundColor="Cornsilk"
+                                FontFamily="lindenFont"
+                                FontSize="15"
                                 StyleClass="LoginEntry"
                                 Text="{Binding NewUsername}" />
                     </VerticalStackLayout>
 
 
                     <Button
-                            BackgroundColor="#a3b899"
+                            BackgroundColor="#6E754B"
                             CharacterSpacing="1"
                             Command="{Binding ChangeUsernameBtn}"
-                            FontFamily="lamarkieFont"
-                            StyleClass="DarkBtn"
+                            FontFamily="lindenFont"
+                            FontSize="25"
                             Text="confirm"
                             TextColor="Black"
                             WidthRequest="150" />
@@ -64,24 +59,23 @@
                     <VerticalStackLayout Spacing="10">
                         <Label
                                 CharacterSpacing="1"
-                                FontFamily="lamarkieFont"
-                                FontSize="23"
+                                FontFamily="oliverFont"
+                                FontSize="35"
                                 StyleClass="LoginLbl"
                                 Text="change password" />
                         <Entry
                                 BackgroundColor="Cornsilk"
-                                StyleClass="LoginEntry"
+                                FontFamily="lindenFont"
+                                FontSize="15"
                                 Text="{Binding NewPassword}" />
                     </VerticalStackLayout>
 
                     <Button
-                            Grid.Row="3"
-                            Grid.Column="1"
-                            BackgroundColor="#a3b899"
+                            BackgroundColor="#6E754B"
                             CharacterSpacing="1"
                             Command="{Binding ChangePasswordBtn}"
-                            FontFamily="lamarkieFont"
-                            StyleClass="DarkBtn"
+                            FontFamily="lindenFont"
+                            FontSize="25"
                             Text="confirm"
                             TextColor="Black"
                             WidthRequest="150" />
@@ -89,28 +83,23 @@
                 </VerticalStackLayout>
             </Border>
 
-
-
-
-
-            <Label
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Margin="190,-100,20,0"
-                    CharacterSpacing="1"
-                    FontFamily="figtreeFont"
-                    FontSize="22"
-                    HeightRequest="620"
-                    HorizontalOptions="Center"
-                    Text="{Binding User.Username, StringFormat='current username: {0}'}"
-                    WidthRequest="400" />
-
             <Image
                     Grid.Row="0"
                     Grid.Column="1"
                     HeightRequest="280"
                     HorizontalOptions="Center"
                     Source="profile_icon.png"
+                    WidthRequest="400" />
+
+            <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    CharacterSpacing="1"
+                    FontFamily="lindenFont"
+                    FontSize="22"
+                    HeightRequest="620"
+                    HorizontalOptions="Center"
+                    Text="{Binding User.Username, StringFormat='current username: {0}'}"
                     WidthRequest="400" />
 
             <Border
@@ -135,11 +124,13 @@
                     <Label
                             Margin="0,-35,0,0"
                             CharacterSpacing="1.6"
-                            FontFamily="lamarkieFont"
-                            FontSize="Large"
+                            FontFamily="oliverFont"
+                            FontSize="50"
                             HeightRequest="700"
                             HorizontalOptions="Start"
                             Text="{Binding User.FirstName, StringFormat='{0}s favourite books'}" />
+
+                    <Image />
 
 
 

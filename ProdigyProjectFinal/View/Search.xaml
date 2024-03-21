@@ -21,16 +21,16 @@
     <VerticalStackLayout>
 
         <Label
-                Margin="30,0,0,0"
-                FontFamily="lamarkieFont"
-                FontSize="35"
-                Text="what are you looking for?" />
+                Margin="30,30,0,0"
+                FontFamily="oliverFont"
+                FontSize="60"
+                Text="search author" />
 
 
         <SearchBar
                 BackgroundColor="#ccc2cb"
-                FontFamily="lamarkieFont"
-                FontSize="28"
+                FontFamily="lindenFont"
+                FontSize="50"
                 HeightRequest="100"
                 IsTextPredictionEnabled="True"
                 SearchCommand="{Binding SearchCommand}"
@@ -42,8 +42,8 @@
                 ColumnDefinitions="*,*"
                 RowDefinitions="*,*">
             <Border
-                    Grid.Column="0"
-                    Margin="0,25,30,0"
+                    Grid.ColumnSpan="1"
+                    Margin="0,25,50,0"
                     Padding="10"
                     BackgroundColor="DarkSeaGreen"
                     StrokeShape="RoundRectangle 30"
@@ -64,47 +64,48 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:Book">
                                 <VerticalStackLayout>
-                                    <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
+                                    <Grid
+                                            Margin="20,10,0,0"
+                                            ColumnDefinitions="*,*"
+                                            RowDefinitions="*,*">
 
 
                                         <Label
                                                 Grid.Row="0"
-                                                Grid.Column="0"
                                                 Margin="0,10,50,-50"
                                                 CharacterSpacing="1"
-                                                FontFamily="lamarkieFont"
-                                                FontSize="15"
+                                                FontFamily="oliverFont"
+                                                FontSize="30"
                                                 Text="{Binding AuthorName}" />
 
                                         <Label
                                                 Grid.Row="1"
-                                                Grid.Column="0"
-                                                Margin="10,5,0,90"
+                                                Margin="0,-90,0,0"
                                                 CharacterSpacing="1"
-                                                FontFamily="lamarkieFont"
-                                                FontSize="15"
+                                                FontFamily="lindenFont"
+                                                FontSize="20"
                                                 Text="{Binding Title}" />
 
-                                        <Image
-                                                Grid.Row="1"
-                                                Grid.Column="0"
-                                                Margin="0,50,20,20"
-                                                HeightRequest="90"
-                                                HorizontalOptions="Start"
-                                                Source="{Binding IconImage}"
-                                                WidthRequest="90">
-                                            <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding BindingContext.StarBook, Source={x:Reference SearchContent}}" CommandParameter="{Binding ISBN}" />
-                                            </Image.GestureRecognizers>
-                                        </Image>
-
-                                        <Image
-                                                Grid.Row="0"
+                                        <Image 
                                                 Grid.RowSpan="2"
                                                 Grid.Column="1"
                                                 Margin="20,0,0,50"
                                                 Source="{Binding BookImage}"
                                                 WidthRequest="175" />
+
+                                        <Image
+                                                Margin="90,0,0,-150"
+                                                HeightRequest="115"
+                                                Source="{Binding IconImage}"
+                                                WidthRequest="100">
+
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.StarBook, Source={x:Reference SearchContent}}" CommandParameter="{Binding ISBN}" />
+                                            </Image.GestureRecognizers>
+
+                                        </Image>
+
+
 
 
                                     </Grid>

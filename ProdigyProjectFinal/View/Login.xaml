@@ -8,26 +8,11 @@
         BackgroundColor="Cornsilk"
         FlowDirection="LeftToRight"
         Shell.BackgroundColor="Cornsilk"
-        Shell.TabBarIsVisible="false"
-        Shell.TitleColor="Black">
+        Shell.TabBarIsVisible="false">
 
 
 
 
-    <ContentPage.Resources>
-
-        <ResourceDictionary>
-            <Style Class="LoginLbl" TargetType="Label">
-                <Setter Property="TextColor" Value="Black" />
-            </Style>
-
-            <Style Class="LoginEntry" TargetType="Entry">
-                <Setter Property="BackgroundColor" Value="Cornsilk" />
-                <Setter Property="FontSize" Value="16" />
-            </Style>
-        </ResourceDictionary>
-
-    </ContentPage.Resources>
 
     <Border
             HorizontalOptions="Center"
@@ -38,7 +23,7 @@
 
         <VerticalStackLayout
                 Padding="35"
-                BackgroundColor="#668C8B"
+                BackgroundColor="#E8937D"
                 HorizontalOptions="Center"
                 Spacing="20"
                 VerticalOptions="Center"
@@ -49,8 +34,8 @@
                 <Label
                         Margin="0,10,0,10"
                         CharacterSpacing="1"
-                        FontFamily="lamarkieFont"
-                        FontSize="32"
+                        FontFamily="oliverFont"
+                        FontSize="38"
                         HorizontalOptions="Start"
                         StyleClass="LoginLbl"
                         Text="username" />
@@ -60,8 +45,8 @@
             <VerticalStackLayout>
                 <Label
                         CharacterSpacing="1"
-                        FontFamily="lamarkieFont"
-                        FontSize="32"
+                        FontFamily="oliverFont"
+                        FontSize="38"
                         HorizontalOptions="Start"
                         StyleClass="LoginLbl"
                         Text="password" />
@@ -79,21 +64,21 @@
                     Spacing="15">
 
                 <Button
-                        BackgroundColor="#a3b899"
+                        BackgroundColor="#6E754B"
                         CharacterSpacing="1"
                         Command="{Binding BtnCommand}"
-                        FontFamily="lamarkieFont"
-                        FontSize="30"
+                        FontFamily="lindenFont"
+                        FontSize="40"
                         Text="login"
-                        TextColor="Black"
+                        TextColor="White"
                         WidthRequest="210" />
                 <Button
-                        BackgroundColor="#a3b899"
+                        BackgroundColor="#6E754B"
                         Command="{Binding BackBtn}"
-                        FontFamily="lamarkieFont"
-                        FontSize="30"
+                        FontFamily="lindenFont"
+                        FontSize="40"
                         Text="back"
-                        TextColor="Black"
+                        TextColor="White"
                         WidthRequest="210" />
 
 

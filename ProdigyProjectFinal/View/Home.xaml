@@ -15,22 +15,22 @@
 
             <Button
                     Margin="20,20,200,20"
-                    BackgroundColor="#01403E"
+                    BackgroundColor="#E8937D"
                     CharacterSpacing="1"
                     Command="{Binding GoToProfile}"
                     FontFamily="lamarkieFont"
                     FontSize="40"
                     Text="profile"
-                    TextColor="#ccd8d8" />
+                    TextColor="white" />
 
             <Button
                     Margin="20,20,200,0"
-                    BackgroundColor="#01403E"
+                    BackgroundColor="#E8937D"
                     Command="{Binding GoToSearch}"
                     FontFamily="lamarkieFont"
                     FontSize="40"
                     Text="search"
-                    TextColor="#ccd8d8" />
+                    TextColor="white" />
 
 
 
