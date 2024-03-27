@@ -10,7 +10,7 @@
         x:DataType="viewmodel:SearchViewModel"
         BackgroundColor="Cornsilk"
         FlowDirection="LeftToRight"
-        Shell.BackgroundColor="DarkSeaGreen"
+        Shell.BackgroundColor="Cornsilk"
         Shell.FlyoutItemIsVisible="True"
         Shell.TabBarBackgroundColor="Cornsilk"
         Shell.TabBarIsVisible="true"
@@ -28,7 +28,7 @@
 
 
         <SearchBar
-                BackgroundColor="#ccc2cb"
+                BackgroundColor="#6E754B"
                 FontFamily="lindenFont"
                 FontSize="50"
                 HeightRequest="100"
@@ -45,14 +45,14 @@
                     Grid.ColumnSpan="1"
                     Margin="0,25,50,0"
                     Padding="10"
-                    BackgroundColor="DarkSeaGreen"
+                    BackgroundColor="#a3b899"
                     StrokeShape="RoundRectangle 30"
                     StrokeThickness="0">
 
                 <VerticalStackLayout Padding="15">
                     <CollectionView
                             Margin="2,0,80,0"
-                            BackgroundColor="DarkSeaGreen"
+                            BackgroundColor="#a3b899"
                             HeightRequest="370"
                             HorizontalOptions="Fill"
                             ItemsSource="{Binding Books}"
@@ -86,7 +86,7 @@
                                                 FontSize="20"
                                                 Text="{Binding Title}" />
 
-                                        <Image 
+                                        <Image
                                                 Grid.RowSpan="2"
                                                 Grid.Column="1"
                                                 Margin="20,0,0,50"

@@ -11,23 +11,48 @@
         Shell.TabBarIsVisible="false">
 
     <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
-        <VerticalStackLayout>
+
+
+        <Border
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Margin="0,20,40,100"
+                BackgroundColor="#E8937D"
+                StrokeShape="RoundRectangle 30"
+                StrokeThickness="0">
+
+            <VerticalStackLayout Grid.RowSpan="2" Grid.Column="1">
+
+                <Label
+                        Padding="20"
+                        FontSize="50"
+                        Text="HEY" />
+
+            </VerticalStackLayout>
+
+
+        </Border>
+
+        <VerticalStackLayout
+                HeightRequest="200"
+                Spacing="0"
+                WidthRequest="450">
 
             <Button
                     Margin="20,20,200,20"
-                    BackgroundColor="#E8937D"
+                    BackgroundColor="#6E754B"
                     CharacterSpacing="1"
                     Command="{Binding GoToProfile}"
-                    FontFamily="lamarkieFont"
+                    FontFamily="oliverFont"
                     FontSize="40"
                     Text="profile"
                     TextColor="white" />
 
             <Button
                     Margin="20,20,200,0"
-                    BackgroundColor="#E8937D"
+                    BackgroundColor="#6E754B"
                     Command="{Binding GoToSearch}"
-                    FontFamily="lamarkieFont"
+                    FontFamily="oliverFont"
                     FontSize="40"
                     Text="search"
                     TextColor="white" />
@@ -36,5 +61,6 @@
 
 
         </VerticalStackLayout>
+
     </Grid>
 </ContentPage>

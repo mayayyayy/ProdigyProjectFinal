@@ -4,6 +4,7 @@
         x:Class="ProdigyProjectFinal.View.ProfilePage"
         xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:models="clr-namespace:ProdigyProjectFinal.Models"
         xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
         x:DataType="viewmodel:ProfilePageViewModel"
         BackgroundColor="Cornsilk"
@@ -12,6 +13,15 @@
         Shell.FlyoutItemIsVisible="True"
         Shell.TabBarIsVisible="true"
         Shell.TabBarTitleColor="Black">
+
+    <!--
+        #4b6e75 blue
+        #a3b899 light green
+        #6E754B dark green
+    -->
+
+
+
     <VerticalStackLayout>
 
         <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
@@ -24,7 +34,7 @@
 
                 <VerticalStackLayout
                         Padding="35"
-                        BackgroundColor="#E8937D"
+                        BackgroundColor="#4b6e75"
                         HeightRequest="400"
                         HorizontalOptions="Center"
                         Spacing="22"
@@ -36,7 +46,8 @@
                                 CharacterSpacing="1"
                                 FontFamily="oliverFont"
                                 FontSize="35"
-                                Text="change username" />
+                                Text="change username"
+                                TextColor="Cornsilk" />
                         <Entry
                                 BackgroundColor="Cornsilk"
                                 FontFamily="lindenFont"
@@ -47,7 +58,7 @@
 
 
                     <Button
-                            BackgroundColor="#6E754B"
+                            BackgroundColor="#a3b899"
                             CharacterSpacing="1"
                             Command="{Binding ChangeUsernameBtn}"
                             FontFamily="lindenFont"
@@ -71,7 +82,7 @@
                     </VerticalStackLayout>
 
                     <Button
-                            BackgroundColor="#6E754B"
+                            BackgroundColor="#a3b899"
                             CharacterSpacing="1"
                             Command="{Binding ChangePasswordBtn}"
                             FontFamily="lindenFont"
@@ -96,7 +107,7 @@
                     Grid.Column="1"
                     CharacterSpacing="1"
                     FontFamily="lindenFont"
-                    FontSize="22"
+                    FontSize="25"
                     HeightRequest="620"
                     HorizontalOptions="Center"
                     Text="{Binding User.Username, StringFormat='current username: {0}'}"
@@ -114,7 +125,7 @@
                     VerticalOptions="Start">
                 <VerticalStackLayout
                         Padding="35"
-                        BackgroundColor="#a3b899"
+                        BackgroundColor="#6E754B"
                         HorizontalOptions="Fill"
                         Spacing="20"
                         VerticalOptions="Center"
@@ -130,8 +141,14 @@
                             HorizontalOptions="Start"
                             Text="{Binding User.FirstName, StringFormat='{0}s favourite books'}" />
 
-                    <Image />
-
+                    <CollectionView HeightRequest="200" ItemsSource="{Binding User.UsersStarredBooks}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:UsersStarredBook">
+                                <Label FontSize="30" Text="HEYY" />
+                                <!--<Image HeightRequest="200" Source="{Binding BookImage}" />-->
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
 
 
 

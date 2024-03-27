@@ -48,7 +48,7 @@
                     Spacing="35">
 
                 <Button
-                        BackgroundColor="#E8937D"
+                        BackgroundColor="#6E754B"
                         CharacterSpacing="2"
                         Command="{Binding GoToLoginBtn}"
                         FontFamily="lindenFont"
@@ -58,7 +58,7 @@
                         Text="login"
                         WidthRequest="250" />
                 <Button
-                        BackgroundColor="#E8937D"
+                        BackgroundColor="#6E754B"
                         CharacterSpacing="2"
                         Command="{Binding GoToSignUpBtn}"
                         FontFamily="lindenFont"

@@ -18,6 +18,17 @@ namespace ProdigyProjectFinal.ViewModel
         private string _searchRequest;
         private List<Book> _books;
         private Book SelectedBook;
+        private User _user;
+
+        public User User
+        {
+            get => _user;
+            set
+            {
+                _user = value;
+                OnPropertyChange(nameof(User));
+            }
+        }
         public string SearchRequest
         {
             get => _searchRequest;
@@ -53,6 +64,7 @@ namespace ProdigyProjectFinal.ViewModel
         {
             this._services = services;
             this._userService = userService;
+            User = _userService.User;
             Books = new ObservableCollection<Book>();
             SearchCommand = new Command(async () =>
             {
@@ -82,10 +94,13 @@ namespace ProdigyProjectFinal.ViewModel
         }
         private async void StarBook(string isbn)
         {
+
             var success= await _services.StarBook(isbn);
+            
             if (success)
             {
-                //find from Books selected book, update IsStarred to true, remove fromm Books, and refresh 
+                User.UsersStarredBooks.Add(new UsersStarredBook() { BookISBN = isbn, User = User });
+                //find from Books selected book, update IsStarred to true, remove from Books, and refresh 
                 int i = Books.IndexOf(Books.Where(x => x.ISBN == isbn).FirstOrDefault());
                 Book book = Books[i];
                 book.IsStarred = !book.IsStarred;
