@@ -24,7 +24,7 @@
 
     <VerticalStackLayout>
 
-        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
+        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*">
 
             <Border
                     Margin="30,30,0,0"
@@ -33,13 +33,11 @@
 
 
                 <VerticalStackLayout
-                        Padding="35"
+                        Padding="36"
                         BackgroundColor="#4b6e75"
-                        HeightRequest="400"
-                        HorizontalOptions="Center"
+                        HeightRequest="410"
                         Spacing="22"
-                        VerticalOptions="Center"
-                        WidthRequest="450">
+                        WidthRequest="410">
 
                     <VerticalStackLayout Spacing="10">
                         <Label
@@ -47,7 +45,7 @@
                                 FontFamily="oliverFont"
                                 FontSize="35"
                                 Text="change username"
-                                TextColor="Cornsilk" />
+                                TextColor="Black" />
                         <Entry
                                 BackgroundColor="Cornsilk"
                                 FontFamily="lindenFont"
@@ -92,12 +90,14 @@
                             WidthRequest="150" />
 
                 </VerticalStackLayout>
+
             </Border>
+
 
             <Image
                     Grid.Row="0"
                     Grid.Column="1"
-                    HeightRequest="280"
+                    HeightRequest="310"
                     HorizontalOptions="Center"
                     Source="profile_icon.png"
                     WidthRequest="400" />
@@ -109,44 +109,53 @@
                     FontFamily="lindenFont"
                     FontSize="25"
                     HeightRequest="620"
-                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
                     Text="{Binding User.Username, StringFormat='current username: {0}'}"
                     WidthRequest="400" />
 
+
+
             <Border
                     Grid.Row="1"
-                    Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Margin="80,50,0,0"
+                    Margin="0,-200,0,0"
+                    Padding="20"
+                    BackgroundColor="#6E754B"
                     HeightRequest="300"
-                    HorizontalOptions="Start"
+                    HorizontalOptions="Center"
                     StrokeShape="RoundRectangle 30"
                     StrokeThickness="0"
-                    VerticalOptions="Start">
-                <VerticalStackLayout
-                        Padding="35"
-                        BackgroundColor="#6E754B"
-                        HorizontalOptions="Fill"
-                        Spacing="20"
-                        VerticalOptions="Center"
-                        WidthRequest="800">
+                    VerticalOptions="Center">
+
+                <VerticalStackLayout>
 
 
                     <Label
-                            Margin="0,-35,0,0"
                             CharacterSpacing="1.6"
                             FontFamily="oliverFont"
                             FontSize="50"
-                            HeightRequest="700"
                             HorizontalOptions="Start"
                             Text="{Binding User.FirstName, StringFormat='{0}s favourite books'}" />
 
-                    <CollectionView HeightRequest="200" ItemsSource="{Binding User.UsersStarredBooks}">
+                    <CollectionView
+                            HeightRequest="200"
+                            HorizontalOptions="Center"
+                            ItemsLayout="HorizontalList"
+                            ItemsSource="{Binding User.UsersStarredBooks}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:UsersStarredBook">
-                                <Label FontSize="30" Text="HEYY" />
-                                <!--<Image HeightRequest="200" Source="{Binding BookImage}" />-->
+
+                                <VerticalStackLayout>
+
+                                    <Image
+                                            Margin="0,0,10,0"
+                                            HeightRequest="200"
+                                            Source="{Binding BookImage}" />
+
+                                </VerticalStackLayout>
+
                             </DataTemplate>
+
                         </CollectionView.ItemTemplate>
                     </CollectionView>
 
