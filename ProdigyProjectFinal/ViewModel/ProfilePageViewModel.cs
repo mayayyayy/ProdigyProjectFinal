@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using ProdigyProjectFinal.Models;
 using System.Net;
-
-
+using System.Collections.ObjectModel;
 
 namespace ProdigyProjectFinal.ViewModel
 {
@@ -17,11 +16,12 @@ namespace ProdigyProjectFinal.ViewModel
     {
         private string ProfileImageUrl { get; set; }
 
+        public ObservableCollection<UsersStarredBook> UserBooks { get; set; }    
         private ProdigyServices _services;
         private readonly UserService _userService;
         public ICommand ChangeUsernameBtn { get; protected set; }
         public ICommand ChangePasswordBtn { get; protected set; }
-        
+        public ICommand RefreshCommand { get; protected set; }
      
 
         private string image;
@@ -34,6 +34,7 @@ namespace ProdigyProjectFinal.ViewModel
         private string _errorMessage;
         private bool _isErrorMessage;
         private User _user;
+        private bool isRefresh;
        
 
         private string _NEWusername;
@@ -46,6 +47,16 @@ namespace ProdigyProjectFinal.ViewModel
 
         #region get and set for fields
        
+        public bool IsRefresh
+        {
+            get => isRefresh;
+            set
+            {
+                isRefresh = value;  
+                OnPropertyChange();    
+            }
+
+        }
         public string NewUsername
         {
             get => _NEWusername;
@@ -164,8 +175,26 @@ namespace ProdigyProjectFinal.ViewModel
             this._userService = userService;
 
             User = _userService.User;
+            UserBooks = new ObservableCollection<UsersStarredBook>();
 
-           
+            //RefreshCommand = new Command(async () =>
+            //{
+            //    IsRefresh = true;
+            //    LoadBooks();    
+            //    OnPropertyChange(nameof(UserBooks));
+
+            //    IsRefresh = false;
+            //});
+
+            LoadBooks = new((s, e) =>
+            {
+                UserBooks.Clear();
+                foreach (var book in User.UsersStarredBooks)
+                {
+                    UserBooks.Add(book);
+                }
+                OnPropertyChange(nameof(UserBooks));
+            });
 
             #region change X
 
@@ -252,6 +281,9 @@ namespace ProdigyProjectFinal.ViewModel
             #endregion
 
         }
+
+        public EventHandler LoadBooks { get; private set; }
+
         private bool validateUsername()
         {
             return !string.IsNullOrEmpty(NewUsername) && NewUsername.Length > 0;

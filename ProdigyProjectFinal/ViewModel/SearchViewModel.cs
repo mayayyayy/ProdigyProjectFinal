@@ -26,7 +26,7 @@ namespace ProdigyProjectFinal.ViewModel
             set
             {
                 _user = value;
-                OnPropertyChange(nameof(User));
+                OnPropertyChange();
             }
         }
         public string SearchRequest

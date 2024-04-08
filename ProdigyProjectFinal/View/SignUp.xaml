@@ -20,29 +20,22 @@
                 StrokeShape="RoundRectangle 20"
                 StrokeThickness="0"
                 VerticalOptions="Center">
+
             <VerticalStackLayout
                     Padding="35"
-                    BackgroundColor="#668C8B"
-                    HorizontalOptions="Center"
+                    BackgroundColor="#a3b899"
                     Spacing="20"
-                    VerticalOptions="Center"
                     WidthRequest="500">
 
 
                 <VerticalStackLayout>
                     <Label
                             CharacterSpacing="2"
-                            FontFamily="lamarkieFont"
-                            FontSize="25"
-                            HorizontalOptions="Start"
-                            StyleClass="LoginLbl"
+                            FontFamily="oliverFont"
+                            FontSize="35"
                             Text="enter username" />
 
-                    <Entry
-                            Margin="0,5,0,0"
-                            BackgroundColor="Cornsilk"
-                            StyleClass="LoginEntry"
-                            Text="{Binding Username}" />
+                    <Entry BackgroundColor="Cornsilk" Text="{Binding Username}" />
                 </VerticalStackLayout>
 
 
@@ -50,16 +43,12 @@
 
                     <Label
                             CharacterSpacing="2"
-                            FontFamily="lamarkieFont"
-                            FontSize="25"
-                            HorizontalOptions="Start"
-                            StyleClass="LoginLbl"
+                            FontFamily="oliverFont"
+                            FontSize="35"
                             Text="enter password" />
                     <Entry
-                            Margin="0,5,0,0"
                             BackgroundColor="Cornsilk"
                             IsPassword="True"
-                            StyleClass="LoginEntry"
                             Text="{Binding Password}" />
                 </VerticalStackLayout>
 
@@ -68,16 +57,10 @@
                 <VerticalStackLayout>
                     <Label
                             CharacterSpacing="2"
-                            FontFamily="lamarkieFont"
-                            FontSize="25"
-                            HorizontalOptions="Start"
-                            StyleClass="LoginLbl"
+                            FontFamily="oliverFont"
+                            FontSize="35"
                             Text="enter first name" />
-                    <Entry
-                            Margin="0,5,0,0"
-                            BackgroundColor="Cornsilk"
-                            StyleClass="LoginEntry"
-                            Text="{Binding FirstName}" />
+                    <Entry BackgroundColor="Cornsilk" Text="{Binding FirstName}" />
                 </VerticalStackLayout>
 
 
@@ -85,60 +68,44 @@
                 <VerticalStackLayout>
                     <Label
                             CharacterSpacing="2"
-                            FontFamily="lamarkieFont"
-                            FontSize="25"
-                            HorizontalOptions="Start"
-                            StyleClass="LoginLbl"
+                            FontFamily="oliverFont"
+                            FontSize="35"
                             Text="enter last name" />
-                    <Entry
-                            Margin="0,5,0,0"
-                            BackgroundColor="Cornsilk"
-                            StyleClass="LoginEntry"
-                            Text="{Binding LastName}" />
+                    <Entry BackgroundColor="Cornsilk" Text="{Binding LastName}" />
                 </VerticalStackLayout>
 
 
                 <VerticalStackLayout>
                     <Label
                             CharacterSpacing="2"
-                            FontFamily="lamarkieFont"
-                            FontSize="25"
-                            HorizontalOptions="Start"
-                            StyleClass="LoginLbl"
+                            FontFamily="oliverFont"
+                            FontSize="35"
                             Text="enter email" />
-                    <Entry
-                            Margin="0,5,0,0"
-                            BackgroundColor="Cornsilk"
-                            StyleClass="LoginEntry"
-                            Text="{Binding Email}" />
+                    <Entry BackgroundColor="Cornsilk" Text="{Binding Email}" />
                 </VerticalStackLayout>
 
-                <HorizontalStackLayout
-                        Margin="30"
-                        HorizontalOptions="Center"
-                        Spacing="20">
+                <HorizontalStackLayout Margin="0,40,0,10" Spacing="20">
 
                     <Button
-                            Margin="-20,0,15,0"
-                            BackgroundColor="#a3b899"
-                            CharacterSpacing="2"
+                            BackgroundColor="#6E754B"
+                            CharacterSpacing="1"
                             Command="{Binding SignUpCommand}"
-                            FontFamily="lamarkieFont"
-                            FontSize="22"
-                            StyleClass="DarkBtn"
+                            FontFamily="lindenFont"
+                            FontSize="50"
+                            HorizontalOptions="Start"
                             Text="sign up"
-                            TextColor="Black"
-                            WidthRequest="200" />
+                            TextColor="White"
+                            WidthRequest="210" />
                     <Button
-                            Margin="-20,0,15,0"
-                            BackgroundColor="#a3b899"
-                            CharacterSpacing="2"
+                            BackgroundColor="#6E754B"
+                            CharacterSpacing="1"
                             Command="{Binding BackBtn}"
-                            FontFamily="lamarkieFont"
-                            FontSize="22"
+                            FontFamily="lindenFont"
+                            FontSize="50"
+                            HorizontalOptions="End"
                             Text="back"
-                            TextColor="Black"
-                            WidthRequest="200" />
+                            TextColor="White"
+                            WidthRequest="210" />
 
                 </HorizontalStackLayout>
 
