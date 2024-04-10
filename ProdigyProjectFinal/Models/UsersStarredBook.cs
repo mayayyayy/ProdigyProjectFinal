@@ -12,11 +12,16 @@ namespace ProdigyProjectFinal.Models
 
         public string BookISBN { get; set; }
         
+        public Book BookInfo {  get; set; } 
         public string BookImage => string.IsNullOrEmpty(BookISBN) ? "emptyimage.png" : $"https://covers.openlibrary.org/b/isbn/{BookISBN}-L.jpg";
         public int UserId { get; set; }
 
         public User User { get; set; }
 
+        public UsersStarredBook()
+        { 
+           
+        }
         
     }
 

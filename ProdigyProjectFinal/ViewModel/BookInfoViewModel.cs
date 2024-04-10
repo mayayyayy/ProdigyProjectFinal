@@ -10,7 +10,8 @@ using System.Windows.Input;
 
 namespace ProdigyProjectFinal.ViewModel
 {
-    public class HomeViewModel : ViewModel
+    [QueryProperty(nameof(ISBN), "isbn")]
+    public class BookInfoViewModel : ViewModel
     {
         private ProdigyServices _services;
         private readonly UserService _userService;
@@ -26,24 +27,23 @@ namespace ProdigyProjectFinal.ViewModel
                 OnPropertyChange();
             }
         }
-        
-       
+
+        public string ISBN { get; set; }
+
         public ObservableCollection<Book> Books { get; set; }
         public ICommand GoToProfile { get; protected set; }
         public ICommand GoToSearch { get; protected set; }
 
-
-     
-        public HomeViewModel(ProdigyServices services, UserService userService)
+        public BookInfoViewModel(ProdigyServices services, UserService userService)
         {
             this._services = services;
             this._userService = userService;
             User = _userService.User;
             Books = new ObservableCollection<Book>();
-            
-            GoToProfile = new Command(async () => 
-            { 
-                await Shell.Current.GoToAsync("///ProfilePage"); 
+
+            GoToProfile = new Command(async () =>
+            {
+                await Shell.Current.GoToAsync("///ProfilePage");
             });
 
             GoToSearch = new Command(async () =>
@@ -51,11 +51,7 @@ namespace ProdigyProjectFinal.ViewModel
                 await Shell.Current.GoToAsync("///Search");
             });
 
-            
+
         }
-
-        
-
-
     }
 }

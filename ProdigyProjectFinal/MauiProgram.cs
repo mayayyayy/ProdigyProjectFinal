@@ -35,13 +35,15 @@ public static class MauiProgram
         builder.Services.AddSingleton<HomeViewModel>();
         builder.Services.AddSingleton<ProfilePage>();
         builder.Services.AddSingleton<ProfilePageViewModel>();
+        
 
         builder.Services.AddSingleton<Search>();
         builder.Services.AddSingleton<SearchViewModel>();
 
         builder.Services.AddSingleton<UserService>();
 
-
+        builder.Services.AddTransient<BookInfoPage>();
+        builder.Services.AddTransient<BookInfoViewModel>();
 
 
         return builder.Build();

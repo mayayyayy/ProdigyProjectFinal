@@ -20,8 +20,8 @@ namespace ProdigyProjectFinal.ViewModel
         private ProdigyServices _services;
         private readonly UserService _userService;
         public ICommand ChangeUsernameBtn { get; protected set; }
-        public ICommand ChangePasswordBtn { get; protected set; }
-        public ICommand RefreshCommand { get; protected set; }
+        public ICommand ChangePasswordBtn { get; protected set; }  
+
      
 
         private string image;
@@ -177,15 +177,6 @@ namespace ProdigyProjectFinal.ViewModel
             User = _userService.User;
             UserBooks = new ObservableCollection<UsersStarredBook>();
 
-            //RefreshCommand = new Command(async () =>
-            //{
-            //    IsRefresh = true;
-            //    LoadBooks();    
-            //    OnPropertyChange(nameof(UserBooks));
-
-            //    IsRefresh = false;
-            //});
-
             LoadBooks = new((s, e) =>
             {
                 UserBooks.Clear();
@@ -195,6 +186,8 @@ namespace ProdigyProjectFinal.ViewModel
                 }
                 OnPropertyChange(nameof(UserBooks));
             });
+
+
 
             #region change X
 
@@ -291,6 +284,11 @@ namespace ProdigyProjectFinal.ViewModel
         private bool validatePassword()
         {
             return !string.IsNullOrEmpty(NewPassword) && NewPassword.Length > 1;
+        }
+
+        private async void GoToInfo(string isbn)
+        {
+            await Shell.Current.GoToAsync($"BookInfoPage?isbn={isbn}");
         }
 
 

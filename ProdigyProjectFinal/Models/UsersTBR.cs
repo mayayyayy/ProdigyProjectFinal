@@ -8,7 +8,8 @@ namespace ProdigyProjectFinal.Models
 {
    public class UsersTBR
     {
-        public string BookImage => string.IsNullOrEmpty(BookIsbn) ? "emptyimage.png" : $"https://covers.openlibrary.org/b/isbn/{BookIsbn}-L.jpg";
+        public int Id { get; set; }
+        //public string BookImage => string.IsNullOrEmpty(BookIsbn) ? "emptyimage.png" : $"https://covers.openlibrary.org/b/isbn/{BookIsbn}-L.jpg";
         public string BookIsbn { get; set; } = null!;
 
         public int UserId { get; set; }

@@ -113,6 +113,7 @@ namespace ProdigyProjectFinal.ViewModel
             }
 
         }
+
         private async void TBRBook(string isbn)
         {
 
@@ -120,7 +121,7 @@ namespace ProdigyProjectFinal.ViewModel
 
             if (success)
             {
-                User.UsersTBR.Add(new UsersTBR() {  User = User, UserId = User.Id, BookIsbn = isbn });
+                User.UsersTBR.Add(new UsersTBR() { User = User, UserId = User.Id, BookIsbn = isbn });
                 int i = Books.IndexOf(Books.Where(x => x.ISBN == isbn).FirstOrDefault());
                 Book book = Books[i];
                 book.IsTBR = !book.IsTBR;
@@ -133,6 +134,7 @@ namespace ProdigyProjectFinal.ViewModel
             }
 
         }
+
 
         private bool validateQuery()
         {

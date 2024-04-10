@@ -27,6 +27,7 @@
                         Padding="20"
                         FontSize="50"
                         Text="HEY" />
+                <Image Source="{Binding}" />
 
             </VerticalStackLayout>
 

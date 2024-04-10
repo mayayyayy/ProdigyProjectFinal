@@ -12,7 +12,6 @@ public partial class Home : ContentPage
     {
         InitializeComponent();
         BindingContext = vm;
-        Loaded += vm.GetUser;
     }
 
     protected override void OnAppearing()

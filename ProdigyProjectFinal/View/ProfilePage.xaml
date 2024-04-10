@@ -6,6 +6,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
         xmlns:models="clr-namespace:ProdigyProjectFinal.Models"
         xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
+        x:Name="Page"
         x:DataType="viewmodel:ProfilePageViewModel"
         BackgroundColor="Cornsilk"
         FlowDirection="LeftToRight"
@@ -146,14 +147,18 @@
                             ItemsLayout="HorizontalList"
                             ItemsSource="{Binding UserBooks}"
                             WidthRequest="700">
+
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:UsersStarredBook">
 
                                 <VerticalStackLayout>
 
-                                    <!--starred book image-->
-                                    <Image
+                                    <!--  starred book image  -->
+
+                                    <ImageButton
                                             Margin="0,0,10,0"
+                                            Command="{Binding BindingContext.GoToInfo, Source={x:Reference Page}}"
+                                            CommandParameter="{Binding BookISBN}"
                                             Source="{Binding BookImage}"
                                             WidthRequest="100" />
 
