@@ -67,6 +67,12 @@ namespace ProdigyProjectFinal.Services
             return response.StatusCode == HttpStatusCode.OK;
         }
 
+        public async Task<bool> TBRBook(string isbn)
+        {
+            var response = await _httpClient.GetAsync($"{URL}TBRBook?isbn={isbn}");
+            return response.StatusCode == HttpStatusCode.OK;
+        }
+
         public async Task<List<Book>> SearchAsync(string AuthorName)
         {
             try
@@ -90,6 +96,7 @@ namespace ProdigyProjectFinal.Services
             return null;
         }
         
+
 
         #region LogInAsync
 

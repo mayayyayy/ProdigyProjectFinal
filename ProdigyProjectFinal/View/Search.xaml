@@ -90,6 +90,7 @@
                                                 Grid.RowSpan="2"
                                                 Grid.Column="1"
                                                 Margin="20,0,0,50"
+                                                HeightRequest="200"
                                                 Source="{Binding BookImage}"
                                                 WidthRequest="175" />
 

@@ -18,7 +18,9 @@ namespace ProdigyProjectFinal.Models
         [JsonPropertyName("ISBNstring")]
         public string BookImage { get; set; }
         public string IconImage { get; set; } = "starempty.png";
+        public string TBRImage { get; set; } = "booktbr.png";
         public bool IsStarred { get; set; } = false;
+        public bool IsTBR { get; set; } = false;
 
         
 

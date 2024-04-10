@@ -151,6 +151,7 @@
 
                                 <VerticalStackLayout>
 
+                                    <!--starred book image-->
                                     <Image
                                             Margin="0,0,10,0"
                                             Source="{Binding BookImage}"

@@ -56,7 +56,7 @@ namespace ProdigyProjectFinal.ViewModel
                 }
             }
         }
-        public ObservableCollection<Book> Books   { get;set;}
+        public ObservableCollection<Book> Books { get;set;}
 
         public ICommand SearchCommand { get; protected set; }
 
@@ -110,6 +110,26 @@ namespace ProdigyProjectFinal.ViewModel
                 Books.RemoveAt(i);
                 Books.Insert(i, book);  
                 
+            }
+
+        }
+        private async void TBRBook(string isbn)
+        {
+
+            var success = await _services.TBRBook(isbn);
+
+            if (success)
+            {
+                User.UsersTBR.Add(new UsersTBR() {  User = User, UserId = User.Id, BookIsbn = isbn });
+                int i = Books.IndexOf(Books.Where(x => x.ISBN == isbn).FirstOrDefault());
+                Book book = Books[i];
+                book.IsTBR = !book.IsTBR;
+                if (book.IsTBR) { book.TBRImage = "bookyellowtbr.png"; }
+                else book.TBRImage = "booktbr.png";
+
+                Books.RemoveAt(i);
+                Books.Insert(i, book);
+
             }
 
         }

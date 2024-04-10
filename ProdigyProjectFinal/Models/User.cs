@@ -16,6 +16,8 @@ namespace ProdigyProjectFinal.Models
         public string UserPswd { get; set; }
         public string Email { get; set; }
         public List<UsersStarredBook> UsersStarredBooks { get; set; }
+
+        public List<UsersTBR> UsersTBR { get; set; }
         public User()
         {
             Id = 0;
