@@ -153,14 +153,12 @@
 
                                 <VerticalStackLayout>
 
-                                    <!--  starred book image  -->
-
-                                    <ImageButton
+                                    <Image
                                             Margin="0,0,10,0"
-                                            Command="{Binding BindingContext.GoToInfo, Source={x:Reference Page}}"
-                                            CommandParameter="{Binding BookISBN}"
+                                            HeightRequest="170"
                                             Source="{Binding BookImage}"
                                             WidthRequest="100" />
+
 
                                 </VerticalStackLayout>
 

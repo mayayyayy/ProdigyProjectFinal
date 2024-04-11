@@ -1,4 +1,5 @@
-﻿using ProdigyProjectFinal.Models;
+﻿using CommunityToolkit.Maui.Core;
+using ProdigyProjectFinal.Models;
 using ProdigyProjectFinal.Services;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,10 @@ namespace ProdigyProjectFinal.ViewModel
     [QueryProperty(nameof(ISBN), "isbn")]
     public class BookInfoViewModel : ViewModel
     {
+        private readonly IPopupService popupService;
         private ProdigyServices _services;
         private readonly UserService _userService;
-        private List<Book> _books;
+        private Book _book;
         private User _user;
 
         public User User
@@ -30,28 +32,32 @@ namespace ProdigyProjectFinal.ViewModel
 
         public string ISBN { get; set; }
 
-        public ObservableCollection<Book> Books { get; set; }
-        public ICommand GoToProfile { get; protected set; }
-        public ICommand GoToSearch { get; protected set; }
+        public Book Book
+        {
+            get => _book;
+            set
+            {
+                _book = value;
+                OnPropertyChange();
+            }
 
-        public BookInfoViewModel(ProdigyServices services, UserService userService)
+        }
+
+        public BookInfoViewModel(ProdigyServices services, UserService userService, IPopupService popupService)
         {
             this._services = services;
+            this.popupService = popupService;
             this._userService = userService;
             User = _userService.User;
-            Books = new ObservableCollection<Book>();
 
-            GoToProfile = new Command(async () =>
-            {
-                await Shell.Current.GoToAsync("///ProfilePage");
-            });
-
-            GoToSearch = new Command(async () =>
-            {
-                await Shell.Current.GoToAsync("///Search");
-            });
+            
 
 
+        }
+
+        public void LoadBook(Book b)
+        {
+            Book = b;
         }
     }
 }

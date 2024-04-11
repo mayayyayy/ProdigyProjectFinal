@@ -1,4 +1,5 @@
-﻿using ProdigyProjectFinal.Models;
+﻿using CommunityToolkit.Maui.Core;
+using ProdigyProjectFinal.Models;
 using ProdigyProjectFinal.Services;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace ProdigyProjectFinal.ViewModel
 {
     public class SearchViewModel : ViewModel
     {
+        private readonly IPopupService popupService;
         private ProdigyServices _services;
         private readonly UserService _userService;
         private string _searchRequest;
@@ -38,30 +40,17 @@ namespace ProdigyProjectFinal.ViewModel
                 OnPropertyChange(nameof(SearchRequest));
             }
         }
-        public Book SelectedB
-        {
-            get => SelectedBook;
-            set
-            {
-                if (SelectedBook != value)
-                {
-                    SelectedBook = value;
-                    if (SelectedBook != null)
-                    {
-                        StarBook(SelectedBook.ISBN);
-                    }
-                    
-                    OnPropertyChange(nameof(SelectedB));
-                    OnPropertyChange(nameof(Books));
-                }
-            }
-        }
+        
         public ObservableCollection<Book> Books { get;set;}
 
         public ICommand SearchCommand { get; protected set; }
 
-        public SearchViewModel(ProdigyServices services, UserService userService)
+        public ICommand PopUpInfoCommand { get; protected set; }
+        public ICommand StarBookCommand { get; protected set; } 
+
+        public SearchViewModel(ProdigyServices services, UserService userService, IPopupService popupService)
         {
+            this.popupService = popupService;
             this._services = services;
             this._userService = userService;
             User = _userService.User;
@@ -90,13 +79,23 @@ namespace ProdigyProjectFinal.ViewModel
 
             });
 
+            StarBookCommand = new Command<string>(async (isbn) =>
+            { await StarBook(isbn); });
 
+            PopUpInfoCommand = new Command<Book>(async (book) =>
+            { await BookInfoPopUp(book); });
         }
-        private async void StarBook(string isbn)
+
+        private async Task BookInfoPopUp(Book book)
+        {
+            await this.popupService.ShowPopupAsync<BookInfoViewModel>(onPresenting: viewModel => viewModel.LoadBook(book));
+        }
+
+        private async Task StarBook(string isbn)
         {
 
-            var success= await _services.StarBook(isbn);
-            
+            var success = await _services.StarBook(isbn);
+
             if (success)
             {
                 User.UsersStarredBooks.Add(new UsersStarredBook() { BookISBN = isbn, User = User });
@@ -106,10 +105,10 @@ namespace ProdigyProjectFinal.ViewModel
                 book.IsStarred = !book.IsStarred;
                 if (book.IsStarred) { book.IconImage = "starcoloured.png"; }
                 else book.IconImage = "starempty.png";
-                
+
                 Books.RemoveAt(i);
-                Books.Insert(i, book);  
-                
+                Books.Insert(i, book);
+
             }
 
         }
@@ -140,5 +139,10 @@ namespace ProdigyProjectFinal.ViewModel
         {
             return !string.IsNullOrEmpty(SearchRequest) && SearchRequest.Length > 0;
         }
+
+
     }
-}
+
+        
+    }
+

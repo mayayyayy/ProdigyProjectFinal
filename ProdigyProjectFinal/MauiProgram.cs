@@ -1,7 +1,7 @@
 ﻿using ProdigyProjectFinal.View;
 using ProdigyProjectFinal.ViewModel;
 using ProdigyProjectFinal.Services;
-
+using CommunityToolkit.Maui;
 
 namespace ProdigyProjectFinal;
 
@@ -12,7 +12,8 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
+            .UseMauiCommunityToolkit()
+            .ConfigureFonts(fonts =>
 			{
                 fonts.AddFont("Lamarkie.otf", "lamarkieFont");
                 fonts.AddFont("boho.otf", "bohoFont");
@@ -42,8 +43,7 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<UserService>();
 
-        builder.Services.AddTransient<BookInfoPage>();
-        builder.Services.AddTransient<BookInfoViewModel>();
+        builder.Services.AddTransientPopup<BookInfoPage, BookInfoViewModel>();
 
 
         return builder.Build();

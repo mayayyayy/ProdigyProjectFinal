@@ -40,11 +40,6 @@
                 Title="Search"
                 ContentTemplate="{DataTemplate view:Search}"
                 Route="Search" />
-        
-       
-
-
-
 
     </FlyoutItem>
 
