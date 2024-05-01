@@ -46,7 +46,8 @@ namespace ProdigyProjectFinal.ViewModel
         public ICommand SearchCommand { get; protected set; }
 
         public ICommand PopUpInfoCommand { get; protected set; }
-        public ICommand StarBookCommand { get; protected set; } 
+        public ICommand StarBookCommand { get; protected set; }
+        public ICommand TBRCommand { get; protected set; }
 
         public SearchViewModel(ProdigyServices services, UserService userService, IPopupService popupService)
         {
@@ -69,8 +70,11 @@ namespace ProdigyProjectFinal.ViewModel
                     var bookCollection=await services.SearchAsync(SearchRequest); 
                     foreach(var book in bookCollection) 
                     {
-                        if(book.IsStarred) { book.IconImage = "starcoloured.png"; }
-                        Books.Add(book);    
+                        if (book.IsStarred )
+                            book.IconImage = "starcoloured.png";
+                        if (book.IsTBR)
+                            book.TBRImage = "bookyellow.png";
+                        Books.Add(book);
                     }
                     
                 }
@@ -81,6 +85,9 @@ namespace ProdigyProjectFinal.ViewModel
 
             StarBookCommand = new Command<string>(async (isbn) =>
             { await StarBook(isbn); });
+
+            TBRCommand = new Command<string>(async (isbn) =>
+            { await TBRBook(isbn); });
 
             PopUpInfoCommand = new Command<Book>(async (book) =>
             { await BookInfoPopUp(book); });
@@ -113,19 +120,19 @@ namespace ProdigyProjectFinal.ViewModel
 
         }
 
-        private async void TBRBook(string isbn)
+        private async Task TBRBook(string isbn)
         {
 
             var success = await _services.TBRBook(isbn);
 
             if (success)
             {
-                User.UsersTBR.Add(new UsersTBR() { User = User, UserId = User.Id, BookIsbn = isbn });
+                User.UsersTBR.Add(new UsersTBR() { UserId = User.Id, BookIsbn = isbn });
                 int i = Books.IndexOf(Books.Where(x => x.ISBN == isbn).FirstOrDefault());
                 Book book = Books[i];
                 book.IsTBR = !book.IsTBR;
-                if (book.IsTBR) { book.TBRImage = "bookyellowtbr.png"; }
-                else book.TBRImage = "booktbr.png";
+                if (book.IsTBR) { book.TBRImage = "bookyellow.png"; }
+                else book.TBRImage = "book.png";
 
                 Books.RemoveAt(i);
                 Books.Insert(i, book);

@@ -27,6 +27,7 @@ namespace ProdigyProjectFinal.Models
             UserPswd = "";
             Email = "";
             UsersStarredBooks = new();
+            UsersTBR = new ();
         }
     }
 }

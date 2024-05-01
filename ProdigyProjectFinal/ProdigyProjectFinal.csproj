@@ -70,8 +70,7 @@
 	  <None Remove="Resources\Fonts\mango.ttf" />
 	  <None Remove="Resources\Fonts\oliver.ttf" />
 	  <None Remove="Resources\Images\book.png" />
-	  <None Remove="Resources\Images\booktbr.png" />
-	  <None Remove="Resources\Images\bookyellowtbr.png" />
+	  <None Remove="Resources\Images\bookyellow.png" />
 	  <None Remove="Resources\Images\defaultPFP.png" />
 	  <None Remove="Resources\Images\emptyimage.png" />
 	  <None Remove="Resources\Images\home_icon.png" />
@@ -80,7 +79,6 @@
 	  <None Remove="Resources\Images\profile_icon.png" />
 	  <None Remove="Resources\Images\starcoloured.png" />
 	  <None Remove="Resources\Images\starempty.png" />
-	  <None Remove="Resources\Images\woman.png" />
 	</ItemGroup>
 
 	<ItemGroup>

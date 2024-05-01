@@ -81,6 +81,9 @@
                                                 Text="{Binding Title}"
                                                 VerticalOptions="Center" />
 
+
+
+
                                         <Image
                                                 Grid.RowSpan="2"
                                                 Grid.Column="1"
@@ -112,6 +115,19 @@
 
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding BindingContext.StarBookCommand, Source={x:Reference SearchContent}}" CommandParameter="{Binding ISBN}" />
+                                            </Image.GestureRecognizers>
+
+                                        </Image>
+
+                                        <Image
+                                                HeightRequest="60"
+                                                HorizontalOptions="End"
+                                                Source="{Binding TBRImage}"
+                                                VerticalOptions="End"
+                                                WidthRequest="100">
+
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.TBRCommand, Source={x:Reference SearchContent}}" CommandParameter="{Binding ISBN}" />
                                             </Image.GestureRecognizers>
 
                                         </Image>

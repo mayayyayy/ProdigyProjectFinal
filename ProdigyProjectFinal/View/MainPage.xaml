@@ -26,7 +26,7 @@
                         Padding="120"
                         CharacterSpacing="1"
                         FontFamily="oliverFont"
-                        FontSize="65"
+                        FontSize="40"
                         HorizontalOptions="Center"
                         Text="welcome to prodigy "
                         VerticalOptions="Center" />
