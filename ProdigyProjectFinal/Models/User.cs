@@ -15,6 +15,7 @@ namespace ProdigyProjectFinal.Models
         public string LastName { get; set; }
         public string UserPswd { get; set; }
         public string Email { get; set; }
+        public string Image {  get; set; }
         public List<UsersStarredBook> UsersStarredBooks { get; set; }
 
         public List<UsersTBR> UsersTBR { get; set; }

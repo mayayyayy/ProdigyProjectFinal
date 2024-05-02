@@ -43,11 +43,12 @@ namespace ProdigyProjectFinal.ViewModel
         
         public ObservableCollection<Book> Books { get;set;}
 
+        #region commands
         public ICommand SearchCommand { get; protected set; }
-
         public ICommand PopUpInfoCommand { get; protected set; }
         public ICommand StarBookCommand { get; protected set; }
         public ICommand TBRCommand { get; protected set; }
+        #endregion
 
         public SearchViewModel(ProdigyServices services, UserService userService, IPopupService popupService)
         {

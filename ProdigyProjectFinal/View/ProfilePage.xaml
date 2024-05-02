@@ -6,7 +6,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
         xmlns:models="clr-namespace:ProdigyProjectFinal.Models"
         xmlns:viewmodel="clr-namespace:ProdigyProjectFinal.ViewModel"
-        x:Name="Page"
+        x:Name="PFPage"
         x:DataType="viewmodel:ProfilePageViewModel"
         BackgroundColor="Cornsilk"
         FlowDirection="LeftToRight"
@@ -28,7 +28,7 @@
         <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*">
 
             <Border
-                    Margin="30,30,0,0"
+                    Margin="30,30,40,0"
                     StrokeShape="RoundRectangle 30"
                     StrokeThickness="0">
 
@@ -95,13 +95,40 @@
             </Border>
 
 
-            <Image
+            <Border
                     Grid.Row="0"
                     Grid.Column="1"
-                    HeightRequest="310"
-                    HorizontalOptions="Center"
-                    Source="profile_icon.png"
-                    WidthRequest="400" />
+                    Margin="30,30,40,0"
+                    StrokeShape="RoundRectangle 30"
+                    StrokeThickness="0">
+
+
+
+                <VerticalStackLayout
+                        Padding="20"
+                        BackgroundColor="#a3b899"
+                        HeightRequest="410"
+                        Spacing="22"
+                        WidthRequest="410">
+
+                    <Image
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            HeightRequest="310"
+                            HorizontalOptions="Center"
+                            Source="{Binding Image}"
+                            WidthRequest="400" />
+
+                    <Button
+                            Margin="0,-30,0,0"
+                            BackgroundColor="#4b6e75"
+                            Command="{Binding UploadCommand}"
+                            HeightRequest="50"
+                            Text="change profile picture"
+                            WidthRequest="200" />
+
+                </VerticalStackLayout>
+            </Border>
 
             <Label
                     Grid.Row="1"

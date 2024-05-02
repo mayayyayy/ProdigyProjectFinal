@@ -9,20 +9,26 @@ using System.Windows.Input;
 using ProdigyProjectFinal.Models;
 using System.Net;
 using System.Collections.ObjectModel;
+using Microsoft.Maui.Storage;
 
 namespace ProdigyProjectFinal.ViewModel
 {
     public class ProfilePageViewModel : ViewModel
     {
-        private string ProfileImageUrl { get; set; }
+
+
+        readonly PickOptions[] filePickOptions = { null,
+            new() { PickerTitle = "Image", FileTypes = FilePickerFileType.Images },
+            new() { PickerTitle = "Png", FileTypes = FilePickerFileType.Png }};
+
 
         public ObservableCollection<UsersStarredBook> UserBooks { get; set; }    
         private ProdigyServices _services;
         private readonly UserService _userService;
         public ICommand ChangeUsernameBtn { get; protected set; }
-        public ICommand ChangePasswordBtn { get; protected set; }  
-
-     
+        public ICommand ChangePasswordBtn { get; protected set; }
+        public ICommand UploadCommand { get; protected set; }
+        public ICommand PickFileCommand { get; protected set; }
 
         private string image;
         private string _message;
@@ -35,7 +41,12 @@ namespace ProdigyProjectFinal.ViewModel
         private bool _isErrorMessage;
         private User _user;
         private bool isRefresh;
-       
+
+        private string _content;
+        private int _selectedTab;
+        private FileResult _fileResult;
+        const string FilePickError = "An error occurred when picking file";
+
 
         private string _NEWusername;
         private string _NEWpassword;
@@ -43,10 +54,19 @@ namespace ProdigyProjectFinal.ViewModel
         private bool _isChangeUserError;
         private bool _isChangePassError;
 
-      
+
 
         #region get and set for fields
-       
+
+        public string Content
+        {
+            get => _content;
+            set
+            {
+                _content = value;
+                OnPropertyChange(nameof(Content));
+            }
+        }
         public bool IsRefresh
         {
             get => isRefresh;
@@ -148,6 +168,15 @@ namespace ProdigyProjectFinal.ViewModel
                 OnPropertyChange(nameof(ErrorMessage));
             }
         }
+        public string Image
+        {
+            get => $"{ProdigyServices.IMAGE_URL}{User.Image}";
+            set
+            {
+                User.Image = value;
+                OnPropertyChange(nameof(Image));
+            }
+        }
         public bool IsChangeUsernameError
         {
             get => _isChangeUserError;
@@ -166,9 +195,40 @@ namespace ProdigyProjectFinal.ViewModel
                 OnPropertyChange(nameof(IsChangePasswordError));
             }
         }
+
+        public int SelectedTab
+        {
+            get => _selectedTab;
+            set
+            {
+                _selectedTab = value;
+                OnPropertyChange(nameof(SelectedTab));
+            }
+        }
+        public string FilePickBtnText
+        {
+            get => FileResult?.FileName ?? "Pick File";
+        }
+        public bool IsFileSelected
+        {
+            get => FileResult != null;
+        }
+        public FileResult FileResult
+        {
+            get => _fileResult;
+            set
+            {
+                _fileResult = value;
+                OnPropertyChange(nameof(FileResult));
+                OnPropertyChange(nameof(FilePickBtnText));
+                OnPropertyChange(nameof(IsFileSelected));
+            }
+        }
+        
         #endregion
 
 
+        
         public ProfilePageViewModel(ProdigyServices services, UserService userService)  
         {
             this._services = services;
@@ -187,6 +247,57 @@ namespace ProdigyProjectFinal.ViewModel
                 OnPropertyChange(nameof(UserBooks));
             });
 
+
+           
+            UploadCommand = new Command(async () =>
+            {
+
+                try
+                {
+                    try
+                    {
+                        FileResult = await FilePicker.Default.PickAsync(filePickOptions[SelectedTab]);
+                    }
+                    catch (Exception)
+                    {
+                        FileResult = null;
+                        ErrorMessage = FilePickError;
+                        IsErrorMessage = true;
+                    }
+                    if (FileResult == null && SelectedTab != 0 &&
+                        !await Shell.Current.DisplayAlert("empty file", "upload profile picture without a selected file?", "yes", "cancel"))
+                        return;
+
+                   
+
+                   
+
+                    StatusEnum responseCode = await services.UploadPFP(FileResult);
+                    switch (responseCode)
+                    {
+                        case StatusEnum.OK:
+                            await Shell.Current.DisplayAlert("uploaded", "uploaded successfully", "ok");
+                            var stream = await FileResult.OpenReadAsync();
+                            PhotoImageSource = ImageSource.FromStream(() => stream);
+                            OnPropertyChange(nameof(PhotoImageSource));
+                            Content = ""; FileResult = null;
+                            break;
+
+                        case StatusEnum.Unauthorized:
+                            IsErrorMessage = true;
+                            break;
+
+                        default:
+                            throw new Exception();
+                    }
+                }
+                catch (Exception)
+                {
+                    IsErrorMessage = true;
+                }
+            });
+
+           
 
 
             #region change X
@@ -274,6 +385,8 @@ namespace ProdigyProjectFinal.ViewModel
             #endregion
 
         }
+
+        
 
         public EventHandler LoadBooks { get; private set; }
 

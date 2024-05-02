@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
@@ -15,7 +16,10 @@ namespace ProdigyProjectFinal.Services
         readonly HttpClient _httpClient;
         readonly JsonSerializerOptions _serializerOptions;
         const string URL = @"https://nghpvwqt-7112.uks1.devtunnels.ms/api/Values/";
-        const string IMAGE_URL = @"https://zr8z94hw-7004.euw.devtunnels.ms/";
+        public const string IMAGE_URL = @"https://zr8z94hw-7004.euw.devtunnels.ms/images/";
+
+        private const string RootURL = $"{WwwRoot}/ProdigyWeb";
+        public const string WwwRoot = "https://nghpvwqt-7112.uks1.devtunnels.ms/swagger/index.html";
 
         public ProdigyServices()
         {
@@ -48,6 +52,7 @@ namespace ProdigyProjectFinal.Services
             catch (Exception ex) { Console.WriteLine(ex.Message); };
             return "error";
         }
+
 
         public async Task<User> GetCurrentUser()
         {
@@ -95,7 +100,44 @@ namespace ProdigyProjectFinal.Services
             catch (Exception ex) { Console.WriteLine(ex.Message); }
             return null;
         }
-        
+
+        public async Task<StatusEnum> UploadPFP(FileResult file = null)
+        {
+            try
+            {
+                var multipartFormContent = new MultipartFormDataContent();
+
+                if (file != null)
+                {
+                    byte[] bytes;
+                    using (MemoryStream ms = new())
+                    {
+                        var stream = await file.OpenReadAsync();
+                        stream.CopyTo(ms);
+                        bytes = ms.ToArray();
+                    }
+
+                    var content = new ByteArrayContent(bytes);
+                    multipartFormContent.Add(content, "file", file.FileName);
+                }
+
+                var response = await _httpClient.PostAsync($"{URL}UploadImage", multipartFormContent);
+                switch (response.StatusCode)
+                {
+                    case HttpStatusCode.OK:
+                        return StatusEnum.OK;
+                    case HttpStatusCode.Unauthorized:
+                        return StatusEnum.Unauthorized;
+                    default:
+                        return StatusEnum.Error;
+                }
+            }
+            catch (Exception)
+            {
+                return StatusEnum.Error;
+            }
+        }
+
 
 
         #region LogInAsync
@@ -263,42 +305,6 @@ namespace ProdigyProjectFinal.Services
             return false;
         }
 
-        public async Task<string> GetImage() { return $"{IMAGE_URL}images/"; }
-
-        public async Task<bool> UploadFile(FileResult file)
-        {
-
-            try
-            {
-                byte[] bytes;
-
-                #region המרה של הקובץ
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    var stream = await file.OpenReadAsync();
-                    stream.CopyTo(ms);
-                    bytes = ms.ToArray();
-                }
-                #endregion
-
-                var multipartFormDataContent = new MultipartFormDataContent();
-
-                var content = new ByteArrayContent(bytes);
-                multipartFormDataContent.Add(content, "file", "robot.jpg");
-               
-                var userContent = JsonSerializer.Serialize(new User() { Id = 1, Email = "kuku@kuku.com", FirstName = "kuku", LastName = "kiki", UserPswd = "1234" }, _serializerOptions);
-                
-                multipartFormDataContent.Add(new StringContent(userContent, Encoding.UTF8, "application/json"), "user");
-
-                var response = await _httpClient.PostAsync($@"{URL}UploadFile", multipartFormDataContent);
-                if (response.IsSuccessStatusCode) { return true; }
-            }
-            catch (System.Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            return false;
-        }
     }
 
 
