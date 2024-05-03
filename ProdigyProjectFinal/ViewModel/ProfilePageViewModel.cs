@@ -278,8 +278,8 @@ namespace ProdigyProjectFinal.ViewModel
                         case StatusEnum.OK:
                             await Shell.Current.DisplayAlert("uploaded", "uploaded successfully", "ok");
                             var stream = await FileResult.OpenReadAsync();
-                            PhotoImageSource = ImageSource.FromStream(() => stream);
-                            OnPropertyChange(nameof(PhotoImageSource));
+                            //PhotoImageSource = ImageSource.FromStream(() => stream);
+                            //OnPropertyChange(nameof(PhotoImageSource));
                             Content = ""; FileResult = null;
                             break;
 
