@@ -140,8 +140,8 @@ namespace ProdigyProjectFinal.ViewModel
                 int i = Books.IndexOf(Books.Where(x => x.ISBN == isbn).FirstOrDefault());
                 Book book = Books[i];
                 book.IsCR = !book.IsCR;
-                if (book.IsCR) { book.IconImage = "starcoloured.png"; }
-                else book.IconImage = "starempty.png";
+                if (book.IsCR) { book.IconImage = "timecoloured.png"; }
+                else book.IconImage = "time.png";
 
                 Books.RemoveAt(i);
                 Books.Insert(i, book);
@@ -161,8 +161,8 @@ namespace ProdigyProjectFinal.ViewModel
                 int i = Books.IndexOf(Books.Where(x => x.ISBN == isbn).FirstOrDefault());
                 Book book = Books[i];
                 book.IsDrB = !book.IsDrB;
-                if (book.IsDrB) { book.IconImage = "starcoloured.png"; }
-                else book.IconImage = "starempty.png";
+                if (book.IsDrB) { book.IconImage = "trashcoloured.png"; }
+                else book.IconImage = "trash.png";
 
                 Books.RemoveAt(i);
                 Books.Insert(i, book);

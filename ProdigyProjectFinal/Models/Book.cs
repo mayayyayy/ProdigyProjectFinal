@@ -19,6 +19,8 @@ namespace ProdigyProjectFinal.Models
         public string BookImage { get; set; }
         public string IconImage { get; set; } = "starempty.png";
         public string TBRImage { get; set; } = "book.png";
+        public string CurrentReadImage { get; set; } = "time.png";
+        public string DroppedImage { get; set; } = "trash.png";
         public bool IsStarred { get; set; } = false;
         public bool IsTBR { get; set; } = false;
         public bool IsCR { get; set; } = false;

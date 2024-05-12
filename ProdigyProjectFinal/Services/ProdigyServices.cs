@@ -34,39 +34,19 @@ namespace ProdigyProjectFinal.Services
             };
 
         }
-        private async Task<string> GetUserEmail(string x)
-        {
-            try
-            {
-                var response = await _httpClient.GetAsync($@"{URL}GetUserEmail?nick={x}");
-                switch (response.StatusCode)
-                {
-                    case HttpStatusCode.OK:
-                        return await response.Content.ReadAsStringAsync();
-                    case HttpStatusCode.NotFound:
-                        return "user does not exist";
-                    default:
-                        return $"error: {response.StatusCode.ToString()}";
-                }
 
 
-            }
-            catch (Exception ex) { Console.WriteLine(ex.Message); };
-            return "error";
-        }
-
-
-        public async Task<User> GetCurrentUser()
-        {
-            try
-            {
-                string st = await SecureStorage.Default.GetAsync("CurrentUser");
-                if (!string.IsNullOrEmpty(st))
-                    return JsonSerializer.Deserialize<User>(st, _serializerOptions);
-            }
-            catch (Exception) { }
-            return null;
-        }
+        //public async Task<User> GetCurrentUser()
+        //{
+        //    try
+        //    {
+        //        string st = await SecureStorage.Default.GetAsync("CurrentUser");
+        //        if (!string.IsNullOrEmpty(st))
+        //            return JsonSerializer.Deserialize<User>(st, _serializerOptions);
+        //    }
+        //    catch (Exception) { }
+        //    return null;
+        //}
 
         public async Task<bool> StarBook(string isbn) 
         {
@@ -80,7 +60,7 @@ namespace ProdigyProjectFinal.Services
             return response.StatusCode == HttpStatusCode.OK;
         }
 
-        public async Task<bool> CurrentReadBook(string isbn)
+        public async Task<bool> CRBook(string isbn)
         {
             var response = await _httpClient.GetAsync($"{URL}CurrentReadBook?isbn={isbn}");
             return response.StatusCode == HttpStatusCode.OK;
@@ -294,35 +274,35 @@ namespace ProdigyProjectFinal.Services
 
         #endregion
 
-        public async Task<bool> UploadPhoto(FileResult file)
-        {
+        //public async Task<bool> UploadPhoto(FileResult file)
+        //{
 
-            try
-            {
-                byte[] bytes;
+        //    try
+        //    {
+        //        byte[] bytes;
 
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    var stream = await file.OpenReadAsync();
-                    stream.CopyTo(ms);
-                    bytes = ms.ToArray();
-                }
+        //        using (MemoryStream ms = new MemoryStream())
+        //        {
+        //            var stream = await file.OpenReadAsync();
+        //            stream.CopyTo(ms);
+        //            bytes = ms.ToArray();
+        //        }
 
-                var multipartFormDataContent = new MultipartFormDataContent();
+        //        var multipartFormDataContent = new MultipartFormDataContent();
 
-                var content = new ByteArrayContent(bytes);
-                multipartFormDataContent.Add(content, "file", "robot.jpg");
+        //        var content = new ByteArrayContent(bytes);
+        //        multipartFormDataContent.Add(content, "file", "robot.jpg");
 
 
-                var response = await _httpClient.PostAsync($@"{URL}UploadImage?Id=1", multipartFormDataContent);
-                if (response.IsSuccessStatusCode) { return true; }
-            }
-            catch (System.Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            return false;
-        }
+        //        var response = await _httpClient.PostAsync($@"{URL}UploadImage?Id=1", multipartFormDataContent);
+        //        if (response.IsSuccessStatusCode) { return true; }
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //    return false;
+        //}
 
     }
 

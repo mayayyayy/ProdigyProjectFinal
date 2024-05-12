@@ -79,6 +79,10 @@
 	  <None Remove="Resources\Images\profile_icon.png" />
 	  <None Remove="Resources\Images\starcoloured.png" />
 	  <None Remove="Resources\Images\starempty.png" />
+	  <None Remove="Resources\Images\time.png" />
+	  <None Remove="Resources\Images\timecoloured.png" />
+	  <None Remove="Resources\Images\trash.png" />
+	  <None Remove="Resources\Images\trashcoloured.png" />
 	</ItemGroup>
 
 	<ItemGroup>
