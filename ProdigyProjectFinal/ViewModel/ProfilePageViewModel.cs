@@ -10,6 +10,7 @@ using ProdigyProjectFinal.Models;
 using System.Net;
 using System.Collections.ObjectModel;
 using Microsoft.Maui.Storage;
+using Windows.Media.Capture;
 
 namespace ProdigyProjectFinal.ViewModel
 {
@@ -28,6 +29,7 @@ namespace ProdigyProjectFinal.ViewModel
         public ICommand ChangeUsernameBtn { get; protected set; }
         public ICommand ChangePasswordBtn { get; protected set; }
         public ICommand UploadCommand { get; protected set; }
+        public ICommand UsePhoneCameraCommand { get; protected set; }
         public ICommand PickFileCommand { get; protected set; }
 
         private string image;
@@ -277,7 +279,9 @@ namespace ProdigyProjectFinal.ViewModel
                     {
                         case StatusEnum.OK:
                             await Shell.Current.DisplayAlert("uploaded", "uploaded successfully", "ok");
-                            var stream = await FileResult.OpenReadAsync();
+                            User = userService.User;
+                            OnPropertyChange(nameof(Image));
+                            //var stream = await FileResult.OpenReadAsync();
                             //PhotoImageSource = ImageSource.FromStream(() => stream);
                             //OnPropertyChange(nameof(PhotoImageSource));
                             Content = ""; FileResult = null;
@@ -297,8 +301,56 @@ namespace ProdigyProjectFinal.ViewModel
                 }
             });
 
-           
 
+            UsePhoneCameraCommand = new Command(async () =>
+            {
+                try
+                {
+                    try
+                    {
+                        FileResult = await MediaPicker.CapturePhotoAsync();
+                    }
+                    catch (Exception)
+                    {
+                        FileResult = null;
+                        ErrorMessage = FilePickError;
+                        IsErrorMessage = true;
+                    }
+                    if (FileResult == null && SelectedTab != 0 &&
+                        !await Shell.Current.DisplayAlert("empty file", "upload profile picture without a selected file?", "yes", "cancel"))
+                        return;
+
+
+
+
+
+                    StatusEnum responseCode = await services.UploadPFP(FileResult);
+                    switch (responseCode)
+                    {
+                        case StatusEnum.OK:
+                            await Shell.Current.DisplayAlert("uploaded", "uploaded successfully", "ok");
+                            User = userService.User;
+                            OnPropertyChange(nameof(Image));
+                            //var stream = await FileResult.OpenReadAsync();
+                            //PhotoImageSource = ImageSource.FromStream(() => stream);
+                            //OnPropertyChange(nameof(PhotoImageSource));
+                            Content = ""; FileResult = null;
+                            break;
+
+                        case StatusEnum.Unauthorized:
+                            IsErrorMessage = true;
+                            break;
+
+                        default:
+                            throw new Exception();
+                    }
+                }
+                catch (Exception)
+                {
+                    IsErrorMessage = true;
+                }
+                
+            });
 
             #region change X
 

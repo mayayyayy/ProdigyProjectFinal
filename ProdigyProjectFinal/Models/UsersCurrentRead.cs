@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ProdigyProjectFinal.Models
 {
-   public class UsersTBR
+    public class UsersCurrentRead
     {
         public int Id { get; set; }
-        public string BookIsbn { get; set; } = null!;
+        public string BookISBN { get; set; } = null!;
 
         public int UserId { get; set; }
 

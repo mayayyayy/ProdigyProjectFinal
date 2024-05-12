@@ -124,8 +124,18 @@
                             BackgroundColor="#4b6e75"
                             Command="{Binding UploadCommand}"
                             HeightRequest="50"
+                            HorizontalOptions="End"
                             Text="change profile picture"
                             WidthRequest="200" />
+
+                    <Button
+                            Margin="0,-72,0,0"
+                            BackgroundColor="#4b6e75"
+                            Command="{Binding UsePhoneCameraCommand}"
+                            HeightRequest="50"
+                            HorizontalOptions="Start"
+                            Text="use camera"
+                            WidthRequest="150" />
 
                 </VerticalStackLayout>
             </Border>

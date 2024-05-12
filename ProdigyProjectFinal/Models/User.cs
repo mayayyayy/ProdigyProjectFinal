@@ -17,8 +17,12 @@ namespace ProdigyProjectFinal.Models
         public string Email { get; set; }
         public string Image {  get; set; }
         public List<UsersStarredBook> UsersStarredBooks { get; set; }
-
         public List<UsersTBR> UsersTBR { get; set; }
+
+        public List<UsersCurrentRead> UsersCurrentRead { get; set; }
+        public List<UsersDroppedBooks> UsersDropped { get; set; }
+
+
         public User()
         {
             Id = 0;
@@ -29,6 +33,8 @@ namespace ProdigyProjectFinal.Models
             Email = "";
             UsersStarredBooks = new();
             UsersTBR = new ();
+            UsersCurrentRead = new();
+            UsersDropped = new();
         }
     }
 }

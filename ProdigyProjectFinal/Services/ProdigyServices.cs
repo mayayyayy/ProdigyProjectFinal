@@ -15,15 +15,17 @@ namespace ProdigyProjectFinal.Services
     {
         readonly HttpClient _httpClient;
         readonly JsonSerializerOptions _serializerOptions;
+        readonly UserService userService;
         const string URL = @"https://nghpvwqt-7112.uks1.devtunnels.ms/api/Values/";
-        public const string IMAGE_URL = @"https://zr8z94hw-7004.euw.devtunnels.ms/images/";
+        public const string IMAGE_URL = @"https://nghpvwqt-7112.uks1.devtunnels.ms/images/";
 
         private const string RootURL = $"{WwwRoot}/ProdigyWeb";
         public const string WwwRoot = "https://nghpvwqt-7112.uks1.devtunnels.ms/swagger/index.html";
 
-        public ProdigyServices()
+        public ProdigyServices(UserService _userService)
         {
             _httpClient = new HttpClient();
+            userService = _userService;
             _serializerOptions = new JsonSerializerOptions()
             {
                 WriteIndented = true,
@@ -78,6 +80,18 @@ namespace ProdigyProjectFinal.Services
             return response.StatusCode == HttpStatusCode.OK;
         }
 
+        public async Task<bool> CurrentReadBook(string isbn)
+        {
+            var response = await _httpClient.GetAsync($"{URL}CurrentReadBook?isbn={isbn}");
+            return response.StatusCode == HttpStatusCode.OK;
+        }
+
+        public async Task<bool> DropBook(string isbn)
+        {
+            var response = await _httpClient.GetAsync($"{URL}DroppedBook?isbn={isbn}");
+            return response.StatusCode == HttpStatusCode.OK;
+        }
+
         public async Task<List<Book>> SearchAsync(string AuthorName)
         {
             try
@@ -125,6 +139,10 @@ namespace ProdigyProjectFinal.Services
                 switch (response.StatusCode)
                 {
                     case HttpStatusCode.OK:
+                        var content = await response.Content.ReadAsStringAsync();
+                        User user = JsonSerializer.Deserialize<User>(content, _serializerOptions);
+                        if(user != null)
+                            userService.User = user;
                         return StatusEnum.OK;
                     case HttpStatusCode.Unauthorized:
                         return StatusEnum.Unauthorized;
@@ -158,7 +176,7 @@ namespace ProdigyProjectFinal.Services
                         {
                             jsonContent = await response.Content.ReadAsStringAsync();
                             User u = JsonSerializer.Deserialize<User>(jsonContent, _serializerOptions);
-                            await SecureStorage.Default.SetAsync("CurrentUser", jsonContent);
+                            userService.User = u;
                             return new UserDto() { Success = true, Message = string.Empty, User = u };
 
 
@@ -191,6 +209,7 @@ namespace ProdigyProjectFinal.Services
                 {
                     string content = await response.Content.ReadAsStringAsync();
                     user = JsonSerializer.Deserialize<User>(content, _serializerOptions);
+                    userService.User = user;
                     return user;
                 }
                 else if (response.StatusCode == HttpStatusCode.Conflict)

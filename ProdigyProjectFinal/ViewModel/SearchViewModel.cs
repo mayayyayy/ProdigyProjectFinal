@@ -48,6 +48,8 @@ namespace ProdigyProjectFinal.ViewModel
         public ICommand PopUpInfoCommand { get; protected set; }
         public ICommand StarBookCommand { get; protected set; }
         public ICommand TBRCommand { get; protected set; }
+        public ICommand CurrentReadCommand { get; protected set; }
+        public ICommand DroppedBookCommand { get; protected set; }
         #endregion
 
         public SearchViewModel(ProdigyServices services, UserService userService, IPopupService popupService)
@@ -90,6 +92,12 @@ namespace ProdigyProjectFinal.ViewModel
             TBRCommand = new Command<string>(async (isbn) =>
             { await TBRBook(isbn); });
 
+            CurrentReadCommand = new Command<string>(async (isbn) =>
+            { await CurrentRead(isbn); });
+
+            DroppedBookCommand = new Command<string>(async (isbn) =>
+            { await DroppedBook(isbn); });
+
             PopUpInfoCommand = new Command<Book>(async (book) =>
             { await BookInfoPopUp(book); });
         }
@@ -112,6 +120,48 @@ namespace ProdigyProjectFinal.ViewModel
                 Book book = Books[i];
                 book.IsStarred = !book.IsStarred;
                 if (book.IsStarred) { book.IconImage = "starcoloured.png"; }
+                else book.IconImage = "starempty.png";
+
+                Books.RemoveAt(i);
+                Books.Insert(i, book);
+
+            }
+
+        }
+
+        private async Task CurrentRead(string isbn)
+        {
+
+            var success = await _services.StarBook(isbn);
+
+            if (success)
+            {
+                User.UsersCurrentRead.Add(new UsersCurrentRead() { BookISBN = isbn, User = User });
+                int i = Books.IndexOf(Books.Where(x => x.ISBN == isbn).FirstOrDefault());
+                Book book = Books[i];
+                book.IsCR = !book.IsCR;
+                if (book.IsCR) { book.IconImage = "starcoloured.png"; }
+                else book.IconImage = "starempty.png";
+
+                Books.RemoveAt(i);
+                Books.Insert(i, book);
+
+            }
+
+        }
+
+        private async Task DroppedBook(string isbn)
+        {
+
+            var success = await _services.StarBook(isbn);
+
+            if (success)
+            {
+                User.UsersDropped.Add(new UsersDroppedBooks() { BookISBN = isbn, User = User });
+                int i = Books.IndexOf(Books.Where(x => x.ISBN == isbn).FirstOrDefault());
+                Book book = Books[i];
+                book.IsDrB = !book.IsDrB;
+                if (book.IsDrB) { book.IconImage = "starcoloured.png"; }
                 else book.IconImage = "starempty.png";
 
                 Books.RemoveAt(i);
