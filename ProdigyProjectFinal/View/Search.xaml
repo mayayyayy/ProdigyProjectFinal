@@ -116,7 +116,7 @@
 
                                         </Image>
 
-                                        
+
                                         <Image
                                                 HeightRequest="60"
                                                 HorizontalOptions="End"
@@ -135,7 +135,7 @@
                                                 HorizontalOptions="Start"
                                                 Source="{Binding CurrentReadImage}"
                                                 VerticalOptions="End"
-                                                WidthRequest="100"> 
+                                                WidthRequest="50">
 
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding BindingContext.CurrentReadCommand, Source={x:Reference SearchContent}}" CommandParameter="{Binding ISBN}" />
@@ -145,11 +145,12 @@
 
 
                                         <Image
+                                                Margin="0,0,70,0"
                                                 HeightRequest="60"
-                                                HorizontalOptions="Start"
+                                                HorizontalOptions="Center"
                                                 Source="{Binding DroppedImage}"
                                                 VerticalOptions="End"
-                                                WidthRequest="100">
+                                                WidthRequest="50">
 
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding BindingContext.DroppedBookCommand, Source={x:Reference SearchContent}}" CommandParameter="{Binding ISBN}" />
