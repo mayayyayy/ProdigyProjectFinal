@@ -93,6 +93,7 @@ namespace ProdigyProjectFinal.ViewModel
             StarBookCommand = new Command<string>(async (isbn) =>
             { await StarBook(isbn); });
 
+            //to be read
             TBRCommand = new Command<string>(async (isbn) =>
             { await TBRBook(isbn); });
 
