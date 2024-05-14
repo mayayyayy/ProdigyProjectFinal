@@ -12,49 +12,63 @@
 
     <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
 
+        
 
         <Border
-                Grid.RowSpan="2"
-                Grid.Column="1"
-                Margin="0,20,40,100"
+            Grid.RowSpan="2"
+                Grid.Row="0" 
+                Grid.ColumnSpan="2"
                 BackgroundColor="#4b6e75"
                 StrokeShape="RoundRectangle 30"
-                StrokeThickness="0">
+                StrokeThickness="0" 
+                Margin="0,30,0,20"
+                WidthRequest="800"
+                VerticalOptions="CenterAndExpand"
+                HeightRequest="400"
+                HorizontalOptions="Center"
+            
+            >
 
-            <VerticalStackLayout Grid.RowSpan="2" Grid.Column="1">
+            <VerticalStackLayout HorizontalOptions="Center">
 
                 <Label
+                    FontFamily="oliverFont"
                         Padding="20"
                         FontSize="50"
-                        Text="HEY" />
-                <Image Source="{Binding}" />
+                        Text="welcome to prodigy." />
+                
 
             </VerticalStackLayout>
 
 
         </Border>
 
-        <VerticalStackLayout
+        <VerticalStackLayout 
+            Grid.RowSpan="2"
+                Grid.Row="0" 
+                Grid.ColumnSpan="2"
+                HorizontalOptions="Center"
                 HeightRequest="200"
                 Spacing="0"
                 WidthRequest="450">
 
             <Button
-                    Margin="20,20,200,20"
-                    BackgroundColor="#6E754B"
+                    Margin="0,20,0,40"
+                    BackgroundColor="#a3b899"
                     CharacterSpacing="1"
                     Command="{Binding GoToProfile}"
                     FontFamily="oliverFont"
                     FontSize="40"
+                    WidthRequest="300"
                     Text="profile"
                     TextColor="white" />
 
             <Button
-                    Margin="20,20,200,0"
-                    BackgroundColor="#6E754B"
+                    BackgroundColor="#a3b899"
                     Command="{Binding GoToSearch}"
                     FontFamily="oliverFont"
                     FontSize="40"
+                    WidthRequest="300"
                     Text="search"
                     TextColor="white" />
 

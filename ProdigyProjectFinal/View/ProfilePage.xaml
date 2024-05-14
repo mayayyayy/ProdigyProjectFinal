@@ -111,32 +111,41 @@
                         Spacing="22"
                         WidthRequest="410">
 
+                    <Frame 
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HeightRequest="200"
+                        CornerRadius="40"
+                        IsClippedToBounds="True"
+                        Padding="0"
+                        HorizontalOptions="Center"
+                       > 
                     <Image
+                        Aspect="AspectFit"
                             Grid.Row="0"
                             Grid.Column="1"
-                            HeightRequest="310"
-                            HorizontalOptions="Center"
                             Source="{Binding Image}"
-                            WidthRequest="400" />
-
+                             />
+                    </Frame>
+                    <HorizontalStackLayout
+                         HorizontalOptions="CenterAndExpand"
+                        Margin="0,40,0,0"
+                        > 
                     <Button
-                            Margin="0,-30,0,0"
+                        Margin="0,0,20,0"
                             BackgroundColor="#4b6e75"
                             Command="{Binding UploadCommand}"
                             HeightRequest="50"
-                            HorizontalOptions="End"
-                            Text="change profile picture"
-                            WidthRequest="200" />
+                            Text="use files"
+                            WidthRequest="150" />
 
                     <Button
-                            Margin="0,-72,0,0"
                             BackgroundColor="#4b6e75"
                             Command="{Binding UsePhoneCameraCommand}"
                             HeightRequest="50"
-                            HorizontalOptions="Start"
                             Text="use camera"
                             WidthRequest="150" />
-
+                    </HorizontalStackLayout>
                 </VerticalStackLayout>
             </Border>
 
@@ -153,61 +162,53 @@
 
 
 
-
-
             <Border
+                    Margin="0,-200,0,0"
                     Grid.Row="1"
                     Grid.ColumnSpan="2"
-                    Margin="0,-200,0,0"
+                    Grid.Column="0"
                     Padding="20"
                     BackgroundColor="#6E754B"
                     HeightRequest="300"
                     HorizontalOptions="Center"
                     StrokeShape="RoundRectangle 30"
-                    StrokeThickness="0"
-                    VerticalOptions="Center">
+                    StrokeThickness="0">
 
+            
+            
                 <VerticalStackLayout>
-
+                    
 
                     <Label
                             CharacterSpacing="1.6"
                             FontFamily="oliverFont"
                             FontSize="50"
-                            HorizontalOptions="Start"
+                            HorizontalOptions="CenterAndExpand"
                             Text="{Binding User.FirstName, StringFormat='{0}s favourite books'}" />
-
-
-                    <CollectionView
-                            HeightRequest="200"
-                            HorizontalOptions="Center"
-                            ItemsLayout="HorizontalList"
-                            ItemsSource="{Binding UserBooks}"
-                            WidthRequest="700">
-
+                   
+                    <CollectionView 
+                                    ItemsLayout="HorizontalList"
+                                    ItemsSource="{Binding UserBooks}" >
+                        
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:UsersStarredBook">
-
-                                <VerticalStackLayout>
-
-                                    <Image
-                                            HeightRequest="40"
-                                            Source="{Binding BookImage}"
-                                            WidthRequest="60" />
-
-
-                                </VerticalStackLayout>
-
+                                
+                                            <Image 
+                                                Margin="20,20,20,20"
+                                             Source="{Binding BookImage}" 
+                                             
+                                              WidthRequest="100"
+                                             HeightRequest="150"
+                                             Aspect="AspectFill"/>
+                                
                             </DataTemplate>
-
-                        </CollectionView.ItemTemplate>
+        
+                            </CollectionView.ItemTemplate>
                     </CollectionView>
+        
 
-
-
-                </VerticalStackLayout>
+        </VerticalStackLayout>
             </Border>
-
 
         </Grid>
 

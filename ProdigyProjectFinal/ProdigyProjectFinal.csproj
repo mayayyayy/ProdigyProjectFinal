@@ -62,6 +62,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\clock-removebg-preview.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\Fonts\assassins.ttf" />
 	  <None Remove="Resources\Fonts\boho.otf" />
 	  <None Remove="Resources\Fonts\figtree.ttf" />
@@ -71,6 +75,9 @@
 	  <None Remove="Resources\Fonts\oliver.ttf" />
 	  <None Remove="Resources\Images\book.png" />
 	  <None Remove="Resources\Images\bookyellow.png" />
+	  <None Remove="Resources\Images\clock-removebg-preview.png" />
+	  <None Remove="Resources\Images\clock.png" />
+	  <None Remove="Resources\Images\clockcoloured.png" />
 	  <None Remove="Resources\Images\defaultPFP.png" />
 	  <None Remove="Resources\Images\emptyimage.png" />
 	  <None Remove="Resources\Images\home_icon.png" />
@@ -81,6 +88,8 @@
 	  <None Remove="Resources\Images\starempty.png" />
 	  <None Remove="Resources\Images\time.png" />
 	  <None Remove="Resources\Images\timecoloured.png" />
+	  <None Remove="Resources\Images\timericon.png" />
+	  <None Remove="Resources\Images\timericoncoloured.png" />
 	  <None Remove="Resources\Images\trash.png" />
 	  <None Remove="Resources\Images\trashcoloured.png" />
 	</ItemGroup>

@@ -62,7 +62,7 @@ namespace ProdigyProjectFinal.Services
 
         public async Task<bool> CRBook(string isbn)
         {
-            var response = await _httpClient.GetAsync($"{URL}CurrentReadBook?isbn={isbn}");
+            var response = await _httpClient.GetAsync($"{URL}CRbook?isbn={isbn}");
             return response.StatusCode == HttpStatusCode.OK;
         }
 

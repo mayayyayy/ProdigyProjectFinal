@@ -38,26 +38,26 @@
                 WidthRequest="900" />
 
         <Grid
-                Margin="30,0,-350,0"
+            
+                HorizontalOptions="Center"
                 ColumnDefinitions="*,*"
                 RowDefinitions="*,*">
             <Border
-                    Grid.ColumnSpan="1"
-                    Margin="0,25,50,0"
-                    Padding="10"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="CenterAndExpand"
+                    Margin="0,30,0,0"
+                    Padding="30"
                     BackgroundColor="#a3b899"
                     StrokeShape="RoundRectangle 30"
                     StrokeThickness="0">
 
                 <VerticalStackLayout Padding="15">
                     <CollectionView
-                            Margin="2,0,80,0"
-                            BackgroundColor="#a3b899"
-                            HeightRequest="400"
-                            HorizontalOptions="Fill"
+                            HeightRequest="485"
+                            HorizontalOptions="Center"
                             ItemsSource="{Binding Books}"
-                            VerticalOptions="Center"
-                            WidthRequest="450">
+                            
+                            WidthRequest="500">
 
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:Book">
@@ -68,9 +68,9 @@
 
                                         <Label
                                                 Grid.Row="0"
-                                                CharacterSpacing="1"
+                                                CharacterSpacing="0.3"
                                                 FontFamily="oliverFont"
-                                                FontSize="30"
+                                                FontSize="22"
                                                 Text="{Binding AuthorName}" />
 
                                         <Label
@@ -84,9 +84,9 @@
                                         <Image
                                                 Grid.RowSpan="2"
                                                 Grid.Column="1"
-                                                HeightRequest="250"
+                                                HeightRequest="260"
                                                 Source="notfound.jpg"
-                                                WidthRequest="120"
+                                                WidthRequest="100"
                                                 ZIndex="1" />
 
                                         <Image
@@ -104,7 +104,8 @@
                                         </Image>
 
                                         <Image
-                                                HeightRequest="60"
+                                            Margin="0,0,-30,0"
+                                                HeightRequest="65"
                                                 HorizontalOptions="Center"
                                                 Source="{Binding IconImage}"
                                                 VerticalOptions="End"

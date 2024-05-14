@@ -77,6 +77,10 @@ namespace ProdigyProjectFinal.ViewModel
                             book.IconImage = "starcoloured.png";
                         if (book.IsTBR)
                             book.TBRImage = "bookyellow.png";
+                        if (book.IsCR)
+                            book.CurrentReadImage = "clockcoloured.png";
+                        if (book.IsDrB)
+                            book.DroppedImage = "trashcoloured.png";
                         Books.Add(book);
                     }
                     
@@ -124,15 +128,13 @@ namespace ProdigyProjectFinal.ViewModel
 
                 Books.RemoveAt(i);
                 Books.Insert(i, book);
-
             }
-
         }
 
         private async Task CurrentRead(string isbn)
         {
 
-            var success = await _services.StarBook(isbn);
+            var success = await _services.CRBook(isbn);
 
             if (success)
             {
@@ -140,20 +142,17 @@ namespace ProdigyProjectFinal.ViewModel
                 int i = Books.IndexOf(Books.Where(x => x.ISBN == isbn).FirstOrDefault());
                 Book book = Books[i];
                 book.IsCR = !book.IsCR;
-                if (book.IsCR) { book.IconImage = "timecoloured.png"; }
-                else book.IconImage = "time.png";
+                if (book.IsCR) { book.CurrentReadImage = "clockcoloured.png"; }
+                else book.CurrentReadImage = "clock.png";
 
                 Books.RemoveAt(i);
                 Books.Insert(i, book);
-
             }
-
         }
 
         private async Task DroppedBook(string isbn)
         {
-
-            var success = await _services.StarBook(isbn);
+            var success = await _services.DropBook(isbn);
 
             if (success)
             {
@@ -161,19 +160,16 @@ namespace ProdigyProjectFinal.ViewModel
                 int i = Books.IndexOf(Books.Where(x => x.ISBN == isbn).FirstOrDefault());
                 Book book = Books[i];
                 book.IsDrB = !book.IsDrB;
-                if (book.IsDrB) { book.IconImage = "trashcoloured.png"; }
-                else book.IconImage = "trash.png";
+                if (book.IsDrB) { book.DroppedImage = "trashcoloured.png"; }
+                else book.DroppedImage = "trash.png";
 
                 Books.RemoveAt(i);
                 Books.Insert(i, book);
-
             }
-
         }
 
         private async Task TBRBook(string isbn)
         {
-
             var success = await _services.TBRBook(isbn);
 
             if (success)
@@ -187,9 +183,7 @@ namespace ProdigyProjectFinal.ViewModel
 
                 Books.RemoveAt(i);
                 Books.Insert(i, book);
-
             }
-
         }
 
 

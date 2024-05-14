@@ -16,12 +16,9 @@ namespace ProdigyProjectFinal.ViewModel
 {
     public class ProfilePageViewModel : ViewModel
     {
-
-
         readonly PickOptions[] filePickOptions = { null,
             new() { PickerTitle = "Image", FileTypes = FilePickerFileType.Images },
             new() { PickerTitle = "Png", FileTypes = FilePickerFileType.Png }};
-
 
         public ObservableCollection<UsersStarredBook> UserBooks { get; set; }    
         private ProdigyServices _services;

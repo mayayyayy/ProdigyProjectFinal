@@ -54,7 +54,6 @@ namespace ProdigyProjectFinal.ViewModel
 
 
         }
-
         public void LoadBook(Book b)
         {
             Book = b;

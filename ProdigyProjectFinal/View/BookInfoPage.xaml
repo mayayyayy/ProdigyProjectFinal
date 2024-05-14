@@ -14,13 +14,13 @@
 
     <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
 
+        
 
         <Label
                 Grid.Row="0"
-                Margin="20,20,20,20"
-                CharacterSpacing="1"
-                FontFamily="oliverFont"
-                FontSize="30"
+                 CharacterSpacing="0.3"
+                 FontFamily="oliverFont"
+                 FontSize="22"
                 Text="{Binding Book.AuthorName}" />
 
         <Label
@@ -41,9 +41,9 @@
         <Image
                 Grid.RowSpan="2"
                 Grid.Column="1"
-                HeightRequest="180"
+                HeightRequest="100"
                 Source="{Binding Book.BookImage}"
-                ZIndex="2" />
+                 />
     </Grid>
 
 
