@@ -274,35 +274,7 @@ namespace ProdigyProjectFinal.Services
 
         #endregion
 
-        //public async Task<bool> UploadPhoto(FileResult file)
-        //{
-
-        //    try
-        //    {
-        //        byte[] bytes;
-
-        //        using (MemoryStream ms = new MemoryStream())
-        //        {
-        //            var stream = await file.OpenReadAsync();
-        //            stream.CopyTo(ms);
-        //            bytes = ms.ToArray();
-        //        }
-
-        //        var multipartFormDataContent = new MultipartFormDataContent();
-
-        //        var content = new ByteArrayContent(bytes);
-        //        multipartFormDataContent.Add(content, "file", "robot.jpg");
-
-
-        //        var response = await _httpClient.PostAsync($@"{URL}UploadImage?Id=1", multipartFormDataContent);
-        //        if (response.IsSuccessStatusCode) { return true; }
-        //    }
-        //    catch (System.Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //    return false;
-        //}
+        
 
     }
 

@@ -94,7 +94,6 @@ namespace ProdigyProjectFinal.ViewModel
                 OnPropertyChange(nameof(NewPassword));
             }
         }
-        //public string CurrentUserName { get => User.Username; }
         public User User
         {
             get => _user;
