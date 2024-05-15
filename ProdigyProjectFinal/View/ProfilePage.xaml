@@ -111,40 +111,35 @@
                         Spacing="22"
                         WidthRequest="410">
 
-                    <Frame 
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        HeightRequest="200"
-                        CornerRadius="40"
-                        IsClippedToBounds="True"
-                        Padding="0"
-                        HorizontalOptions="Center"
-                       > 
-                    <Image
-                        Aspect="AspectFit"
+                    <Frame
                             Grid.Row="0"
                             Grid.Column="1"
-                            Source="{Binding Image}"
-                             />
+                            Padding="0"
+                            CornerRadius="40"
+                            HeightRequest="200"
+                            HorizontalOptions="Center"
+                            IsClippedToBounds="True">
+                        <Image
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Aspect="AspectFit"
+                                Source="{Binding Image}" />
                     </Frame>
-                    <HorizontalStackLayout
-                         HorizontalOptions="CenterAndExpand"
-                        Margin="0,40,0,0"
-                        > 
-                    <Button
-                        Margin="0,0,20,0"
-                            BackgroundColor="#4b6e75"
-                            Command="{Binding UploadCommand}"
-                            HeightRequest="50"
-                            Text="use files"
-                            WidthRequest="150" />
+                    <HorizontalStackLayout Margin="0,40,0,0" HorizontalOptions="CenterAndExpand">
+                        <Button
+                                Margin="0,0,20,0"
+                                BackgroundColor="#4b6e75"
+                                Command="{Binding UploadCommand}"
+                                HeightRequest="50"
+                                Text="use files"
+                                WidthRequest="150" />
 
-                    <Button
-                            BackgroundColor="#4b6e75"
-                            Command="{Binding UsePhoneCameraCommand}"
-                            HeightRequest="50"
-                            Text="use camera"
-                            WidthRequest="150" />
+                        <Button
+                                BackgroundColor="#4b6e75"
+                                Command="{Binding UsePhoneCameraCommand}"
+                                HeightRequest="50"
+                                Text="use camera"
+                                WidthRequest="150" />
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
             </Border>
@@ -163,22 +158,22 @@
 
 
             <Border
-                    Margin="0,-200,0,0"
                     Grid.Row="1"
-                    Grid.ColumnSpan="2"
                     Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Margin="0,-200,0,0"
                     Padding="15"
-                WidthRequest="900"
                     BackgroundColor="#6E754B"
                     HeightRequest="300"
                     HorizontalOptions="Center"
                     StrokeShape="RoundRectangle 30"
-                    StrokeThickness="0">
+                    StrokeThickness="0"
+                    WidthRequest="900">
 
-            
-            
+
+
                 <VerticalStackLayout>
-                    
+
 
                     <Label
                             CharacterSpacing="1.6"
@@ -186,29 +181,26 @@
                             FontSize="50"
                             HorizontalOptions="CenterAndExpand"
                             Text="{Binding User.FirstName, StringFormat='{0}s favourite books'}" />
-                   
-                    <CollectionView 
-                                    ItemsLayout="HorizontalList"
-                                    ItemsSource="{Binding UserBooks}" >
-                        
+
+                    <CollectionView ItemsLayout="HorizontalList" ItemsSource="{Binding UserBooks}">
+
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:UsersStarredBook">
-                                
-                                            <Image 
-                                                Margin="20,20,20,20"
-                                             Source="{Binding BookImage}" 
-                                             
-                                              WidthRequest="100"
-                                             HeightRequest="150"
-                                             Aspect="AspectFill"/>
-                                
-                            </DataTemplate>
-        
-                            </CollectionView.ItemTemplate>
-                    </CollectionView>
-        
 
-        </VerticalStackLayout>
+                                <Image
+                                        Margin="20,20,20,20"
+                                        Aspect="AspectFill"
+                                        HeightRequest="150"
+                                        Source="{Binding BookImage}"
+                                        WidthRequest="100" />
+
+                            </DataTemplate>
+
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+
+                </VerticalStackLayout>
             </Border>
 
         </Grid>
