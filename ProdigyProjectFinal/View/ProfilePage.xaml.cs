@@ -10,6 +10,7 @@ public partial class ProfilePage : ContentPage
 		InitializeComponent();
 		BindingContext = vm;
 		Loaded += vm.LoadBooks;
+		Appearing += vm.LoadBooks;
 	}
 
 

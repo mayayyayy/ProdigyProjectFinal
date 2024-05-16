@@ -237,6 +237,9 @@ namespace ProdigyProjectFinal.ViewModel
 
             LoadBooks = new((s, e) =>
             {
+                User = _userService.User;
+
+
                 UserBooks.Clear();
                 foreach (var book in User.UsersStarredBooks)
                 {
@@ -304,7 +307,7 @@ namespace ProdigyProjectFinal.ViewModel
                 {
                     try
                     {
-                        FileResult = await MediaPicker.CapturePhotoAsync();
+                        FileResult = await MediaPicker.Default.CapturePhotoAsync();
                     }
                     catch (Exception)
                     {

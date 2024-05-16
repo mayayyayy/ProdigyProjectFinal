@@ -110,7 +110,7 @@ namespace ProdigyProjectFinal.ViewModel
 
             BackBtn = new Command(async () =>
             {
-                await Shell.Current.GoToAsync("..");
+                await Shell.Current.GoToAsync("//MainPage");
             }
 
 

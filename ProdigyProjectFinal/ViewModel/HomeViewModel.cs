@@ -31,9 +31,10 @@ namespace ProdigyProjectFinal.ViewModel
         public ObservableCollection<Book> Books { get; set; }
         public ICommand GoToProfile { get; protected set; }
         public ICommand GoToSearch { get; protected set; }
+        public ICommand Logout { get; protected set; }
 
 
-     
+
         public HomeViewModel(ProdigyServices services, UserService userService)
         {
             this._services = services;
@@ -51,7 +52,18 @@ namespace ProdigyProjectFinal.ViewModel
                 await Shell.Current.GoToAsync("///Search");
             });
 
-            
+            Logout = new Command(async () =>
+            {
+                
+                if(await services.LogoutAsync())
+                {
+                    await Shell.Current.GoToAsync("/Login");
+                    await Shell.Current.DisplayAlert("logged out message", "Logged out!", "OK");
+                }
+                else Shell.Current.DisplayAlert("fail", "no logout", "OK");
+
+            });
+
         }
 
         

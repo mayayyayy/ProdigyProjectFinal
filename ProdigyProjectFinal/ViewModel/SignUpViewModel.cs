@@ -25,6 +25,7 @@ namespace ProdigyProjectFinal.ViewModel
         private bool _signUpInvalid;
         private readonly ProdigyServices _services;
         private readonly UserService _userService;
+        private bool flag = false;
 
 
 
@@ -123,34 +124,69 @@ namespace ProdigyProjectFinal.ViewModel
             //sign up button command
             SignUpCommand = new Command(async () =>
             {
-             
-                if (!validateRegister())
+                flag = false;
+                switch (validateRegister())
                 {
-                    await Shell.Current.DisplayAlert("error", "invalid field", "try again");
-                    _isErrorMessage = true;
-                    return;
+                    case "username empty":
+                        await Shell.Current.DisplayAlert("error", "invalid username", "try again");
+                        break;
+
+                    case "password empty":
+                        await Shell.Current.DisplayAlert("error", "invalid password", "try again");
+                        break;
+
+                    case "email empty":
+                        await Shell.Current.DisplayAlert("error", "invalid email", "try again");
+                        break;
+
+                    case "email must contain @ symbol":
+                        await Shell.Current.DisplayAlert("error", "email must contain @ symbol", "try again");
+                        break;
+
+                    case "FN empty":
+                        await Shell.Current.DisplayAlert("error", "invalid first name", "try again");
+                        break;
+
+                    case "LN empty":
+                        await Shell.Current.DisplayAlert("error", "invalid last name", "try again");
+                        break;
+
+                    case "well done everything good":
+                        flag = true;
+                        break;
+
+                    default:
+                        await Shell.Current.DisplayAlert("error", "error", "try again");
+                        break;
+
+
                 }
-
-                User user = new User() { Username = Username, UserPswd = Password, FirstName = FirstName, LastName = LastName, Email = Email};
-
-                try
+                
+                   
+                if(flag)
                 {
-                    user = await _services.Register(user);
-                    if(user != null)
+                    User user = new User() { Username = Username, UserPswd = Password, FirstName = FirstName, LastName = LastName, Email = Email };
+
+                    try
                     {
-                        _isErrorMessage = false;
-                        _userService.User = user;
-                        await Shell.Current.DisplayAlert("success", "sign up success", "ok");
-                        await Shell.Current.GoToAsync("//Home");
+                        user = await _services.Register(user);
+                        if (user != null)
+                        {
+                            _isErrorMessage = false;
+                            _userService.User = user;
+                            await Shell.Current.DisplayAlert("success", "sign up success", "ok");
+                            await Shell.Current.GoToAsync("//Home");
 
+                        }
+                        else _isErrorMessage = true;
                     }
-                    else _isErrorMessage = true;
+                    catch (Exception)
+                    {
+                        _isErrorMessage = true;
+                        await Shell.Current.DisplayAlert("error", "server error", "try again");
+                    }
                 }
-                catch(Exception)
-                {
-                    _isErrorMessage=true;
-                    await Shell.Current.DisplayAlert("error", "server error", "try again");
-                }
+                
             });
 
             BackBtn = new Command(async () =>
@@ -159,11 +195,16 @@ namespace ProdigyProjectFinal.ViewModel
             });
         }
 
-        private bool validateRegister()
+        private string validateRegister()
         {
-            return !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(Email) &&
-                !string.IsNullOrEmpty(FirstName) && !string.IsNullOrEmpty(LastName) && Email.Contains('@')
-                && Username.Length > 0 && Password.Length > 0;
+            if (string.IsNullOrEmpty(Username)) return "username empty";
+            if (string.IsNullOrEmpty(Password)) return "password empty";
+            if (string.IsNullOrEmpty(Email)) return "email empty";
+            if (!Email.Contains('@')) return "email must contain @ symbol";
+            if (string.IsNullOrEmpty(FirstName)) return "FN empty";
+            if (string.IsNullOrEmpty(LastName)) return "LN empty";
+
+            return "well done everything good";
         }
     }
 }

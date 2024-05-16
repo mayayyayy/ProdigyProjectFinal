@@ -12,65 +12,73 @@
 
     <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
 
-        
+
 
         <Border
-            Grid.RowSpan="2"
-                Grid.Row="0" 
+                Grid.Row="0"
+                Grid.RowSpan="2"
                 Grid.ColumnSpan="2"
-                BackgroundColor="#4b6e75"
-                StrokeShape="RoundRectangle 30"
-                StrokeThickness="0" 
                 Margin="0,30,0,20"
-                WidthRequest="800"
-                VerticalOptions="CenterAndExpand"
+                BackgroundColor="#4b6e75"
                 HeightRequest="400"
                 HorizontalOptions="Center"
-            
-            >
+                StrokeShape="RoundRectangle 30"
+                StrokeThickness="0"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="800">
 
             <VerticalStackLayout HorizontalOptions="Center">
 
                 <Label
-                    FontFamily="oliverFont"
                         Padding="20"
+                        FontFamily="oliverFont"
                         FontSize="50"
                         Text="welcome to prodigy." />
-                
+
 
             </VerticalStackLayout>
 
 
         </Border>
 
-        <VerticalStackLayout 
-            Grid.RowSpan="2"
-                Grid.Row="0" 
+        <VerticalStackLayout
+                Grid.Row="0"
+                Grid.RowSpan="2"
                 Grid.ColumnSpan="2"
-                HorizontalOptions="Center"
                 HeightRequest="200"
+                HorizontalOptions="Center"
                 Spacing="0"
                 WidthRequest="450">
 
             <Button
-                    Margin="0,20,0,40"
+                    Margin="0,0,0,20"
                     BackgroundColor="#a3b899"
                     CharacterSpacing="1"
                     Command="{Binding GoToProfile}"
                     FontFamily="oliverFont"
                     FontSize="40"
-                    WidthRequest="300"
                     Text="profile"
-                    TextColor="white" />
+                    TextColor="white"
+                    WidthRequest="300" />
 
             <Button
+                    Margin="0,0,0,20"
                     BackgroundColor="#a3b899"
                     Command="{Binding GoToSearch}"
                     FontFamily="oliverFont"
                     FontSize="40"
-                    WidthRequest="300"
                     Text="search"
-                    TextColor="white" />
+                    TextColor="white"
+                    WidthRequest="300" />
+
+            <Button
+                    BackgroundColor="#a3b899"
+                    Command="{Binding Logout}"
+                    FontFamily="oliverFont"
+                    FontSize="40"
+                    Text="logout"
+                    TextColor="white"
+                    WidthRequest="300" />
 
 
 

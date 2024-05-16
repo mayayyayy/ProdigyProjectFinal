@@ -174,6 +174,36 @@ namespace ProdigyProjectFinal.Services
             return new UserDto() { Success = false, User = null, Message = ErrorMsgs.invalidLogin };
 
         }
+
+        public async Task<bool> LogoutAsync()
+        {
+            try
+            {
+                
+                var response = await _httpClient.GetAsync($"{URL}Logout");
+
+                switch (response.StatusCode)
+                {
+                    case HttpStatusCode.OK:
+                        {
+                            
+                            userService.User = null;
+                            return true;
+
+
+                        }
+                    case (HttpStatusCode.Unauthorized):
+                        {
+                            return false;
+
+                        }
+
+                }
+
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
+            return false;
+        }
         #endregion
 
 
