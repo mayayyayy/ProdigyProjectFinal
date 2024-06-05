@@ -253,16 +253,10 @@ namespace ProdigyProjectFinal.ViewModel
 
             Reset = new((s, e) =>
             {
-
-                //User = _userService.User;
                 NewUsername = "";
                 NewPassword = "";
                 OnPropertyChange(nameof(Image));
-                //UserStarBooks = new ObservableCollection<UsersStarredBook>();
-
-                //UserCurrentRead = new ObservableCollection<UsersCurrentRead>();
-                //UserDroppedBooks = new ObservableCollection<UsersDroppedBooks>();
-                //UserTBR = new ObservableCollection<UsersTBR>();
+                
             });
             
 
@@ -358,9 +352,6 @@ namespace ProdigyProjectFinal.ViewModel
                             OnPropertyChange(nameof(User));
                             OnPropertyChange(nameof(FileResult));
                             OnPropertyChange(nameof(Image));
-                            //var stream = await FileResult.OpenReadAsync();
-                            //PhotoImageSource = ImageSource.FromStream(() => stream);
-                            //OnPropertyChange(nameof(PhotoImageSource));
                             Content = ""; FileResult = null;
                             break;
 
@@ -405,9 +396,6 @@ namespace ProdigyProjectFinal.ViewModel
                             await Shell.Current.DisplayAlert("uploaded", "uploaded successfully", "ok");
                             User = userService.User;
                             OnPropertyChange(nameof(Image));
-                            //var stream = await FileResult.OpenReadAsync();
-                            //PhotoImageSource = ImageSource.FromStream(() => stream);
-                            //OnPropertyChange(nameof(PhotoImageSource));
                             Content = ""; FileResult = null;
                             break;
 

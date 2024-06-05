@@ -151,7 +151,6 @@ namespace ProdigyProjectFinal.ViewModel
             {
                 User.UsersCurrentReads.Add(new UsersCurrentRead() { BookISBN = isbn, User = User });
                 _userService.User = User;
-
                 int i = Books.IndexOf(Books.Where(x => x.ISBN == isbn).FirstOrDefault());
                 Book book = Books[i];
                 book.IsCR = !book.IsCR;
