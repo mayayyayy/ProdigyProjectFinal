@@ -8,5 +8,7 @@ public partial class Search : ContentPage
 	{
 		InitializeComponent();
         BindingContext = vm;
+
+		Appearing += vm.Reset;
     }
 }

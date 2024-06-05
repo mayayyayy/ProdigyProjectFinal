@@ -22,6 +22,8 @@ namespace ProdigyProjectFinal.ViewModel
         private Book SelectedBook;
         private User _user;
 
+        public EventHandler Reset { get; set; }
+
         public User User
         {
             get => _user;
@@ -90,7 +92,14 @@ namespace ProdigyProjectFinal.ViewModel
 
             });
 
-            StarBookCommand = new Command<string>(async (isbn) =>
+
+            Reset = new((s, e) =>
+            {
+                SearchRequest = "";
+                Books.Clear();
+            });
+
+                StarBookCommand = new Command<string>(async (isbn) =>
             { await StarBook(isbn); });
 
             //to be read
@@ -120,6 +129,7 @@ namespace ProdigyProjectFinal.ViewModel
             if (success)
             {
                 User.UsersStarredBooks.Add(new UsersStarredBook() { BookISBN = isbn, User = User });
+                _userService.User = User;
                 //find from Books selected book, update IsStarred to true, remove from Books, and refresh 
                 int i = Books.IndexOf(Books.Where(x => x.ISBN == isbn).FirstOrDefault());
                 Book book = Books[i];
@@ -139,7 +149,9 @@ namespace ProdigyProjectFinal.ViewModel
 
             if (success)
             {
-                User.UsersCurrentRead.Add(new UsersCurrentRead() { BookISBN = isbn, User = User });
+                User.UsersCurrentReads.Add(new UsersCurrentRead() { BookISBN = isbn, User = User });
+                _userService.User = User;
+
                 int i = Books.IndexOf(Books.Where(x => x.ISBN == isbn).FirstOrDefault());
                 Book book = Books[i];
                 book.IsCR = !book.IsCR;
@@ -157,7 +169,9 @@ namespace ProdigyProjectFinal.ViewModel
 
             if (success)
             {
-                User.UsersDropped.Add(new UsersDroppedBooks() { BookISBN = isbn, User = User });
+                User.UsersDroppedBooks.Add(new UsersDroppedBooks() { BookISBN = isbn, User = User });
+                _userService.User = User;
+
                 int i = Books.IndexOf(Books.Where(x => x.ISBN == isbn).FirstOrDefault());
                 Book book = Books[i];
                 book.IsDrB = !book.IsDrB;
@@ -175,7 +189,9 @@ namespace ProdigyProjectFinal.ViewModel
 
             if (success)
             {
-                User.UsersTBR.Add(new UsersTBR() { UserId = User.Id, BookIsbn = isbn });
+                User.UsersTBR.Add(new UsersTBR() { UserId = User.Id, BookISBN = isbn });
+                _userService.User = User;
+
                 int i = Books.IndexOf(Books.Where(x => x.ISBN == isbn).FirstOrDefault());
                 Book book = Books[i];
                 book.IsTBR = !book.IsTBR;

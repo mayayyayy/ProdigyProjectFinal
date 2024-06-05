@@ -17,7 +17,7 @@ namespace ProdigyProjectFinal.Services
         readonly JsonSerializerOptions _serializerOptions;
         readonly UserService userService;
         const string URL = @"https://nghpvwqt-7112.uks1.devtunnels.ms/api/Values/";
-        public const string IMAGE_URL = @"https://nghpvwqt-7112.uks1.devtunnels.ms/images/";
+        public string IMAGE_URL = @"https://nghpvwqt-7112.uks1.devtunnels.ms/images/";
 
         private const string RootURL = $"{WwwRoot}/ProdigyWeb";
         public const string WwwRoot = "https://nghpvwqt-7112.uks1.devtunnels.ms/swagger/index.html";

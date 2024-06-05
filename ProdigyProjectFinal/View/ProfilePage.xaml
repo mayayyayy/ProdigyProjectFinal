@@ -22,191 +22,342 @@
     -->
 
 
+    <ScrollView>
+        <VerticalStackLayout>
 
-    <VerticalStackLayout>
+            <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*,*">
 
-        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*">
-
-            <Border
-                    Margin="30,30,40,0"
-                    StrokeShape="RoundRectangle 30"
-                    StrokeThickness="0">
+                <Border
+                        Margin="30,30,40,0"
+                        StrokeShape="RoundRectangle 30"
+                        StrokeThickness="0">
 
 
-                <VerticalStackLayout
-                        Padding="30"
-                        BackgroundColor="#4b6e75"
-                        HeightRequest="410"
-                        Spacing="22"
-                        WidthRequest="410">
+                    <VerticalStackLayout
+                            Padding="30"
+                            BackgroundColor="#4b6e75"
+                            HeightRequest="410"
+                            Spacing="20"
+                            WidthRequest="400">
 
-                    <VerticalStackLayout Spacing="10">
-                        <Label
+                        <VerticalStackLayout Spacing="10">
+                            <Label
+                                    CharacterSpacing="1"
+                                    FontFamily="oliverFont"
+                                    FontSize="35"
+                                    Text="change username"
+                                    TextColor="Black" />
+                            <Entry
+                                    BackgroundColor="Cornsilk"
+                                    FontFamily="lindenFont"
+                                    FontSize="15"
+                                    StyleClass="LoginEntry"
+                                    Text="{Binding NewUsername}" />
+                        </VerticalStackLayout>
+
+
+                        <Button
+                                BackgroundColor="#a3b899"
                                 CharacterSpacing="1"
-                                FontFamily="oliverFont"
-                                FontSize="35"
-                                Text="change username"
-                                TextColor="Black" />
-                        <Entry
-                                BackgroundColor="Cornsilk"
+                                Command="{Binding ChangeUsernameBtn}"
                                 FontFamily="lindenFont"
-                                FontSize="15"
-                                StyleClass="LoginEntry"
-                                Text="{Binding NewUsername}" />
+                                FontSize="25"
+                                Text="confirm"
+                                TextColor="Black"
+                                WidthRequest="150" />
+
+                        <VerticalStackLayout Spacing="10">
+                            <Label
+                                    CharacterSpacing="1"
+                                    FontFamily="oliverFont"
+                                    FontSize="35"
+                                    StyleClass="LoginLbl"
+                                    Text="change password" />
+                            <Entry
+                                    BackgroundColor="Cornsilk"
+                                    FontFamily="lindenFont"
+                                    FontSize="15"
+                                    Text="{Binding NewPassword}" />
+                        </VerticalStackLayout>
+
+                        <Button
+                                BackgroundColor="#a3b899"
+                                CharacterSpacing="1"
+                                Command="{Binding ChangePasswordBtn}"
+                                FontFamily="lindenFont"
+                                FontSize="25"
+                                Text="confirm"
+                                TextColor="Black"
+                                WidthRequest="150" />
+
                     </VerticalStackLayout>
 
+                </Border>
 
-                    <Button
+
+                <Border
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="30,30,40,0"
+                        StrokeShape="RoundRectangle 30"
+                        StrokeThickness="0">
+
+
+
+                    <VerticalStackLayout
+                            Padding="20"
                             BackgroundColor="#a3b899"
-                            CharacterSpacing="1"
-                            Command="{Binding ChangeUsernameBtn}"
-                            FontFamily="lindenFont"
-                            FontSize="25"
-                            Text="confirm"
-                            TextColor="Black"
-                            WidthRequest="150" />
+                            HeightRequest="410"
+                            Spacing="22"
+                            WidthRequest="410">
 
-                    <VerticalStackLayout Spacing="10">
-                        <Label
-                                CharacterSpacing="1"
-                                FontFamily="oliverFont"
-                                FontSize="35"
-                                StyleClass="LoginLbl"
-                                Text="change password" />
-                        <Entry
-                                BackgroundColor="Cornsilk"
-                                FontFamily="lindenFont"
-                                FontSize="15"
-                                Text="{Binding NewPassword}" />
-                    </VerticalStackLayout>
-
-                    <Button
-                            BackgroundColor="#a3b899"
-                            CharacterSpacing="1"
-                            Command="{Binding ChangePasswordBtn}"
-                            FontFamily="lindenFont"
-                            FontSize="25"
-                            Text="confirm"
-                            TextColor="Black"
-                            WidthRequest="150" />
-
-                </VerticalStackLayout>
-
-            </Border>
-
-
-            <Border
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Margin="30,30,40,0"
-                    StrokeShape="RoundRectangle 30"
-                    StrokeThickness="0">
-
-
-
-                <VerticalStackLayout
-                        Padding="20"
-                        BackgroundColor="#a3b899"
-                        HeightRequest="410"
-                        Spacing="22"
-                        WidthRequest="410">
-
-                    <Frame
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Padding="0"
-                            CornerRadius="40"
-                            HeightRequest="200"
-                            HorizontalOptions="Center"
-                            IsClippedToBounds="True">
-                        <Image
+                        <Frame
                                 Grid.Row="0"
                                 Grid.Column="1"
-                                Aspect="AspectFit"
-                                Source="{Binding Image}" />
-                    </Frame>
-                    <HorizontalStackLayout Margin="0,40,0,0" HorizontalOptions="CenterAndExpand">
-                        <Button
-                                Margin="0,0,20,0"
-                                BackgroundColor="#4b6e75"
-                                Command="{Binding UploadCommand}"
-                                HeightRequest="50"
-                                Text="use files"
-                                WidthRequest="150" />
+                                Padding="0"
+                                CornerRadius="40"
+                                HeightRequest="200"
+                                HorizontalOptions="Center"
+                                IsClippedToBounds="True">
+                            <Image
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Aspect="AspectFit"
+                                    Source="{Binding Image}" />
+                        </Frame>
+                        <HorizontalStackLayout Margin="0,40,0,0" HorizontalOptions="CenterAndExpand">
+                            <Button
+                                    Margin="0,0,20,0"
+                                    BackgroundColor="#4b6e75"
+                                    Command="{Binding UploadCommand}"
+                                    HeightRequest="50"
+                                    Text="use files"
+                                    WidthRequest="150" />
 
-                        <Button
-                                BackgroundColor="#4b6e75"
-                                Command="{Binding UsePhoneCameraCommand}"
-                                HeightRequest="50"
-                                Text="use camera"
-                                WidthRequest="150" />
-                    </HorizontalStackLayout>
-                </VerticalStackLayout>
-            </Border>
+                            <Button
+                                    BackgroundColor="#4b6e75"
+                                    Command="{Binding UsePhoneCameraCommand}"
+                                    HeightRequest="50"
+                                    Text="use camera"
+                                    WidthRequest="150" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
 
-            <Label
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    CharacterSpacing="1"
-                    FontFamily="lindenFont"
-                    FontSize="25"
-                    HeightRequest="620"
-                    HorizontalTextAlignment="Center"
-                    Text="{Binding User.Username, StringFormat='current username: {0}'}"
-                    WidthRequest="400" />
-
-
-
-            <Border
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Margin="0,-200,0,0"
-                    Padding="15"
-                    BackgroundColor="#6E754B"
-                    HeightRequest="300"
-                    HorizontalOptions="Center"
-                    StrokeShape="RoundRectangle 30"
-                    StrokeThickness="0"
-                    WidthRequest="900">
-
-
-
-                <VerticalStackLayout>
-
-
-                    <Label
-                            CharacterSpacing="1.6"
-                            FontFamily="oliverFont"
-                            FontSize="50"
-                            HorizontalOptions="CenterAndExpand"
-                            Text="{Binding User.FirstName, StringFormat='{0}s favourite books'}" />
-
-                    <CollectionView ItemsLayout="HorizontalList" ItemsSource="{Binding UserBooks}">
-
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="models:UsersStarredBook">
-
-                                <Image
-                                        Margin="20,20,20,20"
-                                        Aspect="AspectFill"
-                                        HeightRequest="150"
-                                        Source="{Binding BookImage}"
-                                        WidthRequest="100" />
-
-                            </DataTemplate>
-
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-
-
-                </VerticalStackLayout>
-            </Border>
-
-        </Grid>
+                <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        CharacterSpacing="1"
+                        FontFamily="lindenFont"
+                        FontSize="25"
+                        HeightRequest="620"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding User.Username, StringFormat='current username: {0}'}"
+                        WidthRequest="400" />
 
 
 
 
-    </VerticalStackLayout>
+
+
+
+
+                <Border
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="0,-200,0,0"
+                        Padding="15"
+                        BackgroundColor="#6E754B"
+                        HeightRequest="300"
+                        HorizontalOptions="Center"
+                        StrokeShape="RoundRectangle 30"
+                        StrokeThickness="0"
+                        WidthRequest="900">
+
+
+
+                    <VerticalStackLayout>
+
+                        <Label
+                                CharacterSpacing="1.6"
+                                FontFamily="oliverFont"
+                                FontSize="50"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{Binding User.FirstName, StringFormat='{0}s favourite books'}" />
+
+                        <CollectionView ItemsLayout="HorizontalList" ItemsSource="{Binding UserStarBooks}">
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:UsersStarredBook">
+
+                                    <Image
+                                            Margin="20,20,20,20"
+                                            Aspect="AspectFill"
+                                            HeightRequest="150"
+                                            Source="{Binding BookImage}"
+                                            WidthRequest="100" />
+
+                                </DataTemplate>
+
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+
+                    </VerticalStackLayout>
+                </Border>
+
+
+                <Border
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="0,-200,0,0"
+                        Padding="15"
+                        BackgroundColor="#6E754B"
+                        HeightRequest="300"
+                        HorizontalOptions="Center"
+                        StrokeShape="RoundRectangle 30"
+                        StrokeThickness="0"
+                        WidthRequest="900">
+
+                    <VerticalStackLayout>
+
+                        <Label
+                                CharacterSpacing="1.6"
+                                FontFamily="oliverFont"
+                                FontSize="50"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{Binding User.FirstName, StringFormat='{0}s to be read'}" />
+
+                        <CollectionView ItemsLayout="HorizontalList" ItemsSource="{Binding UserTBR}">
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:UsersTBR">
+
+                                    <Image
+                                            Margin="20,20,20,20"
+                                            Aspect="AspectFill"
+                                            HeightRequest="150"
+                                            Source="{Binding BookImage}"
+                                            WidthRequest="100" />
+
+                                </DataTemplate>
+
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+
+                    </VerticalStackLayout>
+                </Border>
+
+
+                <Border
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="0,90,0,0"
+                        Padding="15"
+                        BackgroundColor="#6E754B"
+                        HeightRequest="300"
+                        HorizontalOptions="Center"
+                        StrokeShape="RoundRectangle 30"
+                        StrokeThickness="0"
+                        WidthRequest="900">
+
+
+
+                    <VerticalStackLayout>
+
+
+                        <Label
+                                CharacterSpacing="1.6"
+                                FontFamily="oliverFont"
+                                FontSize="50"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{Binding User.FirstName, StringFormat='{0}s current reads'}" />
+
+                        <CollectionView ItemsLayout="HorizontalList" ItemsSource="{Binding UserCurrentRead}">
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:UsersCurrentRead">
+
+                                    <Image
+                                            Margin="20,20,20,20"
+                                            Aspect="AspectFill"
+                                            HeightRequest="150"
+                                            Source="{Binding BookImage}"
+                                            WidthRequest="100" />
+
+                                </DataTemplate>
+
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+
+                    </VerticalStackLayout>
+                </Border>
+
+
+
+                <Border
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="0,90,0,0"
+                        Padding="15"
+                        BackgroundColor="#6E754B"
+                        HeightRequest="300"
+                        HorizontalOptions="Center"
+                        StrokeShape="RoundRectangle 30"
+                        StrokeThickness="0"
+                        WidthRequest="900">
+
+
+
+                    <VerticalStackLayout>
+
+
+                        <Label
+                                CharacterSpacing="1.6"
+                                FontFamily="oliverFont"
+                                FontSize="50"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{Binding User.FirstName, StringFormat='{0}s dropped books'}" />
+
+                        <CollectionView ItemsLayout="HorizontalList" ItemsSource="{Binding UserDroppedBooks}">
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:UsersDroppedBooks">
+
+                                    <Image
+                                            Margin="20,20,20,20"
+                                            Aspect="AspectFill"
+                                            HeightRequest="150"
+                                            Source="{Binding BookImage}"
+                                            WidthRequest="100" />
+
+                                </DataTemplate>
+
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+
+                    </VerticalStackLayout>
+                </Border>
+
+
+
+
+
+
+
+
+            </Grid>
+
+
+
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

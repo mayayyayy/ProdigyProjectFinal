@@ -9,9 +9,21 @@ public partial class ProfilePage : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = vm;
-		Loaded += vm.LoadBooks;
-		Appearing += vm.LoadBooks;
-	}
+
+        Appearing += vm.Reset;
+
+        Loaded += vm.LoadStarBooks;
+		Appearing += vm.LoadStarBooks;
+
+        Loaded += vm.LoadTBRBooks;
+        Appearing += vm.LoadTBRBooks;
+
+        Loaded += vm.LoadDroppedBooks;
+        Appearing += vm.LoadDroppedBooks;
+
+        Loaded += vm.LoadCurrentReadBooks;
+        Appearing += vm.LoadCurrentReadBooks;
+    }
 
 
 }

@@ -20,7 +20,14 @@ namespace ProdigyProjectFinal.ViewModel
             new() { PickerTitle = "Image", FileTypes = FilePickerFileType.Images },
             new() { PickerTitle = "Png", FileTypes = FilePickerFileType.Png }};
 
-        public ObservableCollection<UsersStarredBook> UserBooks { get; set; }    
+        public ObservableCollection<UsersStarredBook> UserStarBooks { get; set; }
+
+        public ObservableCollection<UsersTBR> UserTBR { get; set; }
+
+        public ObservableCollection<UsersCurrentRead> UserCurrentRead { get; set; }
+
+        public ObservableCollection<UsersDroppedBooks> UserDroppedBooks { get; set; }
+
         private ProdigyServices _services;
         private readonly UserService _userService;
         public ICommand ChangeUsernameBtn { get; protected set; }
@@ -44,7 +51,7 @@ namespace ProdigyProjectFinal.ViewModel
         private string _content;
         private int _selectedTab;
         private FileResult _fileResult;
-        const string FilePickError = "An error occurred when picking file";
+        const string FilePickError = "an error occurred when picking file";
 
 
         private string _NEWusername;
@@ -101,6 +108,8 @@ namespace ProdigyProjectFinal.ViewModel
             {
                 _user = value;
                 OnPropertyChange(nameof(User));
+                OnPropertyChange(nameof(Image));
+                OnPropertyChange(nameof(Username));
             }
         }
         public string Username
@@ -168,7 +177,7 @@ namespace ProdigyProjectFinal.ViewModel
         }
         public string Image
         {
-            get => $"{ProdigyServices.IMAGE_URL}{User.Image}";
+            get => $"{_services.IMAGE_URL}{User.Image}";
             set
             {
                 User.Image = value;
@@ -232,24 +241,95 @@ namespace ProdigyProjectFinal.ViewModel
             this._services = services;
             this._userService = userService;
 
-            User = _userService.User;
-            UserBooks = new ObservableCollection<UsersStarredBook>();
 
-            LoadBooks = new((s, e) =>
+
+            User = _userService.User;
+            UserStarBooks = new ObservableCollection<UsersStarredBook>();
+
+            UserCurrentRead = new ObservableCollection<UsersCurrentRead>();
+            UserDroppedBooks = new ObservableCollection<UsersDroppedBooks>();
+            UserTBR = new ObservableCollection<UsersTBR>();
+
+
+            Reset = new((s, e) =>
+            {
+
+                //User = _userService.User;
+                NewUsername = "";
+                NewPassword = "";
+                OnPropertyChange(nameof(Image));
+                //UserStarBooks = new ObservableCollection<UsersStarredBook>();
+
+                //UserCurrentRead = new ObservableCollection<UsersCurrentRead>();
+                //UserDroppedBooks = new ObservableCollection<UsersDroppedBooks>();
+                //UserTBR = new ObservableCollection<UsersTBR>();
+            });
+            
+
+
+
+            LoadStarBooks = new((s, e) =>
             {
                 User = _userService.User;
 
 
-                UserBooks.Clear();
+                UserStarBooks.Clear();
                 foreach (var book in User.UsersStarredBooks)
                 {
-                    UserBooks.Add(book);
+                    UserStarBooks.Add(book);
                 }
-                OnPropertyChange(nameof(UserBooks));
+                OnPropertyChange(nameof(UserStarBooks));
             });
 
 
-           
+            LoadCurrentReadBooks = new((s, e) =>
+            {
+                User = _userService.User;
+
+
+                UserCurrentRead.Clear();
+                foreach (var book1 in User.UsersCurrentReads)
+                {
+                    UserCurrentRead.Add(book1);
+                }
+                OnPropertyChange(nameof(UserCurrentRead));
+            });
+
+
+             LoadDroppedBooks = new((s, e) =>
+            {
+                User = _userService.User;
+
+
+                UserDroppedBooks.Clear();
+                foreach (var book2 in User.UsersDroppedBooks)
+                {
+                    UserDroppedBooks.Add(book2);
+                }
+                OnPropertyChange(nameof(UserDroppedBooks));
+            });
+
+            LoadTBRBooks = new((s, e) =>
+            {
+                User = _userService.User;
+
+
+                UserTBR.Clear();
+                foreach (var book4 in User.UsersTBR)
+                {
+                    UserTBR.Add(book4);
+                }
+                OnPropertyChange(nameof(UserTBR));
+            });
+
+            LoadPFP = new((s, e) => { User = userService.User; OnPropertyChange(nameof(Image)); });
+
+
+
+
+
+
+
             UploadCommand = new Command(async () =>
             {
 
@@ -269,16 +349,14 @@ namespace ProdigyProjectFinal.ViewModel
                         !await Shell.Current.DisplayAlert("empty file", "upload profile picture without a selected file?", "yes", "cancel"))
                         return;
 
-                   
-
-                   
-
                     StatusEnum responseCode = await services.UploadPFP(FileResult);
                     switch (responseCode)
                     {
                         case StatusEnum.OK:
                             await Shell.Current.DisplayAlert("uploaded", "uploaded successfully", "ok");
                             User = userService.User;
+                            OnPropertyChange(nameof(User));
+                            OnPropertyChange(nameof(FileResult));
                             OnPropertyChange(nameof(Image));
                             //var stream = await FileResult.OpenReadAsync();
                             //PhotoImageSource = ImageSource.FromStream(() => stream);
@@ -301,6 +379,7 @@ namespace ProdigyProjectFinal.ViewModel
             });
 
 
+
             UsePhoneCameraCommand = new Command(async () =>
             {
                 try
@@ -318,10 +397,6 @@ namespace ProdigyProjectFinal.ViewModel
                     if (FileResult == null && SelectedTab != 0 &&
                         !await Shell.Current.DisplayAlert("empty file", "upload profile picture without a selected file?", "yes", "cancel"))
                         return;
-
-
-
-
 
                     StatusEnum responseCode = await services.UploadPFP(FileResult);
                     switch (responseCode)
@@ -439,7 +514,17 @@ namespace ProdigyProjectFinal.ViewModel
 
         
 
-        public EventHandler LoadBooks { get; private set; }
+        public EventHandler LoadStarBooks { get; private set; }
+
+        public EventHandler LoadTBRBooks { get; private set; }
+
+        public EventHandler LoadCurrentReadBooks { get; private set; }
+
+        public EventHandler LoadDroppedBooks { get; private set; }
+
+        public EventHandler LoadPFP { get; private set; }
+        public EventHandler Reset { get; private set; }
+
 
         private bool validateUsername()
         {
